@@ -340,6 +340,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  swordLayer:
+    serializedVersion: 2
+    m_Bits: 128
   animator: {fileID: 6595325348921140147}
   hitForce: 4
   hitYForce: 0

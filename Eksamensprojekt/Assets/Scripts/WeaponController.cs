@@ -1,15 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class WeaponController : MonoBehaviour
 {
+    public static WeaponController Instance;
+    public static event Action OnSwordSwing;
+
     public GameObject sword;
     bool canAttack = true;
     public float swingCooldown = 0.1f;
     Animator anim;
     [SerializeField] Collider swordTrigger;
     int swing = 0;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -46,6 +58,8 @@ public class WeaponController : MonoBehaviour
 
     public void SwordAttack()
     {
+        OnSwordSwing?.Invoke();
+
         canAttack = false;
 
         switch (swing)

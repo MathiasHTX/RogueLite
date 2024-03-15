@@ -11,7 +11,7 @@ public class EnemyAI : MonoBehaviour
 
     NavMeshAgent agent;
 
-    [SerializeField] LayerMask groundLayer, playerLayer;
+    [SerializeField] LayerMask groundLayer, playerLayer, swordLayer;
 
     [SerializeField] Animator animator;
 
@@ -46,6 +46,8 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        WeaponController.OnSwordSwing += WeaponController_OnSwordSwing;
+
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player");
         playerOrientation = GameObject.FindWithTag("PlayerOrientation");
@@ -54,6 +56,15 @@ public class EnemyAI : MonoBehaviour
 
         FindHealth();
         UpdateHealthBar();
+    }
+
+    private void WeaponController_OnSwordSwing()
+    {
+        float radius = 3f;
+        if(Physics.CheckSphere(transform.position, radius, swordLayer))
+        {
+            EnemyHit();
+        }
     }
 
     // Update is called once per frame
@@ -139,6 +150,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Sword"))
@@ -147,6 +159,7 @@ public class EnemyAI : MonoBehaviour
             EnemyHit();
         }
     }
+    */
 
 
     public void EnemyHit()
@@ -178,7 +191,7 @@ public class EnemyAI : MonoBehaviour
         Debug.Log(health);
         UpdateHealthBar();
 
-        isHit = true;
+        //isHit = true;
         yield return null;
         agent.enabled = false;
         rb.useGravity = true;
@@ -186,8 +199,8 @@ public class EnemyAI : MonoBehaviour
         rb.AddForce(force, ForceMode.Impulse);
 
         yield return new WaitForFixedUpdate();
-        yield return new WaitUntil(() => rb.velocity.magnitude < 0.05f);
-        yield return new WaitForSeconds(0.25f);
+        //yield return new WaitUntil(() => rb.velocity.magnitude < 0.05f);
+        yield return new WaitForSeconds(1f);
 
 
         rb.useGravity = false;
@@ -213,5 +226,10 @@ public class EnemyAI : MonoBehaviour
         float fillAmount = (float)health / (float)startHealth;
         healthBar.DOFillAmount(fillAmount, 0.2f);
         healthBar.color = colorGradient.Evaluate(fillAmount);
+    }
+
+    private void OnDestroy()
+    {
+        WeaponController.OnSwordSwing -= WeaponController_OnSwordSwing;
     }
 }

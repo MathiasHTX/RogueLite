@@ -610,8 +610,16 @@ PrefabInstance:
       value: WoodSword
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 107105d33cafae744a980834d5a2c636, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 107105d33cafae744a980834d5a2c636, type: 3}
       propertyPath: m_TagString
       value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 107105d33cafae744a980834d5a2c636, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
