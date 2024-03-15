@@ -10,4 +10,9 @@ public class DisableTrigger : MonoBehaviour
     {
         weaponController.GetComponent<WeaponController>().DisableTrigger();
     }
+
+    public void CallEnableTrigger()
+    {
+        weaponController.GetComponent<WeaponController>().EnableTrigger();
+    }
 }

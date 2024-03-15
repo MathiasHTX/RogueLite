@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class EnemyAI : MonoBehaviour
 
     GameObject playerOrientation;
 
+    bool isDead = false;
+
     // Patrol
     Vector3 destinationPoint;
     bool walkPointSet;
@@ -38,6 +41,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] Gradient colorGradient;
     bool isHit;
 
+    [SerializeField] ParticleSystem slimeParticle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +52,7 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         trigger = GetComponent<BoxCollider>();
 
-        health = startHealth;
+        FindHealth();
         UpdateHealthBar();
     }
 
@@ -68,9 +73,23 @@ public class EnemyAI : MonoBehaviour
 
     }
 
+    void FindHealth()
+    {
+        int healthMultiplier = Random.Range(1, 4);
+
+        // StartHealth can be 3, 6 or 9
+        startHealth *= healthMultiplier;
+
+        float scaleFactor = 1f + (healthMultiplier - 1f) * 0.5f;
+        transform.localScale = Vector3.one * scaleFactor;
+        health = startHealth;
+
+        Debug.Log("dpoawjdo" + health);
+    }
+
     void Chase()
     {
-        if(agent.enabled)
+        if (agent.enabled)
             agent.SetDestination(player.transform.position);
 
     }
@@ -85,7 +104,7 @@ public class EnemyAI : MonoBehaviour
         }
         */
 
-        if(agent.enabled)
+        if (agent.enabled)
             agent.SetDestination(transform.position);
 
     }
@@ -97,9 +116,9 @@ public class EnemyAI : MonoBehaviour
             SearchForDestination();
         }
 
-        if(walkPointSet)
+        if (walkPointSet)
         {
-            if(agent.enabled)
+            if (agent.enabled)
                 agent.SetDestination(destinationPoint);
         }
 
@@ -114,7 +133,7 @@ public class EnemyAI : MonoBehaviour
 
         destinationPoint = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
 
-        if(Physics.Raycast(destinationPoint, Vector3.down, groundLayer))
+        if (Physics.Raycast(destinationPoint, Vector3.down, groundLayer))
         {
             walkPointSet = true;
         }
@@ -124,18 +143,28 @@ public class EnemyAI : MonoBehaviour
     {
         if (other.CompareTag("Sword"))
         {
-            trigger.enabled = false;
+            //trigger.enabled = false;
             EnemyHit();
         }
     }
+
 
     public void EnemyHit()
     {
         Vector3 playerDirection = playerOrientation.transform.forward;
         Vector3 forceDirection = new Vector3(playerDirection.x * hitForce, hitYForce, playerDirection.z * hitForce);
-        if (!isHit)
+        if (!isHit && !isDead)
         {
-            StartCoroutine(ApplyKnockback(forceDirection));
+            health--;
+
+            if (health == 0)
+            {
+                Death();
+            }
+            else
+            {
+                StartCoroutine(ApplyKnockback(forceDirection));
+            }
         }
 
     }
@@ -143,7 +172,9 @@ public class EnemyAI : MonoBehaviour
     IEnumerator ApplyKnockback(Vector3 force)
     {
         Debug.Log("Hit");
-        health--;
+        slimeParticle.Play();
+        animator.Play("SlimeBlobHit", 0, 0f);
+
         Debug.Log(health);
         UpdateHealthBar();
 
@@ -158,7 +189,7 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitUntil(() => rb.velocity.magnitude < 0.05f);
         yield return new WaitForSeconds(0.25f);
 
-        
+
         rb.useGravity = false;
         rb.isKinematic = true;
         agent.Warp(transform.position);
@@ -170,10 +201,17 @@ public class EnemyAI : MonoBehaviour
         isHit = false;
     }
 
+    void Death()
+    {
+        isDead = true;
+        Instantiate(slimeParticle, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
+    }
+
     void UpdateHealthBar()
     {
         float fillAmount = (float)health / (float)startHealth;
-        healthBar.fillAmount = fillAmount;
+        healthBar.DOFillAmount(fillAmount, 0.2f);
         healthBar.color = colorGradient.Evaluate(fillAmount);
     }
 }

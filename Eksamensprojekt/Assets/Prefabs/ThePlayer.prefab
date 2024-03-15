@@ -343,7 +343,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -463,6 +463,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1526d72f1fd502c45abd825e76bd8aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startHealth: 200
+  healthDamage: 10
+  hitCooldown: 1
   walkSpeed: 5
   sprintSpeed: 7.5
   groundDrag: 5

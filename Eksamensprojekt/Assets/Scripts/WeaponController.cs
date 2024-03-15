@@ -6,9 +6,10 @@ public class WeaponController : MonoBehaviour
 {
     public GameObject sword;
     bool canAttack = true;
-    public float swingCooldown = 0.2f;
+    public float swingCooldown = 0.1f;
     Animator anim;
     [SerializeField] Collider swordTrigger;
+    int swing = 0;
 
     private void Start()
     {
@@ -46,7 +47,15 @@ public class WeaponController : MonoBehaviour
     public void SwordAttack()
     {
         canAttack = false;
-        anim.Play("SwordSwing", 0, 0);
+
+        switch (swing)
+        {
+            case 0:
+                anim.Play("SwordSwing", 0, 0f); swing = 1; break;
+            case 1:
+                anim.Play("SwordSwing2", 0, 0f); swing = 0; break;
+        }
+
         StartCoroutine(ResetSwingCooldown());
     }
 
@@ -54,10 +63,17 @@ public class WeaponController : MonoBehaviour
     {
         yield return new WaitForSeconds(swingCooldown);
         canAttack = true;
+        yield return new WaitForSeconds(0.3f);
+        swing = 0;
     }
 
     public void DisableTrigger()
     {
         swordTrigger.enabled = false;
+    }
+
+    public void EnableTrigger()
+    {
+        swordTrigger.enabled = true;
     }
 }

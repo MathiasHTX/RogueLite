@@ -2,10 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System;
 
 public class PlayerMovementAdvanced : MonoBehaviour
 {
     public static PlayerMovementAdvanced instance { get; private set; }
+
+    // Health
+    [SerializeField] int startHealth = 200;
+    [SerializeField] int healthDamage = 10;
+    int health;
+    bool isHit;
+    [SerializeField] int hitCooldown = 2;
+    public static event Action<int> onPlayerHit;
+    bool isDead;
 
     [Header("Movement")]
     private float moveSpeed;
@@ -66,6 +76,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     Rigidbody rb;
 
+    float slopeAngle;
+
     public MovementState state;
     public enum MovementState
     {
@@ -77,7 +89,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -91,6 +103,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
         readyToJump = true;
 
         startYScale = transform.localScale.y;
+
+        health = startHealth;
     }
 
     private void Update()
@@ -131,13 +145,12 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
         // when to jump
         if (Input.GetKey(jumpKey) && readyToJump && grounded && jumpCount < 2)
-        {     
+        {
             readyToJump = false;
 
             jumpCount += 1;
 
             Jump();
-            Debug.Log(jumpCount);
 
             Invoke(nameof(ResetJump), jumpCooldown);
         }
@@ -319,11 +332,15 @@ public class PlayerMovementAdvanced : MonoBehaviour
         // Calculate the adjustment factor based on the slope angle
         float slopeAdjustmentFactor = CalculateJumpForceAdjustmentOnSlope();
 
-        // reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        Debug.Log(slopeAngle);
+        if (slopeAngle < 45)
+        {
+            // reset y velocity
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        // Apply adjusted jump force
-        rb.AddForce(transform.up * jumpForce * slopeAdjustmentFactor, ForceMode.Impulse);
+            // Apply adjusted jump force
+            rb.AddForce(transform.up * jumpForce * slopeAdjustmentFactor, ForceMode.Impulse);
+        }
     }
 
     private float CalculateJumpForceAdjustmentOnSlope()
@@ -408,10 +425,10 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private bool OnSlope()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.5f))
         {
-            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
-            return angle < maxSlopeAngle && angle != 0;
+            slopeAngle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return slopeAngle < maxSlopeAngle && slopeAngle != 0;
         }
 
         return false;
@@ -425,5 +442,35 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public bool IsGrounded()
     {
         return grounded;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            if (!isHit && !isDead)
+            {
+                health -= healthDamage;
+                isHit = true;
+                onPlayerHit?.Invoke(health);
+                StartCoroutine(HitCooldown());
+
+                if (health <= 0)
+                {
+                    isDead = true;
+                }
+            }
+        }
+    }
+
+    IEnumerator HitCooldown()
+    {
+        yield return new WaitForSeconds(hitCooldown);
+        isHit = false;
+    }
+
+    public int GetStartHealth()
+    {
+        return startHealth;
     }
 }
