@@ -35,7 +35,7 @@ public class EnemyAI : MonoBehaviour
     bool playerInSight, playerInAttackRange;
 
     //Health and UI
-    int startHealth = 3;
+    int startHealth;
     int health;
     [SerializeField] Image healthBar;
     [SerializeField] Gradient colorGradient;
@@ -46,7 +46,6 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        WeaponController.OnSwordSwing += WeaponController_OnSwordSwing;
 
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player");
@@ -54,17 +53,8 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         trigger = GetComponent<BoxCollider>();
 
-        FindHealth();
+        FindSize();
         UpdateHealthBar();
-    }
-
-    private void WeaponController_OnSwordSwing()
-    {
-        float radius = 3f;
-        if(Physics.CheckSphere(transform.position, radius, swordLayer))
-        {
-            EnemyHit();
-        }
     }
 
     // Update is called once per frame
@@ -84,18 +74,25 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-    void FindHealth()
+    void FindSize()
     {
-        int healthMultiplier = Random.Range(1, 4);
+        int size = Random.Range(1, 4);
 
-        // StartHealth can be 3, 6 or 9
-        startHealth *= healthMultiplier;
+        // Health
 
-        float scaleFactor = 1f + (healthMultiplier - 1f) * 0.5f;
+        // StartHealth can be 4, 8 or 12
+        int baseHealth = 4;
+        startHealth = baseHealth * size;
+
+        float scaleFactor = 1f + (size - 1f) * 0.5f;
         transform.localScale = Vector3.one * scaleFactor;
         health = startHealth;
 
-        Debug.Log("dpoawjdo" + health);
+        // Speed
+        float baseSpeed = 6;
+        float speed = baseSpeed / size;
+
+        agent.speed = speed;
     }
 
     void Chase()
@@ -178,13 +175,13 @@ public class EnemyAI : MonoBehaviour
             {
                 StartCoroutine(ApplyKnockback(forceDirection));
             }
+
         }
 
     }
 
     IEnumerator ApplyKnockback(Vector3 force)
     {
-        Debug.Log("Hit");
         slimeParticle.Play();
         animator.Play("SlimeBlobHit", 0, 0f);
 
@@ -230,6 +227,6 @@ public class EnemyAI : MonoBehaviour
 
     private void OnDestroy()
     {
-        WeaponController.OnSwordSwing -= WeaponController_OnSwordSwing;
+        WaveManager.instance.RemoveEnemy(this.gameObject);
     }
 }

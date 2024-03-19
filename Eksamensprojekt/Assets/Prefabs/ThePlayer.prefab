@@ -66,7 +66,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sword: {fileID: 2460919457934069745}
   swingCooldown: 0.2
-  swordTrigger: {fileID: 8041897742273836474}
+  cameraHolder: {fileID: 7519647619724640928}
+  hitDistance: 5
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  boxSize: {x: 2, y: 2, z: 3}
 --- !u!1 &3381637732476995761
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,9 +636,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 107105d33cafae744a980834d5a2c636, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3393217632441480398}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 107105d33cafae744a980834d5a2c636, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5809167783555986014}
   m_SourcePrefab: {fileID: 100100000, guid: 107105d33cafae744a980834d5a2c636, type: 3}
 --- !u!1 &2460919457934069745 stripped
 GameObject:
@@ -682,19 +684,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5809167783555986014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2460919457934069745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc1e6346d785ff94ebe088558baa3edc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponController: {fileID: 2586365295949095413}
 --- !u!4 &2985079072346969419 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 107105d33cafae744a980834d5a2c636, type: 3}

@@ -6,14 +6,16 @@ using System;
 public class WeaponController : MonoBehaviour
 {
     public static WeaponController Instance;
-    public static event Action OnSwordSwing;
 
     public GameObject sword;
     bool canAttack = true;
-    public float swingCooldown = 0.1f;
+    public float swingCooldown = 0.3f;
     Animator anim;
-    [SerializeField] Collider swordTrigger;
-    int swing = 0;
+
+    [SerializeField] Transform cameraHolder;
+    [SerializeField] float hitDistance = 5;
+    [SerializeField] LayerMask enemyLayerMask;
+    [SerializeField] Vector3 boxSize;
 
     private void Awake()
     {
@@ -26,7 +28,6 @@ public class WeaponController : MonoBehaviour
     private void Start()
     {
         anim = sword.GetComponent<Animator>();
-        swordTrigger.enabled = false;
     }
 
     private void Update()
@@ -35,7 +36,6 @@ public class WeaponController : MonoBehaviour
         {
             if (canAttack)
             {
-                swordTrigger.enabled = true;
                 SwordAttack();
             }
         }
@@ -58,36 +58,45 @@ public class WeaponController : MonoBehaviour
 
     public void SwordAttack()
     {
-        OnSwordSwing?.Invoke();
-
+        //OnSwordSwing?.Invoke();
         canAttack = false;
+        anim.Play("SwordSwing", 0, 0);
 
-        switch (swing)
+        Vector3 boxCenter = cameraHolder.position + cameraHolder.forward * (boxSize.z / 2f);
+
+        Collider[] colliders = Physics.OverlapBox(boxCenter, boxSize / 2f, cameraHolder.rotation, enemyLayerMask);
+
+        // Iterate through the colliders found
+        foreach (Collider collider in colliders)
         {
-            case 0:
-                anim.Play("SwordSwing", 0, 0f); swing = 1; break;
-            case 1:
-                anim.Play("SwordSwing2", 0, 0f); swing = 0; break;
+            if (!collider.isTrigger)
+            {
+                // Get the EnemyAI component attached to the collider
+                EnemyAI enemyAI = collider.GetComponent<EnemyAI>();
+
+                // Check if the component exists
+                if (enemyAI != null)
+                {
+                    // Call the EnemyHit() function on the EnemyAI component
+                    enemyAI.EnemyHit();
+                }
+            }
+
         }
 
-        StartCoroutine(ResetSwingCooldown());
+        StartCoroutine(SwingCooldown());
     }
 
-    IEnumerator ResetSwingCooldown()
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+        Gizmos.DrawWireCube(Vector3.forward * (boxSize.z / 2f), boxSize);
+    }
+
+    IEnumerator SwingCooldown()
     {
         yield return new WaitForSeconds(swingCooldown);
         canAttack = true;
-        yield return new WaitForSeconds(0.3f);
-        swing = 0;
-    }
-
-    public void DisableTrigger()
-    {
-        swordTrigger.enabled = false;
-    }
-
-    public void EnableTrigger()
-    {
-        swordTrigger.enabled = true;
     }
 }
