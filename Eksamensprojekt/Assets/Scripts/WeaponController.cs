@@ -17,6 +17,9 @@ public class WeaponController : MonoBehaviour
     [SerializeField] LayerMask enemyLayerMask;
     [SerializeField] Vector3 boxSize;
 
+    [SerializeField] WeaponSO[] weaponSOs;
+    int usingWeapon = 0;
+
     private void Awake()
     {
         if(Instance == null)
@@ -78,7 +81,7 @@ public class WeaponController : MonoBehaviour
                 if (enemyAI != null)
                 {
                     // Call the EnemyHit() function on the EnemyAI component
-                    enemyAI.EnemyHit();
+                    enemyAI.EnemyHit(weaponSOs[usingWeapon].damage);
                 }
             }
 

@@ -7,6 +7,8 @@ using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
+
     [SerializeField] Image damageVignette;
 
     //Health bar
@@ -15,6 +17,34 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image healthBarFill;
     [SerializeField] Gradient healthBarGradient;
     int startHealth;
+
+    //Enemies Killed
+    [SerializeField] TextMeshProUGUI enemiesKilledText;
+    [SerializeField] RectTransform enemiesKilledTransform;
+
+    //New wave
+    [SerializeField] GameObject newWave;
+    [SerializeField] TextMeshProUGUI waveText;
+    [SerializeField] RectTransform waveBackground;
+    [SerializeField] TextMeshProUGUI currentWaveText;
+
+    //Wave complete
+    [SerializeField] GameObject waveComplete;
+    [SerializeField] RectTransform waveCompletedBackground;
+    [SerializeField] TextMeshProUGUI waveCompletedText;
+
+    //Time before wave
+    bool timerEnabled;
+    [SerializeField] RectTransform timeBeforeNewWaveTransform;
+    [SerializeField] TextMeshProUGUI timerText;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -37,5 +67,75 @@ public class UIManager : MonoBehaviour
         healthText.text = "HP " + health;
 
         damageVignette.DOFade(0.5f, 0.1f).OnComplete(() => damageVignette.DOFade(0f, 0.3f));
+    }
+
+    public void UpdateEnemiesKilledUI(int enemiesKilled, int totalEnemies)
+    {
+        enemiesKilledText.text = enemiesKilled + "/" + totalEnemies;
+        enemiesKilledTransform.DOKill();
+        enemiesKilledTransform.DOScale(1.1f, 0.1f).SetLoops(2, LoopType.Yoyo);
+    }
+
+    public void NewWave(int waveCount)
+    {
+        currentWaveText.text = "WAVE " + (waveCount + 1);
+
+        // Start values
+        waveText.text = "WAVE " + (waveCount + 1);
+        waveBackground.sizeDelta = new Vector2(0, 25);
+        waveText.DOFade(0, 0);
+        newWave.SetActive(true);
+
+        // Appear
+        waveBackground.DOSizeDelta(new Vector2(142, 25), 0.5f).SetEase(Ease.InOutCubic);
+        waveText.transform.localPosition = new Vector2(8, -3);
+        waveText.DOFade(1, 0.5f);
+        waveText.transform.DOLocalMoveX(-17, 0.5f).SetEase(Ease.InOutCubic);
+
+        // Disappear
+        waveBackground.DOSizeDelta(new Vector2(0, 25), 0.5f).SetEase(Ease.InOutCubic).SetDelay(3);
+        waveText.transform.DOLocalMoveX(8, 0.5f).SetEase(Ease.InOutCubic).SetDelay(3);
+        waveText.DOFade(0, 0.5f).SetDelay(3).OnComplete(() => newWave.SetActive(false));
+    }
+
+    public void WaveComplete()
+    {
+        // Start values
+        waveCompletedBackground.sizeDelta = new Vector2(0, 30);
+        waveCompletedText.transform.localPosition = new Vector2(0, -7);
+        waveCompletedText.DOFade(0, 0);
+        waveComplete.SetActive(true);
+
+        // Appear
+        waveCompletedText.DOFade(1, 0.3f).SetDelay(0.3f);
+        waveCompletedText.transform.DOLocalMoveY(0, 0.3f).SetDelay(0.3f);
+        waveCompletedBackground.DOSizeDelta(new Vector2(180, 30), 0.5f).SetEase(Ease.InOutCubic);
+
+        // Disappear
+        waveCompletedText.DOFade(0, 0.3f).SetDelay(3.3f);
+        waveCompletedText.transform.DOLocalMoveY(-7, 0.3f).SetDelay(3.3f);
+        waveCompletedBackground.DOSizeDelta(new Vector2(0, 30), 0.5f).SetEase(Ease.InOutCubic).SetDelay(3f).OnComplete(() => waveComplete.SetActive(false));
+    }
+
+    private void Update()
+    {
+        if (timerEnabled)
+        {
+            timerText.text = WaveManager.instance.GetTimer().ToString("F0") + "s";
+        }
+    }
+
+    public void OpenTimeBeforeNewWave()
+    {
+        timerEnabled = true;
+        timeBeforeNewWaveTransform.DOAnchorPosX(-150, 1);
+        enemiesKilledTransform.DOAnchorPosX(-30, 1);
+    }
+
+    public void OpenEnemiesKilled()
+    {
+        timerEnabled = false;
+        timeBeforeNewWaveTransform.DOAnchorPosX(-30, 1);
+        enemiesKilledTransform.DOAnchorPosX(-150, 1);
     }
 }

@@ -81,7 +81,7 @@ public class EnemyAI : MonoBehaviour
         // Health
 
         // StartHealth can be 4, 8 or 12
-        int baseHealth = 4;
+        int baseHealth = 50 + (20 * WaveManager.instance.GetWaveCount());
         startHealth = baseHealth * size;
 
         float scaleFactor = 1f + (size - 1f) * 0.5f;
@@ -89,7 +89,7 @@ public class EnemyAI : MonoBehaviour
         health = startHealth;
 
         // Speed
-        float baseSpeed = 6;
+        float baseSpeed = 10;
         float speed = baseSpeed / size;
 
         agent.speed = speed;
@@ -159,15 +159,15 @@ public class EnemyAI : MonoBehaviour
     */
 
 
-    public void EnemyHit()
+    public void EnemyHit(int damage)
     {
         Vector3 playerDirection = playerOrientation.transform.forward;
         Vector3 forceDirection = new Vector3(playerDirection.x * hitForce, hitYForce, playerDirection.z * hitForce);
         if (!isHit && !isDead)
         {
-            health--;
+            health -= damage;
 
-            if (health == 0)
+            if (health <= 0)
             {
                 Death();
             }
@@ -185,7 +185,6 @@ public class EnemyAI : MonoBehaviour
         slimeParticle.Play();
         animator.Play("SlimeBlobHit", 0, 0f);
 
-        Debug.Log(health);
         UpdateHealthBar();
 
         //isHit = true;
@@ -215,6 +214,7 @@ public class EnemyAI : MonoBehaviour
     {
         isDead = true;
         Instantiate(slimeParticle, transform.position, Quaternion.identity);
+        WaveManager.instance.EnemyKilled();
         Destroy(this.gameObject);
     }
 
@@ -223,10 +223,5 @@ public class EnemyAI : MonoBehaviour
         float fillAmount = (float)health / (float)startHealth;
         healthBar.DOFillAmount(fillAmount, 0.2f);
         healthBar.color = colorGradient.Evaluate(fillAmount);
-    }
-
-    private void OnDestroy()
-    {
-        WaveManager.instance.RemoveEnemy(this.gameObject);
     }
 }
