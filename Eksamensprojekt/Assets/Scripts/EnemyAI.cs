@@ -11,7 +11,7 @@ public class EnemyAI : MonoBehaviour
 
     NavMeshAgent agent;
 
-    [SerializeField] LayerMask groundLayer, playerLayer, swordLayer;
+    [SerializeField] LayerMask groundLayer, playerLayer;
 
     [SerializeField] Animator animator;
 
@@ -35,7 +35,7 @@ public class EnemyAI : MonoBehaviour
     bool playerInSight, playerInAttackRange;
 
     //Health and UI
-    int startHealth;
+    int startHealth = 3;
     int health;
     [SerializeField] Image healthBar;
     [SerializeField] Gradient colorGradient;
@@ -46,14 +46,13 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player");
         playerOrientation = GameObject.FindWithTag("PlayerOrientation");
         rb = GetComponent<Rigidbody>();
         trigger = GetComponent<BoxCollider>();
 
-        FindSize();
+        FindHealth();
         UpdateHealthBar();
     }
 
@@ -74,25 +73,18 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-    void FindSize()
+    void FindHealth()
     {
-        int size = Random.Range(1, 4);
+        int healthMultiplier = Random.Range(1, 4);
 
-        // Health
+        // StartHealth can be 3, 6 or 9
+        startHealth *= healthMultiplier;
 
-        // StartHealth can be 4, 8 or 12
-        int baseHealth = 4;
-        startHealth = baseHealth * size;
-
-        float scaleFactor = 1f + (size - 1f) * 0.5f;
+        float scaleFactor = 1f + (healthMultiplier - 1f) * 0.5f;
         transform.localScale = Vector3.one * scaleFactor;
         health = startHealth;
 
-        // Speed
-        float baseSpeed = 6;
-        float speed = baseSpeed / size;
-
-        agent.speed = speed;
+        Debug.Log("dpoawjdo" + health);
     }
 
     void Chase()
@@ -147,7 +139,6 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Sword"))
@@ -156,7 +147,6 @@ public class EnemyAI : MonoBehaviour
             EnemyHit();
         }
     }
-    */
 
 
     public void EnemyHit()
@@ -175,20 +165,20 @@ public class EnemyAI : MonoBehaviour
             {
                 StartCoroutine(ApplyKnockback(forceDirection));
             }
-
         }
 
     }
 
     IEnumerator ApplyKnockback(Vector3 force)
     {
+        Debug.Log("Hit");
         slimeParticle.Play();
         animator.Play("SlimeBlobHit", 0, 0f);
 
         Debug.Log(health);
         UpdateHealthBar();
 
-        //isHit = true;
+        isHit = true;
         yield return null;
         agent.enabled = false;
         rb.useGravity = true;
@@ -196,8 +186,8 @@ public class EnemyAI : MonoBehaviour
         rb.AddForce(force, ForceMode.Impulse);
 
         yield return new WaitForFixedUpdate();
-        //yield return new WaitUntil(() => rb.velocity.magnitude < 0.05f);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitUntil(() => rb.velocity.magnitude < 0.05f);
+        yield return new WaitForSeconds(0.25f);
 
 
         rb.useGravity = false;
@@ -223,10 +213,5 @@ public class EnemyAI : MonoBehaviour
         float fillAmount = (float)health / (float)startHealth;
         healthBar.DOFillAmount(fillAmount, 0.2f);
         healthBar.color = colorGradient.Evaluate(fillAmount);
-    }
-
-    private void OnDestroy()
-    {
-        WaveManager.instance.RemoveEnemy(this.gameObject);
     }
 }
