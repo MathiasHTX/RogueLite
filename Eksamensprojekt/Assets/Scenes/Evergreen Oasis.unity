@@ -1022,6 +1022,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensX: 200
   sensY: 200
+  thisCam: {fileID: 401924555}
+  playerCam: {fileID: 992739501}
   ship: {fileID: 1693523048}
   cameraShipPosition: {fileID: 647323224}
   waitTime: 12
@@ -2878,6 +2880,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc73487926973214aa118d45640457c9, type: 3}
+--- !u!1 &992739501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5193626161539037940, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+  m_PrefabInstance: {fileID: 3380330}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1029150204
 PrefabInstance:
   m_ObjectHideFlags: 0
