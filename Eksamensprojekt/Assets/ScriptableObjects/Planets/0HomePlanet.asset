@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103243bcf88d3bd4986f473925c2957f, type: 3}
+  m_Name: 0HomePlanet
+  m_EditorClassIdentifier: 
+  title: HOME
+  description: Just like any other beings, one needs a place to return home to after
+    a long day filled with action. Your home planet is the place you know best, where
+    you have a cottage, a garden, and beautiful green landscapes, just like back
+    on Earth. Nothing fades away in this place, it's just you in peace, with opportunities
+    to build and upgrade your weapons and properties.
+  material: {fileID: 2100000, guid: e3d496184d1e0294a813c6bc8cb2e737, type: 2}
+  unlocked: 1
