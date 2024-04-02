@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7862388838791621099}
   - component: {fileID: 2559084833007745552}
   - component: {fileID: 6779187811025358269}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1739970591921126385}
   - component: {fileID: 5698998366661660454}
   - component: {fileID: 5766675138120231870}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HealthBarUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 7094464210883127351}
   - component: {fileID: 6613124410324915802}
   - component: {fileID: 4800651535944513495}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 7413443647044948919}
   - component: {fileID: 8036849360271795648}
   - component: {fileID: 7523050306266196213}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SlimeBlob
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -340,11 +340,14 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  swordLayer:
+    serializedVersion: 2
+    m_Bits: 0
   animator: {fileID: 6595325348921140147}
   hitForce: 4
   hitYForce: 0
   walkingRange: 10
-  sightRange: 20
+  sightRange: 100
   attackRange: 1
   healthBar: {fileID: 5099428602230442291}
   colorGradient:
@@ -482,7 +485,7 @@ GameObject:
   - component: {fileID: 5568528439947029548}
   - component: {fileID: 986050253464344025}
   - component: {fileID: 5099428602230442291}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -597,6 +600,10 @@ PrefabInstance:
     - target: {fileID: 6788027874756828835, guid: 66abb738de709f24495a32f2937659fd, type: 3}
       propertyPath: m_Name
       value: SlimeParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788027874756828835, guid: 66abb738de709f24495a32f2937659fd, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -127,15 +127,20 @@ public class UIManager : MonoBehaviour
 
     public void OpenTimeBeforeNewWave()
     {
+        Debug.Log("OpenTime");
         timerEnabled = true;
-        timeBeforeNewWaveTransform.DOAnchorPosX(-150, 1);
-        enemiesKilledTransform.DOAnchorPosX(-30, 1);
+        timeBeforeNewWaveTransform.anchoredPosition = new Vector2(120, -35);
+        timeBeforeNewWaveTransform.gameObject.SetActive(true);
+        timeBeforeNewWaveTransform.DOAnchorPosX(-150, 1).SetDelay(1);
+        enemiesKilledTransform.DOAnchorPosX(120, 1).OnComplete(() => enemiesKilledTransform.gameObject.SetActive(false));
     }
 
     public void OpenEnemiesKilled()
     {
         timerEnabled = false;
-        timeBeforeNewWaveTransform.DOAnchorPosX(-30, 1);
-        enemiesKilledTransform.DOAnchorPosX(-150, 1);
+        enemiesKilledTransform.anchoredPosition = new Vector2(-32, -35);
+        enemiesKilledTransform.gameObject.SetActive(true);
+        enemiesKilledTransform.DOAnchorPosX(-150, 1).SetDelay(1);
+        timeBeforeNewWaveTransform.DOAnchorPosX(120, 1).OnComplete(() => timeBeforeNewWaveTransform.gameObject.SetActive(false));
     }
 }
