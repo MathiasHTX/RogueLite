@@ -30,6 +30,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public float airMultiplier;
     bool readyToJump;
     int jumpCount;
+    public static event Action OnJump;
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -328,6 +329,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
     private void Jump()
     {
         exitingSlope = true;
+
+        OnJump?.Invoke();
 
         // Calculate the adjustment factor based on the slope angle
         float slopeAdjustmentFactor = CalculateJumpForceAdjustmentOnSlope();

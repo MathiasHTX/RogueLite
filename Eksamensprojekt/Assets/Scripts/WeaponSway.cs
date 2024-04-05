@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-using System;
 
 public class WeaponSway : MonoBehaviour
 {
@@ -10,8 +9,10 @@ public class WeaponSway : MonoBehaviour
     public float smoothReturnSpeed;
 
     // Bobbing effect variables
-    public float bobSpeed = 2f;
-    public float bobAmount = 0.007f;
+    public float walkingBobSpeed = 2f;
+    public float walkingBobAmount = 0.007f;
+    public float jumpingBobSpeed = 2f;
+    public float jumpingBobAmount = 0.007f;
     public float bobbingSideIntensity = 0.0001f;
     private float defaultPosY = 0f;
     private float timer = 0f;
@@ -24,11 +25,20 @@ public class WeaponSway : MonoBehaviour
     private Vector3 lastPosition;
     private float playerSpeed;
 
+    private bool isJumping = false;
+
     private void Start()
     {
         origin_rotation = transform.localRotation;
         defaultPosY = transform.localPosition.y;
         lastPosition = playerTransform.position;
+
+        PlayerMovementAdvanced.OnJump += PlayerMovementAdvanced_OnJump;
+    }
+
+    private void PlayerMovementAdvanced_OnJump()
+    {
+        isJumping = true;
     }
 
     private void Update()
@@ -36,7 +46,7 @@ public class WeaponSway : MonoBehaviour
         UpdateSway();
         UpdateBob();
 
-        float verticalSpeed = (playerTransform.position.y - lastPosition.y) / Time.deltaTime;
+        verticalSpeed = (playerTransform.position.y - lastPosition.y) / Time.deltaTime;
     }
 
     private void UpdateSway()
@@ -56,31 +66,37 @@ public class WeaponSway : MonoBehaviour
         playerSpeed = (playerTransform.position - lastPosition).magnitude / Time.deltaTime;
         lastPosition = playerTransform.position;
 
-        if (playerSpeed > 0.1f && PlayerMovementAdvanced.instance.IsGrounded())
+        bool isGrounded = PlayerMovementAdvanced.instance.IsGrounded();
+
+        if (playerSpeed > 0.1f && isGrounded)
         {
-            timer += Time.deltaTime * bobSpeed * playerSpeed;
-            float bobSine = Mathf.Sin(timer) * bobAmount * playerSpeed;
+            timer += Time.deltaTime * walkingBobSpeed * playerSpeed;
+            float bobSine = Mathf.Sin(timer) * walkingBobAmount * playerSpeed;
             float bobCosine = Mathf.Cos(timer * 2) * bobbingSideIntensity * playerSpeed;
-            transform.localPosition = new Vector3(transform.localPosition.x + bobCosine, defaultPosY + bobSine, transform.localPosition.z);
+            SmoothMoveWeapon(new Vector3(transform.localPosition.x + bobCosine, defaultPosY + bobSine, transform.localPosition.z), walkingBobSpeed);
         }
-        else if (playerSpeed > 0.1f && !PlayerMovementAdvanced.instance.IsGrounded())
+        else if (playerSpeed > 0.1f && !isGrounded)
         {
-            if (verticalSpeed > 0) // Going up
-            {
-                float upwardsLag = -0.5f * verticalSpeed;
-                transform.localPosition = new Vector3(transform.localPosition.x, defaultPosY + upwardsLag, transform.localPosition.z);
-            }
-            else if (verticalSpeed < 0) // Falling down
-            {
-                float fallingLag = 0.5f * Mathf.Abs(verticalSpeed);
-                transform.localPosition = new Vector3(transform.localPosition.x, defaultPosY + fallingLag, transform.localPosition.z);
-            }
+            // Calculate the vertical component of the player's velocity
+            float verticalVelocity = Vector3.Dot(playerTransform.GetComponent<Rigidbody>().velocity, playerTransform.up);
+
+            // Use the vertical velocity for bobbing instead of playerSpeed
+            timer += Time.deltaTime * jumpingBobSpeed * Mathf.Abs(verticalVelocity);
+            float bobSine = Mathf.Sin(timer) * jumpingBobAmount * Mathf.Abs(verticalVelocity);
+            float bobCosine = Mathf.Cos(timer * 2) * bobbingSideIntensity * Mathf.Abs(verticalVelocity);
+
+            // Apply the bobbing effect based on the vertical velocity
+            SmoothMoveWeapon(new Vector3(transform.localPosition.x + bobCosine, defaultPosY + bobSine, transform.localPosition.z), jumpingBobSpeed);
         }
         else if (playerSpeed < 0.1f)
         {
-            timer = 0f;
             // Smoothly return to the default position
-            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(transform.localPosition.x, defaultPosY, transform.localPosition.z), Time.deltaTime * smoothReturnSpeed);
+            SmoothMoveWeapon(new Vector3(transform.localPosition.x, defaultPosY, transform.localPosition.z), smoothReturnSpeed);
         }
+    }
+
+    private void SmoothMoveWeapon(Vector3 targetPosition, float speed)
+    {
+        transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, Time.deltaTime * speed);
     }
 }
