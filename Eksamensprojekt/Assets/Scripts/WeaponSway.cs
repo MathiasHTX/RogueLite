@@ -25,8 +25,6 @@ public class WeaponSway : MonoBehaviour
     private Vector3 lastPosition;
     private float playerSpeed;
 
-    private bool isJumping = false;
-
     private void Start()
     {
         origin_rotation = transform.localRotation;
