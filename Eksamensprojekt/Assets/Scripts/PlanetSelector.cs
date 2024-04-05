@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlanetSelector : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class PlanetSelector : MonoBehaviour
     public Vector3 camOffset;
     Vector3 originalPosition;
     public Transform planets;
-    Transform selectedPlanet;
+    Transform selectedPlanetTransform;
+    PlanetSO selectedPlanetSO;
 
     bool planetSelected;
     bool camFollowPlanets;
@@ -33,9 +35,10 @@ public class PlanetSelector : MonoBehaviour
 
     public void ZoomToPlanet(Transform planetTransform, PlanetSO planetSO)
     {
-        selectedPlanet = planetTransform;
+        selectedPlanetTransform = planetTransform;
+        selectedPlanetSO = planetSO;
 
-        m_camera.DOMove(selectedPlanet.position + camOffset, 0.4f).OnComplete(() => camFollowPlanets = true);
+        m_camera.DOMove(selectedPlanetTransform.position + camOffset, 0.4f).OnComplete(() => camFollowPlanets = true);
 
         titleText.text = planetSO.title;
         descriptionText.text = planetSO.description;
@@ -69,7 +72,7 @@ public class PlanetSelector : MonoBehaviour
     {
         if (camFollowPlanets)
         {
-            Vector3 targetPosition = selectedPlanet.position + camOffset;
+            Vector3 targetPosition = selectedPlanetTransform.position + camOffset;
             float transitionSpeed = 0.5f;
             m_camera.position = Vector3.Lerp(m_camera.position, targetPosition, transitionSpeed * Time.deltaTime);
         }
@@ -83,10 +86,10 @@ public class PlanetSelector : MonoBehaviour
         backBtn.SetActive(false);
 
         Vector3 zoomOutOffset = new Vector3(2, 4, -7);
-        m_camera.DOMove(selectedPlanet.position + zoomOutOffset, 0.5f).SetEase(Ease.OutCirc).OnComplete(() =>
+        m_camera.DOMove(selectedPlanetTransform.position + zoomOutOffset, 0.5f).SetEase(Ease.OutCirc).OnComplete(() =>
         {
-            m_camera.DOMove(selectedPlanet.position, 2).SetEase(Ease.InQuart);
-            whiteFade.DOFade(1, 0.8f).SetDelay(1f).SetEase(Ease.InQuart);
+            m_camera.DOMove(selectedPlanetTransform.position, 2).SetEase(Ease.InQuart);
+            whiteFade.DOFade(1, 0.8f).SetDelay(1f).SetEase(Ease.InQuart).OnComplete(() => SceneManager.LoadScene(selectedPlanetSO.sceneBuildIndex));
         });
     }
 

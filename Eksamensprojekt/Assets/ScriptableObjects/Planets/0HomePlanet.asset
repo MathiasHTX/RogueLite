@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103243bcf88d3bd4986f473925c2957f, type: 3}
   m_Name: 0HomePlanet
   m_EditorClassIdentifier: 
+  sceneBuildIndex: 2
   title: HOME
   description: Just like any other beings, one needs a place to return home to after
     a long day filled with action. Your home planet is the place you know best, where

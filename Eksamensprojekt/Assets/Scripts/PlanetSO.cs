@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Planet", menuName = "Scriptable Objects/Planet", order = 2)]
 public class PlanetSO : ScriptableObject
 {
+    public int sceneBuildIndex;
     public string title;
     public string description;
     public Material material;

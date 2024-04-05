@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 using System;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,6 +14,14 @@ public class UIManager : MonoBehaviour
     public static event Action<bool> isPaused;
 
     [SerializeField] Image damageVignette;
+
+    [SerializeField] GameObject gameUI;
+    [SerializeField] GameObject insideShipUI;
+
+    // Intro
+    [SerializeField] Image whiteFade;
+    [SerializeField] RectTransform blackBarTop;
+    [SerializeField] RectTransform blackBarBottom;
 
     //Health bar
     [SerializeField] Transform healthBar;
@@ -50,6 +59,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] RectTransform pauseScreen;
     bool paused;
 
+
+    bool sceneIsHome;
+
     private void Awake()
     {
         if(instance == null)
@@ -61,10 +73,45 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sceneIsHome = SceneManager.GetActiveScene().buildIndex == 2;
+
+        ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
+
+        if (!sceneIsHome)
+        {
+            gameUI.SetActive(false);
+        }
+
+        insideShipUI.SetActive(false);
+        whiteFade.gameObject.SetActive(true);
+        whiteFade.DOFade(0, 2).OnComplete(() => whiteFade.gameObject.SetActive(false));
+    }
+
+    private void ShipLandingSequence_OnExitShip()
+    {
+        if(!sceneIsHome)
+        {
+            LoadGameUI();
+        }
+
+        insideShipUI.SetActive(false);
+
+        blackBarBottom.DOAnchorPosY(-20, 1);
+        blackBarTop.DOAnchorPosY(20, 1);
+    }
+
+    void LoadGameUI()
+    {
         PlayerMovementAdvanced.onPlayerHit += PlayerMovementAdvanced_onPlayerHit;
         healthBarFill.color = healthBarGradient.Evaluate(1);
         startHealth = PlayerMovementAdvanced.instance.GetStartHealth();
         healthText.text = "HP " + startHealth;
+        gameUI.SetActive(true);
+    }
+
+    public void ShowInsideShipUI()
+    {
+        insideShipUI.SetActive(true);
     }
 
     private void PlayerMovementAdvanced_onPlayerHit(int health)

@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5193626161539037940, guid: 949f4d70839942441b4da82724cdacda, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6883064366382552482, guid: 949f4d70839942441b4da82724cdacda, type: 3}
       propertyPath: m_LocalPosition.x
@@ -936,6 +936,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72c9ff5d3fdec234dad8b79325a6b402, type: 3}
+--- !u!114 &381474287 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8253683742559873850, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
+  m_PrefabInstance: {fileID: 804391051}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &401924555
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,7 +966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &401924556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,7 +1100,7 @@ MonoBehaviour:
   sensX: 200
   sensY: 200
   thisCam: {fileID: 401924555}
-  playerCam: {fileID: 992739501}
+  player: {fileID: 992739501}
   ship: {fileID: 1693523048}
   cameraShipPosition: {fileID: 647323224}
   waitTime: 12
@@ -1151,6 +1162,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b038a2cca0d05d546a6f40171b142711, type: 3}
+--- !u!224 &412758182 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3247724711114313192, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
+  m_PrefabInstance: {fileID: 804391051}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &425490459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2679,6 +2695,11 @@ RectTransform:
 --- !u!1 &804391054 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4060702931958075494, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
+  m_PrefabInstance: {fileID: 804391051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &804391055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9105003566729877080, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
   m_PrefabInstance: {fileID: 804391051}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &809390071
@@ -4611,6 +4632,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72c9ff5d3fdec234dad8b79325a6b402, type: 3}
+--- !u!1 &1469304395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8364043916871554005, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
+  m_PrefabInstance: {fileID: 804391051}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1491884155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4688,6 +4714,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72c9ff5d3fdec234dad8b79325a6b402, type: 3}
+--- !u!224 &1501100095 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1065588065414254098, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
+  m_PrefabInstance: {fileID: 804391051}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1504473070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6445,6 +6476,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageVignette: {fileID: 217940133}
+  gameUI: {fileID: 1469304395}
+  insideShipUI: {fileID: 804391055}
+  whiteFade: {fileID: 381474287}
+  blackBarTop: {fileID: 412758182}
+  blackBarBottom: {fileID: 1501100095}
   healthBar: {fileID: 259637841}
   healthText: {fileID: 1181724082}
   healthBarFill: {fileID: 1818585075}

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103243bcf88d3bd4986f473925c2957f, type: 3}
   m_Name: 1EvergreenOasis
   m_EditorClassIdentifier: 
+  sceneBuildIndex: 3
   title: EVERGREEN OASIS
   description: This alien planet, reminiscent of your home planet in many ways, is
     flooded with green slimy blobs that do not welcome foreign life forms on their

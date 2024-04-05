@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: bff59e41413a2754d88896013f4adf30
+  - enabled: 1
+    path: Assets/Scenes/PlanetSelection.unity
+    guid: 6e2a50e77fc02f84a9b7552b22ad00c1
+  - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: 44babbd6f6069d649b9d99daa6c27017
+  - enabled: 1
+    path: Assets/Scenes/Evergreen Oasis.unity
+    guid: d5f7d0ef080c967429f9b30a01275688
   m_configObjects: {}

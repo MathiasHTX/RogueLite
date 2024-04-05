@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103243bcf88d3bd4986f473925c2957f, type: 3}
   m_Name: 2Snow
   m_EditorClassIdentifier: 
+  sceneBuildIndex: 3
   title: SNOWDRIFT SUMMIT
   description: The landscape of this planet is covered in what appears to be snow,
     stretching endlessly. If that wasn't enough, it is also inhabited by large dangerous
