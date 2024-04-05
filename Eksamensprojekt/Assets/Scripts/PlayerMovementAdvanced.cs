@@ -460,7 +460,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
                 if (health <= 0)
                 {
-                    isDead = true;
+                    Death();
                 }
             }
         }
@@ -470,6 +470,17 @@ public class PlayerMovementAdvanced : MonoBehaviour
     {
         yield return new WaitForSeconds(hitCooldown);
         isHit = false;
+    }
+
+    void Death()
+    {
+        isDead = true;
+        UIManager.instance.GameOver();
+    }
+
+    public bool IsDead()
+    {
+        return isDead;
     }
 
     public int GetStartHealth()

@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.34362757, g: 0.52311933, b: 0.764151, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.005
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -2518,10 +2518,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5286772395187738863, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6715195656000907757, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -2611,6 +2607,27 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
+--- !u!114 &804391052 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8091566645805889517, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
+  m_PrefabInstance: {fileID: 804391051}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &804391053 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6132638661448435843, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
+  m_PrefabInstance: {fileID: 804391051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &804391054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4060702931958075494, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
+  m_PrefabInstance: {fileID: 804391051}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &809390071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6351,6 +6368,9 @@ MonoBehaviour:
   waveCompletedText: {fileID: 1142612341}
   timeBeforeNewWaveTransform: {fileID: 131191670}
   timerText: {fileID: 1823331897}
+  gameOver: {fileID: 804391054}
+  gameOverBackground: {fileID: 804391053}
+  gameOverText: {fileID: 804391052}
 --- !u!4 &2114293757
 Transform:
   m_ObjectHideFlags: 0

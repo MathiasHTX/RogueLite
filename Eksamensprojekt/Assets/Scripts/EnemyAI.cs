@@ -23,7 +23,7 @@ public class EnemyAI : MonoBehaviour
 
     GameObject playerOrientation;
 
-    bool isDead = false;
+    bool enemyDead = false;
 
     // Patrol
     Vector3 destinationPoint;
@@ -163,7 +163,7 @@ public class EnemyAI : MonoBehaviour
     {
         Vector3 playerDirection = playerOrientation.transform.forward;
         Vector3 forceDirection = new Vector3(playerDirection.x * hitForce, hitYForce, playerDirection.z * hitForce);
-        if (!isHit && !isDead)
+        if (!isHit && !enemyDead && !PlayerMovementAdvanced.instance.IsDead())
         {
             health -= damage;
 
@@ -212,7 +212,7 @@ public class EnemyAI : MonoBehaviour
 
     void Death()
     {
-        isDead = true;
+        enemyDead = true;
         Instantiate(slimeParticle, transform.position, Quaternion.identity);
         WaveManager.instance.EnemyKilled();
         Destroy(this.gameObject);

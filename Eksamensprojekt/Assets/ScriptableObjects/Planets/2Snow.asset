@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103243bcf88d3bd4986f473925c2957f, type: 3}
+  m_Name: 2Snow
+  m_EditorClassIdentifier: 
+  title: SNOWDRIFT SUMMIT
+  description: The landscape of this planet is covered in what appears to be snow,
+    stretching endlessly. If that wasn't enough, it is also inhabited by large dangerous
+    enemies, even more aggressive than the green slimy blobs on Evergreen Oasis.
+    The monsters on this planet are harder to defeat, but their rewards are much
+    higher.
+  material: {fileID: 2100000, guid: de3cc23eab6e7154fa7aee705e1c0623, type: 2}
+  unlocked: 1

@@ -38,6 +38,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] RectTransform timeBeforeNewWaveTransform;
     [SerializeField] TextMeshProUGUI timerText;
 
+    //Game Over
+    [SerializeField] GameObject gameOver;
+    [SerializeField] RectTransform gameOverBackground;
+    [SerializeField] TextMeshProUGUI gameOverText;
+
     private void Awake()
     {
         if(instance == null)
@@ -115,6 +120,26 @@ public class UIManager : MonoBehaviour
         waveCompletedText.DOFade(0, 0.3f).SetDelay(3.3f);
         waveCompletedText.transform.DOLocalMoveY(-7, 0.3f).SetDelay(3.3f);
         waveCompletedBackground.DOSizeDelta(new Vector2(0, 30), 0.5f).SetEase(Ease.InOutCubic).SetDelay(3f).OnComplete(() => waveComplete.SetActive(false));
+    }
+
+    public void GameOver()
+    {
+        // Start values
+        gameOverBackground.sizeDelta = new Vector2(0, 45);
+        gameOverText.transform.localPosition = new Vector2(0, -7);
+        gameOverText.DOFade(0, 0);
+        gameOver.SetActive(true);
+
+        //Appear
+        gameOverText.DOFade(1, 0.3f).SetDelay(0.3f);
+        gameOverText.transform.DOLocalMoveY(0, 0.3f).SetDelay(0.3f);
+        gameOverBackground.DOSizeDelta(new Vector2(256, 45), 0.5f).SetEase(Ease.InOutCubic);
+
+        // Disappear
+        gameOverText.DOFade(0, 0.3f).SetDelay(3.3f);
+        gameOverText.transform.DOLocalMoveY(-7, 0.3f).SetDelay(3.3f);
+        gameOverBackground.DOSizeDelta(new Vector2(0, 45), 0.5f).SetEase(Ease.InOutCubic).SetDelay(3f);
+
     }
 
     private void Update()

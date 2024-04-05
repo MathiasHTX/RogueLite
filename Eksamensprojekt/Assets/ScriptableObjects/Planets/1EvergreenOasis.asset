@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103243bcf88d3bd4986f473925c2957f, type: 3}
+  m_Name: 1EvergreenOasis
+  m_EditorClassIdentifier: 
+  title: EVERGREEN OASIS
+  description: This alien planet, reminiscent of your home planet in many ways, is
+    flooded with green slimy blobs that do not welcome foreign life forms on their
+    beloved planet. However, it is rumored that if one can defeat them, they carry
+    around valuable materials that can help upgrade one's weapons.
+  material: {fileID: 2100000, guid: cb57e2a40dc78384f97ad1634a764b5c, type: 2}
+  unlocked: 1
