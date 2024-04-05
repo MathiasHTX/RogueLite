@@ -24,19 +24,32 @@ public class WeaponSway : MonoBehaviour
     private Vector3 lastPosition;
     private float playerSpeed;
 
+
+    bool isPaused;
+
     private void Start()
     {
         origin_rotation = transform.localRotation;
         defaultPosY = transform.localPosition.y;
         lastPosition = playerTransform.position;
+
+        UIManager.isPaused += UIManager_isPaused;
+    }
+
+    private void UIManager_isPaused(bool paused)
+    {
+        isPaused = paused;
     }
 
     private void Update()
     {
-        UpdateSway();
-        UpdateBob();
+        if (!isPaused)
+        {
+            UpdateSway();
+            UpdateBob();
 
-        float verticalSpeed = (playerTransform.position.y - lastPosition.y) / Time.deltaTime;
+            float verticalSpeed = (playerTransform.position.y - lastPosition.y) / Time.deltaTime;
+        }
     }
 
     private void UpdateSway()

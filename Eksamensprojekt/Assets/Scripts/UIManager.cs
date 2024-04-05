@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using System;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
+
+    public static event Action<bool> isPaused;
 
     [SerializeField] Image damageVignette;
 
@@ -42,6 +45,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameOver;
     [SerializeField] RectTransform gameOverBackground;
     [SerializeField] TextMeshProUGUI gameOverText;
+
+    // Pause screen
+    [SerializeField] RectTransform pauseScreen;
+    bool paused;
 
     private void Awake()
     {
@@ -148,6 +155,11 @@ public class UIManager : MonoBehaviour
         {
             timerText.text = WaveManager.instance.GetTimer().ToString("F0") + "s";
         }
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            PauseGame();
+        }
     }
 
     public void OpenTimeBeforeNewWave()
@@ -167,5 +179,30 @@ public class UIManager : MonoBehaviour
         enemiesKilledTransform.gameObject.SetActive(true);
         enemiesKilledTransform.DOAnchorPosX(-150, 1).SetDelay(1);
         timeBeforeNewWaveTransform.DOAnchorPosX(120, 1).OnComplete(() => timeBeforeNewWaveTransform.gameObject.SetActive(false));
+    }
+
+    void PauseGame()
+    {
+        if (!paused)
+        {
+            pauseScreen.anchoredPosition = new Vector2(-170, 0);
+            pauseScreen.DOAnchorPosX(130, 0.3f).SetUpdate(true);
+            pauseScreen.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            isPaused?.Invoke(true);
+            Time.timeScale = 0f;
+            paused = true;
+        }
+    }
+
+    public void UnpauseGame()
+    {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        pauseScreen.DOAnchorPosX(-170, 0.3f).OnComplete(() => pauseScreen.gameObject.SetActive(false));
+        isPaused?.Invoke(false);
+        paused = false;
     }
 }

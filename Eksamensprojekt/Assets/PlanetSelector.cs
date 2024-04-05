@@ -28,7 +28,7 @@ public class PlanetSelector : MonoBehaviour
     private void Start()
     {
         originalPosition = m_camera.position;
-        planets.DORotate(new Vector3(0, 360, 0), 250, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
+        planets.DORotate(new Vector3(0, 360, 0), 350, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
     }
 
     public void ZoomToPlanet(Transform planetTransform, PlanetSO planetSO)

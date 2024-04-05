@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SnowdriftPlanet
+  m_Name: EvergreenOasis
   m_Shader: {fileID: -6465566751694194690, guid: af5b64cbbff4c90429a65580669dccc1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,19 +37,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _GradientNoiseScale: 10
+    - _GradientNoiseScale: 13.62
     - _Outline1Size: 0.2
     - _Outline2Size: 0.1
     - _Pixelate: 100
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _VoronoiAngle: 5
-    - _VoronoiDensity: 1
+    - _VoronoiAngle: 6
+    - _VoronoiDensity: 2.98
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Color: {r: 0.6966447, g: 0.9528302, b: 0.76580226, a: 0}
     - _GradientNoiseSpeed: {r: 0.01, g: 0, b: 0, a: 0}
-    - _Layer1Color: {r: 0.33397114, g: 0.6787116, b: 0.8962264, a: 0}
-    - _Layer2Color: {r: 0.6273585, g: 0.9113748, b: 1, a: 0}
+    - _Layer1Color: {r: 0, g: 0.7075472, b: 0.31400707, a: 0}
+    - _Layer2Color: {r: 0.588908, g: 0.85882354, b: 0, a: 0}
     - _VoronoiSpeed: {r: 0.02, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8249075245901733620

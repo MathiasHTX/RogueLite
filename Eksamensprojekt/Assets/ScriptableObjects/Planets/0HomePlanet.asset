@@ -18,5 +18,5 @@ MonoBehaviour:
     you have a cottage, a garden, and beautiful green landscapes, just like back
     on Earth. Nothing fades away in this place, it's just you in peace, with opportunities
     to build and upgrade your weapons and properties.
-  material: {fileID: 2100000, guid: e3d496184d1e0294a813c6bc8cb2e737, type: 2}
+  material: {fileID: 2100000, guid: cb57e2a40dc78384f97ad1634a764b5c, type: 2}
   unlocked: 1

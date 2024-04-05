@@ -20,21 +20,33 @@ public class PlayerCam : MonoBehaviour
     public GameObject camObj;
     public Transform orientation;
 
+    bool isPaused;
+
     private void Start()
     {
         cam = camObj.GetComponent<Camera>();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        UIManager.isPaused += UIManager_isPaused;
+    }
+
+    private void UIManager_isPaused(bool paused)
+    {
+        isPaused = paused;
     }
 
     private void Update()
     {
-        MyInput();
+        if (!isPaused)
+        {
+            MyInput();
 
-        cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-        transform.rotation = Quaternion.Euler(0, yRotation, 0);
-        orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+            cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+            transform.rotation = Quaternion.Euler(0, yRotation, 0);
+            orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        }
     }
 
     void MyInput()
