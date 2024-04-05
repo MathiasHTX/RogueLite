@@ -30,13 +30,6 @@ public class WeaponSway : MonoBehaviour
         origin_rotation = transform.localRotation;
         defaultPosY = transform.localPosition.y;
         lastPosition = playerTransform.position;
-
-        PlayerMovementAdvanced.OnJump += PlayerMovementAdvanced_OnJump;
-    }
-
-    private void PlayerMovementAdvanced_OnJump()
-    {
-        isJumping = true;
     }
 
     private void Update()
