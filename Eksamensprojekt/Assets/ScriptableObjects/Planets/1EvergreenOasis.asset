@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103243bcf88d3bd4986f473925c2957f, type: 3}
   m_Name: 1EvergreenOasis
   m_EditorClassIdentifier: 
+  sceneBuildIndex: 3
   title: EVERGREEN OASIS
   description: This alien planet, reminiscent of your home planet in many ways, is
     flooded with green slimy blobs that do not welcome foreign life forms on their
     beloved planet. However, it is rumored that if one can defeat them, they carry
     around valuable materials that can help upgrade one's weapons.
-  material: {fileID: 2100000, guid: cb57e2a40dc78384f97ad1634a764b5c, type: 2}
+  material: {fileID: 2100000, guid: e3d496184d1e0294a813c6bc8cb2e737, type: 2}
   unlocked: 1

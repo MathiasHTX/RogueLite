@@ -37,19 +37,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _GradientNoiseScale: 13.62
+    - _GradientNoiseScale: 15
     - _Outline1Size: 0.2
     - _Outline2Size: 0.1
     - _Pixelate: 100
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _VoronoiAngle: 6
-    - _VoronoiDensity: 2.98
+    - _VoronoiAngle: 5
+    - _VoronoiDensity: 3
     m_Colors:
     - _Color: {r: 0.7216981, g: 0.9941915, b: 1, a: 0}
     - _GradientNoiseSpeed: {r: 0.01, g: 0, b: 0, a: 0}
-    - _Layer1Color: {r: 0, g: 0.8490566, b: 0.40289167, a: 0}
-    - _Layer2Color: {r: 0.58069324, g: 0.8584906, b: 0, a: 0}
+    - _Layer1Color: {r: 0, g: 0.92708683, b: 1, a: 0}
+    - _Layer2Color: {r: 0, g: 0.9433962, b: 0.109838985, a: 0}
     - _VoronoiSpeed: {r: 0.02, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8249075245901733620

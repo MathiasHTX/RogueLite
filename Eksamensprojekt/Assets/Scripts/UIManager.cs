@@ -4,12 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using System;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
+    public static event Action<bool> isPaused;
+
     [SerializeField] Image damageVignette;
+
+    [SerializeField] GameObject gameUI;
+    [SerializeField] GameObject insideShipUI;
+
+    // Intro
+    [SerializeField] Image whiteFade;
+    [SerializeField] RectTransform blackBarTop;
+    [SerializeField] RectTransform blackBarBottom;
 
     //Health bar
     [SerializeField] Transform healthBar;
@@ -43,6 +55,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] RectTransform gameOverBackground;
     [SerializeField] TextMeshProUGUI gameOverText;
 
+    // Pause screen
+    [SerializeField] RectTransform pauseScreen;
+    bool paused;
+
+
+    bool sceneIsHome;
+
     private void Awake()
     {
         if(instance == null)
@@ -54,10 +73,45 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sceneIsHome = SceneManager.GetActiveScene().buildIndex == 2;
+
+        ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
+
+        if (!sceneIsHome)
+        {
+            gameUI.SetActive(false);
+        }
+
+        insideShipUI.SetActive(false);
+        whiteFade.gameObject.SetActive(true);
+        whiteFade.DOFade(0, 2).OnComplete(() => whiteFade.gameObject.SetActive(false));
+    }
+
+    private void ShipLandingSequence_OnExitShip()
+    {
+        if(!sceneIsHome)
+        {
+            LoadGameUI();
+        }
+
+        insideShipUI.SetActive(false);
+
+        blackBarBottom.DOAnchorPosY(-20, 1);
+        blackBarTop.DOAnchorPosY(20, 1);
+    }
+
+    void LoadGameUI()
+    {
         PlayerMovementAdvanced.onPlayerHit += PlayerMovementAdvanced_onPlayerHit;
         healthBarFill.color = healthBarGradient.Evaluate(1);
         startHealth = PlayerMovementAdvanced.instance.GetStartHealth();
         healthText.text = "HP " + startHealth;
+        gameUI.SetActive(true);
+    }
+
+    public void ShowInsideShipUI()
+    {
+        insideShipUI.SetActive(true);
     }
 
     private void PlayerMovementAdvanced_onPlayerHit(int health)
@@ -148,6 +202,11 @@ public class UIManager : MonoBehaviour
         {
             timerText.text = WaveManager.instance.GetTimer().ToString("F0") + "s";
         }
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            PauseGame();
+        }
     }
 
     public void OpenTimeBeforeNewWave()
@@ -167,5 +226,30 @@ public class UIManager : MonoBehaviour
         enemiesKilledTransform.gameObject.SetActive(true);
         enemiesKilledTransform.DOAnchorPosX(-150, 1).SetDelay(1);
         timeBeforeNewWaveTransform.DOAnchorPosX(120, 1).OnComplete(() => timeBeforeNewWaveTransform.gameObject.SetActive(false));
+    }
+
+    void PauseGame()
+    {
+        if (!paused)
+        {
+            pauseScreen.anchoredPosition = new Vector2(-170, 0);
+            pauseScreen.DOAnchorPosX(130, 0.3f).SetUpdate(true);
+            pauseScreen.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            isPaused?.Invoke(true);
+            Time.timeScale = 0f;
+            paused = true;
+        }
+    }
+
+    public void UnpauseGame()
+    {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        pauseScreen.DOAnchorPosX(-170, 0.3f).OnComplete(() => pauseScreen.gameObject.SetActive(false));
+        isPaused?.Invoke(false);
+        paused = false;
     }
 }
