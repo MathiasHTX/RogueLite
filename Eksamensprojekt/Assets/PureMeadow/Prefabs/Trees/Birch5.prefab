@@ -52,10 +52,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8620053128595786975, guid: 6f8d8991d556ca0469b2de2d70259a96, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -2419446693179928118, guid: 6f8d8991d556ca0469b2de2d70259a96, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1042675e116dcfc44bb7195d6b10b8f1, type: 2}
+    - target: {fileID: -680166413855345152, guid: 6f8d8991d556ca0469b2de2d70259a96, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -470377844856006258, guid: 6f8d8991d556ca0469b2de2d70259a96, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -457010855133429287, guid: 6f8d8991d556ca0469b2de2d70259a96, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -75,6 +87,18 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6f8d8991d556ca0469b2de2d70259a96, type: 3}
       propertyPath: m_Name
       value: Birch5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f8d8991d556ca0469b2de2d70259a96, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f8d8991d556ca0469b2de2d70259a96, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115874600943411910, guid: 6f8d8991d556ca0469b2de2d70259a96, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4742473837712756890, guid: 6f8d8991d556ca0469b2de2d70259a96, type: 3}
       propertyPath: m_FadeMode

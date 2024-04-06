@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 2f1cb8f4881caa9469082499ce3d926d, type: 2}
+    - target: {fileID: -3328833304112591220, guid: f8132a5c67944bf43944813048b8e6ec, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -1423619859210545930, guid: f8132a5c67944bf43944813048b8e6ec, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -72,6 +76,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elm3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f8132a5c67944bf43944813048b8e6ec, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f8132a5c67944bf43944813048b8e6ec, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 3126647834900366839, guid: f8132a5c67944bf43944813048b8e6ec, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3656801807651159426, guid: f8132a5c67944bf43944813048b8e6ec, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -80,6 +96,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: ff1034aff585fcf488012125dcb10a81, type: 2}
+    - target: {fileID: 3976444349689762593, guid: f8132a5c67944bf43944813048b8e6ec, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4742473837712756890, guid: f8132a5c67944bf43944813048b8e6ec, type: 3}
       propertyPath: m_FadeMode
       value: 1
@@ -104,6 +124,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 78e2f820240cb344eb67f3b3928c0179, type: 2}
+    - target: {fileID: 8890910077051207150, guid: f8132a5c67944bf43944813048b8e6ec, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -52,6 +52,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5190003594374107110, guid: 5a30aaf7ef5df2a4eb8bf4d9894e2e90, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -3454886689333454188, guid: 5a30aaf7ef5df2a4eb8bf4d9894e2e90, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -1703169305252771301, guid: 5a30aaf7ef5df2a4eb8bf4d9894e2e90, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -923183855318532515, guid: 5a30aaf7ef5df2a4eb8bf4d9894e2e90, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -63,6 +75,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5a30aaf7ef5df2a4eb8bf4d9894e2e90, type: 3}
       propertyPath: m_Name
       value: Elm2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5a30aaf7ef5df2a4eb8bf4d9894e2e90, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5a30aaf7ef5df2a4eb8bf4d9894e2e90, type: 3}
+      propertyPath: m_TagString
+      value: Tree
       objectReference: {fileID: 0}
     - target: {fileID: 1933652985252557738, guid: 5a30aaf7ef5df2a4eb8bf4d9894e2e90, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -96,6 +116,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 2f1cb8f4881caa9469082499ce3d926d, type: 2}
+    - target: {fileID: 6614795671746910994, guid: 5a30aaf7ef5df2a4eb8bf4d9894e2e90, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6816464563793214710, guid: 5a30aaf7ef5df2a4eb8bf4d9894e2e90, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

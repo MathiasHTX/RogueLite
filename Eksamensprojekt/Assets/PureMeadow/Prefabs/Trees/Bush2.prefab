@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 027eb81b2e4cd0545beeea62c85d9b8e, type: 2}
+    - target: {fileID: -6842918189344578856, guid: 167cb9f1384f4534a9a2831866a17a4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -6671941443406313792, guid: 167cb9f1384f4534a9a2831866a17a4e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -64,9 +68,29 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 027eb81b2e4cd0545beeea62c85d9b8e, type: 2}
+    - target: {fileID: -4461573707647252359, guid: 167cb9f1384f4534a9a2831866a17a4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 815869343967507017, guid: 167cb9f1384f4534a9a2831866a17a4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 167cb9f1384f4534a9a2831866a17a4e, type: 3}
       propertyPath: m_Name
       value: Bush2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 167cb9f1384f4534a9a2831866a17a4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 167cb9f1384f4534a9a2831866a17a4e, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593025572884224847, guid: 167cb9f1384f4534a9a2831866a17a4e, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3336781315096607488, guid: 167cb9f1384f4534a9a2831866a17a4e, type: 3}
       propertyPath: m_CastShadows

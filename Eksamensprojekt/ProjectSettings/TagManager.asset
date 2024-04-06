@@ -7,6 +7,7 @@ TagManager:
   - Sword
   - Enemy
   - PlayerOrientation
+  - Tree
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - whatIsPlayer
   - Wire
   - Enemy
-  - 
+  - Tree
   - 
   - 
   - 

@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: eeee42f4550f3b943b6562c39da9e0b4, type: 2}
+    - target: {fileID: -2322169093729487114, guid: 5834c3c427728a440a169bc07e1f56e6, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -1427261692389276173, guid: 5834c3c427728a440a169bc07e1f56e6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -80,9 +84,25 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: bb4ae0da7f46bd8469328dd37eaef339, type: 2}
+    - target: {fileID: -816687409868187053, guid: 5834c3c427728a440a169bc07e1f56e6, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -801861124173931649, guid: 5834c3c427728a440a169bc07e1f56e6, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5834c3c427728a440a169bc07e1f56e6, type: 3}
       propertyPath: m_Name
       value: Cypres1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5834c3c427728a440a169bc07e1f56e6, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5834c3c427728a440a169bc07e1f56e6, type: 3}
+      propertyPath: m_TagString
+      value: Tree
       objectReference: {fileID: 0}
     - target: {fileID: 4742473837712756890, guid: 5834c3c427728a440a169bc07e1f56e6, type: 3}
       propertyPath: m_FadeMode
@@ -103,6 +123,10 @@ PrefabInstance:
     - target: {fileID: 4742473837712756890, guid: 5834c3c427728a440a169bc07e1f56e6, type: 3}
       propertyPath: m_LODs.Array.data[3].fadeTransitionWidth
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7831172328499595178, guid: 5834c3c427728a440a169bc07e1f56e6, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

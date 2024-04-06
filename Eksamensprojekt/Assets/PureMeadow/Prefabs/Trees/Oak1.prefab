@@ -72,9 +72,29 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ba9ee23ba5f078344b5cf36f52188819, type: 2}
+    - target: {fileID: -4953504773769698854, guid: 7df1015d3d564f946861bca26496f89f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 202082070261342555, guid: 7df1015d3d564f946861bca26496f89f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7df1015d3d564f946861bca26496f89f, type: 3}
       propertyPath: m_Name
       value: Oak1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7df1015d3d564f946861bca26496f89f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7df1015d3d564f946861bca26496f89f, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 2161469541124033109, guid: 7df1015d3d564f946861bca26496f89f, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4742473837712756890, guid: 7df1015d3d564f946861bca26496f89f, type: 3}
       propertyPath: m_FadeMode
@@ -104,6 +124,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: f6a03579ae1a16f46aa11e6cc955d82d, type: 2}
+    - target: {fileID: 8570599899888545061, guid: 7df1015d3d564f946861bca26496f89f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

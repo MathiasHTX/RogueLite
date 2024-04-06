@@ -68,9 +68,33 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: eeee42f4550f3b943b6562c39da9e0b4, type: 2}
+    - target: {fileID: -2664572445688819540, guid: 7164032cfa21f3f409e319ec2db358cf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7164032cfa21f3f409e319ec2db358cf, type: 3}
       propertyPath: m_Name
       value: Cypres3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7164032cfa21f3f409e319ec2db358cf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7164032cfa21f3f409e319ec2db358cf, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 2306117113967454339, guid: 7164032cfa21f3f409e319ec2db358cf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081875949979812229, guid: 7164032cfa21f3f409e319ec2db358cf, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151318424873568367, guid: 7164032cfa21f3f409e319ec2db358cf, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4024777649903402676, guid: 7164032cfa21f3f409e319ec2db358cf, type: 3}
       propertyPath: m_Materials.Array.data[0]

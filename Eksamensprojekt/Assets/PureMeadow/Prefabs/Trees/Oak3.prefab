@@ -60,9 +60,49 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: f6a03579ae1a16f46aa11e6cc955d82d, type: 2}
+    - target: {fileID: -4197188374504164738, guid: 99889e4d147b3364392309f12ce429ef, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -4197188374504164738, guid: 99889e4d147b3364392309f12ce429ef, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: -720536477116811297, guid: 99889e4d147b3364392309f12ce429ef, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -720536477116811297, guid: 99889e4d147b3364392309f12ce429ef, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 613165145574736086, guid: 99889e4d147b3364392309f12ce429ef, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 613165145574736086, guid: 99889e4d147b3364392309f12ce429ef, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 681390947899785745, guid: 99889e4d147b3364392309f12ce429ef, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 681390947899785745, guid: 99889e4d147b3364392309f12ce429ef, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 99889e4d147b3364392309f12ce429ef, type: 3}
       propertyPath: m_Name
       value: Oak3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 99889e4d147b3364392309f12ce429ef, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 99889e4d147b3364392309f12ce429ef, type: 3}
+      propertyPath: m_TagString
+      value: Tree
       objectReference: {fileID: 0}
     - target: {fileID: 2543607895977530747, guid: 99889e4d147b3364392309f12ce429ef, type: 3}
       propertyPath: m_Materials.Array.data[0]

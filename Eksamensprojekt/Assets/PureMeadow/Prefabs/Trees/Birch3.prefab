@@ -64,6 +64,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0e1f59d86fc6bcc468f01c162faf1669, type: 2}
+    - target: {fileID: -4889434002487259659, guid: 671d8a7585eab7d4dbf75ac475e85882, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -4304452699164125126, guid: 671d8a7585eab7d4dbf75ac475e85882, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -4288225496903132339, guid: 671d8a7585eab7d4dbf75ac475e85882, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: -1625928505137393111, guid: 671d8a7585eab7d4dbf75ac475e85882, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -72,9 +84,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 229d5f5a7961bc342adb2bac1d4e6ac4, type: 2}
+    - target: {fileID: 533322181657546744, guid: 671d8a7585eab7d4dbf75ac475e85882, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 671d8a7585eab7d4dbf75ac475e85882, type: 3}
       propertyPath: m_Name
       value: Birch3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 671d8a7585eab7d4dbf75ac475e85882, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 671d8a7585eab7d4dbf75ac475e85882, type: 3}
+      propertyPath: m_TagString
+      value: Tree
       objectReference: {fileID: 0}
     - target: {fileID: 1505364999177083958, guid: 671d8a7585eab7d4dbf75ac475e85882, type: 3}
       propertyPath: m_Materials.Array.data[0]
