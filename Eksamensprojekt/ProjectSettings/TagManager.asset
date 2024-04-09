@@ -3,23 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Sword
-  - Enemy
-  - PlayerOrientation
-  - Tree
-  - Spaceship
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - whatIsGround
+  - 
   - Water
   - UI
-  - whatIsPlayer
-  - Wire
-  - Enemy
-  - Tree
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
