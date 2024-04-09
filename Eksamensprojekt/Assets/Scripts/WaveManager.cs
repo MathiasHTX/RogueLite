@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using System;
 
 public class WaveManager : MonoBehaviour
 {
@@ -27,7 +28,15 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
+        if(PlayerPrefs.GetInt("StartSpaceshipAnim") == 1)
+        {
+            ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
+        }
+        else
+        {
+            NewWave();
+        }
+        
     }
 
     private void ShipLandingSequence_OnExitShip()
@@ -66,7 +75,7 @@ public class WaveManager : MonoBehaviour
 
         for(int i = 0; i < amount; i++)
         {
-            int randomIndex = Random.Range(0, spawnPoints.Length);
+            int randomIndex = UnityEngine.Random.Range(0, spawnPoints.Length);
             GameObject enemy = Instantiate(enemyPrefab, spawnPoints[randomIndex].position, Quaternion.identity);
             enemiesSpawned++;
         }
@@ -111,6 +120,11 @@ public class WaveManager : MonoBehaviour
     public float GetTimer()
     {
         return timer;
+    }
+
+    public bool IsWaveComplete()
+    {
+        return waveComplete;
     }
 
 }

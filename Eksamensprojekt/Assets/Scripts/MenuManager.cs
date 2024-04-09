@@ -11,6 +11,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] CanvasGroup buttons;
     [SerializeField] Image whiteFade;
 
+    [SerializeField] AudioSource audioSrc;
+
     bool hasClicked;
 
     void Update()

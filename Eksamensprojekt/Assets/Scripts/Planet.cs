@@ -16,6 +16,10 @@ public class Planet : MonoBehaviour
     public TextMeshProUGUI planetText;
     public Canvas titleCanvas;
 
+    public Transform cameraTransform;
+
+    bool mouseOver;
+
     private void Start()
     {
         originalSize = transform.localScale.x;
@@ -28,19 +32,32 @@ public class Planet : MonoBehaviour
         float offset = 1.5f;
         Vector3 planetPos = gameObject.transform.position;
         titleCanvas.transform.position = new Vector3(planetPos.x, planetPos.y + offset, planetPos.z);
+
+        Vector3 directionToCamera = cameraTransform.position - titleCanvas.transform.position;
+
+        // Project the direction onto the xz plane
+        directionToCamera.y = 0;
+
+        // Make the object rotate to face the camera (only rotate on y-axis)
+        titleCanvas.transform.rotation = Quaternion.LookRotation(directionToCamera.normalized, Vector3.up);
+
+        titleCanvas.transform.Rotate(Vector3.up, 180f);
     }
 
     private void OnMouseOver()
     {
-        if (!planetSelector.PlanetSelected())
+        if (!planetSelector.PlanetSelected() && !mouseOver)
         {
             transform.DOScale(hoverSize, 0.2f);
+            planetSelector.PlayHoverSound();
+            mouseOver = true;
         }
     }
 
     private void OnMouseExit()
     {
         transform.DOScale(originalSize, 0.2f);
+        mouseOver = false;
     }
 
     private void OnMouseUp()

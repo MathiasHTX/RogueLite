@@ -27,14 +27,30 @@ public class PlanetSelector : MonoBehaviour
     public GameObject goBtn;
     public GameObject closeBtn;
 
+    public GameObject openTransition;
+    public Image whiteTop;
+    public Image whiteBottom;
+
+    // Audio
+    public AudioSource audioSrc;
+    public AudioClip hoverSound;
+    public AudioClip goToPlanetSound;
+    public AudioClip clickSound;
+
     private void Start()
     {
         originalPosition = m_camera.position;
         planets.DORotate(new Vector3(0, 360, 0), 350, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
+
+        openTransition.SetActive(true);
+        whiteTop.rectTransform.DOScaleY(0, 0.2f);
+        whiteBottom.rectTransform.DOScaleY(0, 0.2f);
     }
 
     public void ZoomToPlanet(Transform planetTransform, PlanetSO planetSO)
     {
+        audioSrc.PlayOneShot(clickSound);
+
         selectedPlanetTransform = planetTransform;
         selectedPlanetSO = planetSO;
 
@@ -78,6 +94,21 @@ public class PlanetSelector : MonoBehaviour
         }
     }
 
+    public void BackButton()
+    {
+        if (planetSelected)
+        {
+            GoToOriginalPos();
+            audioSrc.PlayOneShot(clickSound);
+        }
+        else
+        {
+            // Leaves the spaceship with playing the landing anim
+            PlayerPrefs.SetInt("StartSpaceshipAnim", 0);
+            SceneManager.LoadScene(PlayerPrefs.GetInt("SceneThatOpenedShip"));
+        }
+    }
+
     public void GoToPlanet()
     {
         planets.DOKill();
@@ -85,12 +116,16 @@ public class PlanetSelector : MonoBehaviour
         CloseMenu();
         backBtn.SetActive(false);
 
+        PlayerPrefs.SetInt("StartSpaceshipAnim", 1);
+
         Vector3 zoomOutOffset = new Vector3(2, 4, -7);
         m_camera.DOMove(selectedPlanetTransform.position + zoomOutOffset, 0.5f).SetEase(Ease.OutCirc).OnComplete(() =>
         {
             m_camera.DOMove(selectedPlanetTransform.position, 2).SetEase(Ease.InQuart);
             whiteFade.DOFade(1, 0.8f).SetDelay(1f).SetEase(Ease.InQuart).OnComplete(() => SceneManager.LoadScene(selectedPlanetSO.sceneBuildIndex));
         });
+
+        audioSrc.PlayOneShot(goToPlanetSound);
     }
 
     void OpenMenu()
@@ -108,5 +143,10 @@ public class PlanetSelector : MonoBehaviour
     public bool PlanetSelected()
     {
         return planetSelected;
+    }
+
+    public void PlayHoverSound()
+    {
+        audioSrc.PlayOneShot(hoverSound);
     }
 }
