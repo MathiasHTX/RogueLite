@@ -2246,42 +2246,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5193626161539037940, guid: 949f4d70839942441b4da82724cdacda, type: 3}
   m_PrefabInstance: {fileID: 1764125364}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &176136216
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 176136217}
-  m_Layer: 5
-  m_Name: InsideSpaceship
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &176136217
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176136216}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 693137666}
-  m_Father: {fileID: 352889318}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &206392697
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,7 +3128,7 @@ RectTransform:
   m_Children:
   - {fileID: 780121683}
   - {fileID: 77221211}
-  - {fileID: 176136217}
+  - {fileID: 693137666}
   - {fileID: 2024426672}
   - {fileID: 878135195}
   m_Father: {fileID: 0}
@@ -5384,7 +5348,7 @@ GameObject:
   - component: {fileID: 693137668}
   - component: {fileID: 693137667}
   m_Layer: 5
-  m_Name: ExitText
+  m_Name: SpaceshipText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5397,16 +5361,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693137665}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 176136217}
+  m_Father: {fileID: 352889318}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchoredPosition: {x: 0, y: 125.05493}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &693137667
@@ -8691,6 +8655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe867f7fc7be1245a407a0eca36be95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spaceshipAnim: {fileID: 2096222384}
   sensX: 200
   sensY: 200
   thisCam: {fileID: 1207072965}
@@ -10517,7 +10482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageVignette: {fileID: 0}
   gameUI: {fileID: 0}
-  insideShipUI: {fileID: 176136216}
+  spaceshipText: {fileID: 693137667}
   whiteFade: {fileID: 2024426673}
   blackBarTop: {fileID: 77221211}
   blackBarBottom: {fileID: 780121683}
@@ -14660,6 +14625,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}
+--- !u!95 &2096222384 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8813026428646874941, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}
+  m_PrefabInstance: {fileID: 2096222383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2098916751
 PrefabInstance:
   m_ObjectHideFlags: 0

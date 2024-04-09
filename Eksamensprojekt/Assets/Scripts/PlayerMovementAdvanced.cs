@@ -15,6 +15,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     bool isHit;
     [SerializeField] int hitCooldown = 2;
     public static event Action<int> onPlayerHit;
+    public static event Action onDeath;
     bool isDead;
 
     [Header("Movement")]
@@ -117,9 +118,13 @@ public class PlayerMovementAdvanced : MonoBehaviour
         float extraHeight = grounded ? 0.2f : 0.5f; // Extend the check further if not grounded
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + extraHeight, whatIsGround);
 
-        MyInput();
-        SpeedControl();
-        StateHandler();
+        if (!isDead)
+        {
+            MyInput();
+            SpeedControl();
+            StateHandler();
+        }
+
 
         // handle drag
         if (grounded)
@@ -496,7 +501,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     void Death()
     {
         isDead = true;
-        UIManager.instance.GameOver();
+        onDeath?.Invoke();
     }
 
     public bool IsDead()

@@ -21,6 +21,7 @@ public class PlayerCam : MonoBehaviour
     public Transform orientation;
 
     bool isPaused;
+    bool isDead;
 
     private void Start()
     {
@@ -30,6 +31,13 @@ public class PlayerCam : MonoBehaviour
         Cursor.visible = false;
 
         UIManager.isPaused += UIManager_isPaused;
+
+        PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
+    }
+
+    private void PlayerMovementAdvanced_onDeath()
+    {
+        isDead = true;
     }
 
     private void UIManager_isPaused(bool paused)
@@ -39,7 +47,7 @@ public class PlayerCam : MonoBehaviour
 
     private void Update()
     {
-        if (!isPaused)
+        if (!isPaused && !isDead)
         {
             MyInput();
 

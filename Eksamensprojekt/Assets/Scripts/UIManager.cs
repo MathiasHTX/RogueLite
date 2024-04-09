@@ -16,7 +16,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image damageVignette;
 
     [SerializeField] GameObject gameUI;
-    [SerializeField] GameObject insideShipUI;
+
+    // Spaceship
+    [SerializeField] TextMeshProUGUI spaceshipText;
+    [SerializeField] CanvasGroup cantEnterShip;
 
     // Intro
     [SerializeField] Image whiteFade;
@@ -75,14 +78,26 @@ public class UIManager : MonoBehaviour
     {
         sceneIsHome = SceneManager.GetActiveScene().buildIndex == 2;
 
-        ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
+        PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
 
-        if (!sceneIsHome)
+        if (PlayerPrefs.GetInt("StartSpaceshipAnim") == 1)
         {
-            gameUI.SetActive(false);
+            ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
+            if(!sceneIsHome)
+                gameUI.SetActive(false);
+        }
+        else
+        {
+            if (!sceneIsHome)
+            {
+                LoadGameUI();
+            }
+
+            blackBarBottom.gameObject.SetActive(false);
+            blackBarTop.gameObject.SetActive(false);
         }
 
-        insideShipUI.SetActive(false);
+        spaceshipText.gameObject.SetActive(false);
         whiteFade.gameObject.SetActive(true);
         whiteFade.DOFade(0, 2).OnComplete(() => whiteFade.gameObject.SetActive(false));
     }
@@ -94,7 +109,7 @@ public class UIManager : MonoBehaviour
             LoadGameUI();
         }
 
-        insideShipUI.SetActive(false);
+        spaceshipText.gameObject.SetActive(false);
 
         blackBarBottom.DOAnchorPosY(-20, 1);
         blackBarTop.DOAnchorPosY(20, 1);
@@ -109,9 +124,23 @@ public class UIManager : MonoBehaviour
         gameUI.SetActive(true);
     }
 
-    public void ShowInsideShipUI()
+    public void ShowSpaceshipText(bool enter)
     {
-        insideShipUI.SetActive(true);
+        if (enter)
+        {
+            spaceshipText.text = "Press E to enter";
+        }
+        else
+        {
+            spaceshipText.text = "Press E to exit";
+        }
+
+        spaceshipText.gameObject.SetActive(true);
+    }
+
+    public void HideSpaceshipText()
+    {
+        spaceshipText.gameObject.SetActive(false);
     }
 
     private void PlayerMovementAdvanced_onPlayerHit(int health)
@@ -174,6 +203,11 @@ public class UIManager : MonoBehaviour
         waveCompletedText.DOFade(0, 0.3f).SetDelay(3.3f);
         waveCompletedText.transform.DOLocalMoveY(-7, 0.3f).SetDelay(3.3f);
         waveCompletedBackground.DOSizeDelta(new Vector2(0, 30), 0.5f).SetEase(Ease.InOutCubic).SetDelay(3f).OnComplete(() => waveComplete.SetActive(false));
+    }
+
+    private void PlayerMovementAdvanced_onDeath()
+    {
+        GameOver();
     }
 
     public void GameOver()
@@ -252,4 +286,11 @@ public class UIManager : MonoBehaviour
         isPaused?.Invoke(false);
         paused = false;
     }
+
+    public void ShowCantEnterShipUI()
+    {
+        cantEnterShip.gameObject.SetActive(true);
+        cantEnterShip.DOFade(1, 0.2f);
+        cantEnterShip.DOFade(0, 0.5f).SetDelay(2).OnComplete(() => cantEnterShip.gameObject.SetActive(false));
+    } 
 }

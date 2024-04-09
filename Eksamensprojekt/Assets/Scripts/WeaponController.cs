@@ -7,6 +7,8 @@ public class WeaponController : MonoBehaviour
 {
     public static WeaponController Instance;
 
+    bool isDead;
+
     public GameObject sword;
     bool canAttack = true;
     public float swingCooldown = 0.3f;
@@ -19,6 +21,9 @@ public class WeaponController : MonoBehaviour
     [SerializeField] WeaponSO[] weaponSOs;
     int usingWeapon = 0;
 
+    AudioSource audioSrc;
+    [SerializeField] AudioClip[] swordSounds;
+
     private void Awake()
     {
         if(Instance == null)
@@ -30,13 +35,20 @@ public class WeaponController : MonoBehaviour
     private void Start()
     {
         anim = sword.GetComponent<Animator>();
+        audioSrc = GetComponent<AudioSource>();
+        PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
+    }
+
+    private void PlayerMovementAdvanced_onDeath()
+    {
+        isDead = true;
     }
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (canAttack)
+            if (canAttack && !isDead)
             {
                 SwordAttack();
             }
@@ -63,6 +75,13 @@ public class WeaponController : MonoBehaviour
         //OnSwordSwing?.Invoke();
         canAttack = false;
         anim.Play("SwordSwing", 0, 0);
+
+        // Sound
+        int randomSound = UnityEngine.Random.Range(0, swordSounds.Length);
+        float randomPitch = UnityEngine.Random.Range(0.9f, 1.5f);
+        audioSrc.pitch = randomPitch;
+        audioSrc.clip = swordSounds[randomSound];
+        audioSrc.Play();
 
         Vector3 boxCenter = cameraHolder.position + cameraHolder.forward * (boxSize.z / 2f);
 

@@ -4,10 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Sword
   - Enemy
-  - PlayerOrientation
   - Ice
+  - Spaceship
+  - PlayerOrientation
+  - Sword
+  - Tree
   layers:
   - Default
   - TransparentFX

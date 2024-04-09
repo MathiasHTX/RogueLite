@@ -25,17 +25,29 @@ public class WeaponSway : MonoBehaviour
     private Vector3 lastPosition;
     private float playerSpeed;
 
+    bool isDead;
+
     private void Start()
     {
+        PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
+
         origin_rotation = transform.localRotation;
         defaultPosY = transform.localPosition.y;
         lastPosition = playerTransform.position;
     }
 
+    private void PlayerMovementAdvanced_onDeath()
+    {
+        isDead = true;
+    }
+
     private void Update()
     {
-        UpdateSway();
-        UpdateBob();
+        if (!isDead)
+        {
+            UpdateSway();
+            UpdateBob();
+        }
 
         verticalSpeed = (playerTransform.position.y - lastPosition.y) / Time.deltaTime;
     }

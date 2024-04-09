@@ -11,6 +11,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] CanvasGroup buttons;
     [SerializeField] Image whiteFade;
 
+    [SerializeField] AudioSource audioSrc;
+    [SerializeField] AudioClip clickSound;
+
     bool hasClicked;
 
     void Update()
@@ -24,6 +27,8 @@ public class MenuManager : MonoBehaviour
     void OpenButtons()
     {
         hasClicked = true;
+        audioSrc.PlayOneShot(clickSound);
+
         startMenu.transform.DOScale(0.9f, 0.5f);
         startMenu.DOFade(0, 0.5f).OnComplete(() => startMenu.gameObject.SetActive(true));
 

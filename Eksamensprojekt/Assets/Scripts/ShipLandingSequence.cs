@@ -9,6 +9,8 @@ public class ShipLandingSequence : MonoBehaviour
 
     public static event Action OnExitShip;
 
+    [SerializeField] Animator spaceshipAnim;
+
     [SerializeField] private float sensX;
     [SerializeField] private float sensY;
 
@@ -30,6 +32,8 @@ public class ShipLandingSequence : MonoBehaviour
 
     public bool canLookAround;
 
+    bool hasExitedSpaceShip;
+
 
     private void Awake()
     {
@@ -45,13 +49,29 @@ public class ShipLandingSequence : MonoBehaviour
         Cursor.visible = false;
 
         canLookAround = false;
-        StartCoroutine(changeCam());
+
+        bool startAnimation = PlayerPrefs.GetInt("StartSpaceshipAnim") == 1 ? true : false;
+        if (startAnimation)
+        {
+            player.SetActive(false);
+            thisCam.SetActive(true);
+            spaceshipAnim.Play("SpaceShipLandingEG");
+            StartCoroutine(changeCam());
+        }
+        else
+        {
+            player.SetActive(true);
+            thisCam.SetActive(false);
+        }
+
     }
 
     void Update()
     {
         if (!canLookAround)
+        {
             transform.LookAt(ship.transform.position);
+        }
         else
         {
             MyInput();
@@ -60,7 +80,10 @@ public class ShipLandingSequence : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                ExitShip();
+                if (!hasExitedSpaceShip)
+                {
+                    ExitShip();
+                }
             }
         }
     }
@@ -72,7 +95,7 @@ public class ShipLandingSequence : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
             transform.position = cameraShipPosition.position;
             canLookAround = true;
-            UIManager.instance.ShowInsideShipUI();
+            UIManager.instance.ShowSpaceshipText(false);
         }
     }
 
@@ -81,6 +104,7 @@ public class ShipLandingSequence : MonoBehaviour
         player.SetActive(true);
         thisCam.SetActive(false);
         OnExitShip?.Invoke();
+        hasExitedSpaceShip = true;
     }
 
     void MyInput()
