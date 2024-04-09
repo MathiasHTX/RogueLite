@@ -83,7 +83,8 @@ public class UIManager : MonoBehaviour
         if (PlayerPrefs.GetInt("StartSpaceshipAnim") == 1)
         {
             ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
-            gameUI.SetActive(false);
+            if(!sceneIsHome)
+                gameUI.SetActive(false);
         }
         else
         {

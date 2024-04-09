@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Evergreen Oasis.unity
     guid: d5f7d0ef080c967429f9b30a01275688
+  - enabled: 1
+    path: Assets/Scenes/SnowdriftSummit.unity
+    guid: 07d9e94c8a78b1043b9801103548ab7a
   m_configObjects: {}

@@ -118,9 +118,13 @@ public class PlayerMovementAdvanced : MonoBehaviour
         float extraHeight = grounded ? 0.2f : 0.5f; // Extend the check further if not grounded
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + extraHeight, whatIsGround);
 
-        MyInput();
-        SpeedControl();
-        StateHandler();
+        if (!isDead)
+        {
+            MyInput();
+            SpeedControl();
+            StateHandler();
+        }
+
 
         // handle drag
         if (grounded)
