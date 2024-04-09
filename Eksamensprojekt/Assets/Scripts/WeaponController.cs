@@ -13,7 +13,6 @@ public class WeaponController : MonoBehaviour
     Animator anim;
 
     [SerializeField] Transform cameraHolder;
-    [SerializeField] float hitDistance = 5;
     [SerializeField] LayerMask enemyLayerMask;
     [SerializeField] Vector3 boxSize;
 
