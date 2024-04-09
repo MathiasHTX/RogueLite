@@ -23,6 +23,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public float sprintSpeed;
 
     public float groundDrag;
+    public float slipDrag = 5f;
+    private float normalDrag = 1.2f;
 
     [Header("Jumping")]
     public float jumpForce;
@@ -60,6 +62,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
+    public LayerMask whatIsSlippery;
     bool grounded;
 
     [Header("Slope Handling")]
@@ -122,10 +125,28 @@ public class PlayerMovementAdvanced : MonoBehaviour
         if (grounded)
             rb.drag = groundDrag;
         else
-            rb.drag = 1.2f;
+            rb.drag = normalDrag;
 
-        // Check for double-click and initiate dash if detected
+                // Check for double-click and initiate dash if detected
         CheckForDashInput();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ice")
+        {
+            Debug.Log("CollisionEnter");
+            groundDrag = slipDrag;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ice")
+        {
+            Debug.Log("CollisionExit");
+            groundDrag = 5f;
+        }
     }
 
     private void FixedUpdate()

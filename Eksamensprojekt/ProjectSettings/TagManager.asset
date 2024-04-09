@@ -7,7 +7,7 @@ TagManager:
   - Sword
   - Enemy
   - PlayerOrientation
-  - Tree
+  - Ice
   layers:
   - Default
   - TransparentFX
@@ -19,7 +19,7 @@ TagManager:
   - Wire
   - Enemy
   - Tree
-  - 
+  - whatIsSlippery
   - 
   - 
   - 
