@@ -50,19 +50,10 @@ public class ShipLandingSequence : MonoBehaviour
 
         canLookAround = false;
 
-        bool startAnimation = PlayerPrefs.GetInt("StartSpaceshipAnim") == 1 ? true : false;
-        if (startAnimation)
-        {
-            player.SetActive(false);
-            thisCam.SetActive(true);
-            spaceshipAnim.Play("SpaceShipLandingEG");
-            StartCoroutine(changeCam());
-        }
-        else
-        {
-            player.SetActive(true);
-            thisCam.SetActive(false);
-        }
+        player.SetActive(false);
+        thisCam.SetActive(true);
+        spaceshipAnim.Play("SpaceShipLandingEG");
+        StartCoroutine(changeCam());
 
     }
 

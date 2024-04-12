@@ -382,6 +382,17 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   slimeParticle: {fileID: 5644470031828682872}
+  audioSource: {fileID: 3015401053716795392}
+  slimeSounds:
+  - {fileID: 8300000, guid: d6247fd48247e3340b58b5c563635cf8, type: 3}
+  - {fileID: 8300000, guid: 8b3b70b742fd54544838c903b815d176, type: 3}
+  - {fileID: 8300000, guid: 8a5f7239c4828a94780d141835a85611, type: 3}
+  hitSound: {fileID: 8300000, guid: eaf7acd74d0794d46a3053c2b3285109, type: 3}
+  shootSound: {fileID: 8300000, guid: 5134ba3183a3d81488404fe149a91d89, type: 3}
+  projectilePrefab: {fileID: 5088698135563531649, guid: 36bc5094713dbbf4c84710b2ffe8956d, type: 3}
+  shootInterval: 10
+  shootForce: 20
+  minShootDistance: 10
 --- !u!195 &66691764960631579
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -495,7 +506,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 4
+  MinDistance: 2.6711483
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -531,7 +542,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

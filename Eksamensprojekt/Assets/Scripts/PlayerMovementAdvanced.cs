@@ -83,6 +83,10 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     float slopeAngle;
 
+    public AudioSource audioSource;
+    public AudioClip[] painSounds;
+
+
     public MovementState state;
     public enum MovementState
     {
@@ -481,16 +485,27 @@ public class PlayerMovementAdvanced : MonoBehaviour
         {
             if (!isHit && !isDead)
             {
-                health -= healthDamage;
-                isHit = true;
-                onPlayerHit?.Invoke(health);
-                StartCoroutine(HitCooldown());
-
-                if (health <= 0)
-                {
-                    Death();
-                }
+                TakeDamage();
             }
+        }
+    }
+
+    public void TakeDamage()
+    {
+        if (!isHit && !isDead)
+        {
+            health -= healthDamage;
+            isHit = true;
+            onPlayerHit?.Invoke(health);
+            StartCoroutine(HitCooldown());
+
+            if (health <= 0)
+            {
+                Death();
+            }
+
+            audioSource.clip = painSounds[UnityEngine.Random.Range(0, painSounds.Length)];
+            audioSource.Play();
         }
     }
 

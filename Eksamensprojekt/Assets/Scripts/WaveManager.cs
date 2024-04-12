@@ -17,6 +17,10 @@ public class WaveManager : MonoBehaviour
     int enemiesSpawned = 0;
     [SerializeField] int enemiesKilled = 0;
 
+    [SerializeField] AudioSource audioSrc;
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip waveCompleteSound;
+
     private void Awake()
     {
         if(instance == null)
@@ -28,15 +32,7 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerPrefs.GetInt("StartSpaceshipAnim") == 1)
-        {
-            ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
-        }
-        else
-        {
-            NewWave();
-        }
-        
+        ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
     }
 
     private void ShipLandingSequence_OnExitShip()
@@ -81,10 +77,11 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    public void EnemyKilled()
+    public void EnemyKilled(Vector3 deathPosition)
     {
         enemiesKilled++;
         UIManager.instance.UpdateEnemiesKilledUI(enemiesKilled, totalEnemies);
+        AudioSource.PlayClipAtPoint(deathSound, deathPosition, 20);
 
         if (enemiesKilled >= totalEnemies && !waveComplete)
         {
@@ -98,6 +95,7 @@ public class WaveManager : MonoBehaviour
         waveComplete = true;
         UIManager.instance.WaveComplete();
         UIManager.instance.OpenTimeBeforeNewWave();
+        audioSrc.PlayOneShot(waveCompleteSound);
     }
 
     private void Update()

@@ -45,6 +45,8 @@ public class PlanetSelector : MonoBehaviour
         openTransition.SetActive(true);
         whiteTop.rectTransform.DOScaleY(0, 0.2f);
         whiteBottom.rectTransform.DOScaleY(0, 0.2f);
+
+        backBtn.SetActive(false);
     }
 
     public void ZoomToPlanet(Transform planetTransform, PlanetSO planetSO)
@@ -73,6 +75,8 @@ public class PlanetSelector : MonoBehaviour
         OpenMenu();
 
         planetSelected = true;
+
+        backBtn.SetActive(true);
     }
 
     public void GoToOriginalPos()
@@ -82,6 +86,8 @@ public class PlanetSelector : MonoBehaviour
         CloseMenu();
 
         planetSelected = false;
+
+        backBtn.SetActive(false);
     }
 
     private void Update()
@@ -96,17 +102,8 @@ public class PlanetSelector : MonoBehaviour
 
     public void BackButton()
     {
-        if (planetSelected)
-        {
-            GoToOriginalPos();
-            audioSrc.PlayOneShot(clickSound);
-        }
-        else
-        {
-            // Leaves the spaceship with playing the landing anim
-            PlayerPrefs.SetInt("StartSpaceshipAnim", 0);
-            SceneManager.LoadScene(PlayerPrefs.GetInt("SceneThatOpenedShip"));
-        }
+        GoToOriginalPos();
+        audioSrc.PlayOneShot(clickSound);
     }
 
     public void GoToPlanet()
@@ -115,8 +112,6 @@ public class PlanetSelector : MonoBehaviour
         camFollowPlanets = false;
         CloseMenu();
         backBtn.SetActive(false);
-
-        PlayerPrefs.SetInt("StartSpaceshipAnim", 1);
 
         Vector3 zoomOutOffset = new Vector3(2, 4, -7);
         m_camera.DOMove(selectedPlanetTransform.position + zoomOutOffset, 0.5f).SetEase(Ease.OutCirc).OnComplete(() =>
