@@ -12,14 +12,26 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Image whiteFade;
 
     [SerializeField] AudioSource audioSrc;
+    [SerializeField] AudioSource transitionSound;
+    [SerializeField] AudioSource MenuMusic;
+    [SerializeField] AudioSource MenuMusicWithBeats;
     [SerializeField] AudioClip clickSound;
 
     bool hasClicked;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(MenuMusicWithBeats);
+    }
 
     void Update()
     {
         if (Input.GetMouseButton(0) && !hasClicked)
         {
+            transitionSound.Play();
+            MenuMusic.DOFade(0, 1);
+            MenuMusicWithBeats.DOFade(0.7f, 1);
+
             OpenButtons();
         }
     }
@@ -41,6 +53,7 @@ public class MenuManager : MonoBehaviour
 
     public void ContinueGame()
     {
+        MenuMusicWithBeats.DOFade(0, 4);
         whiteFade.gameObject.SetActive(true);
         whiteFade.DOFade(1, 1).OnComplete(() => SceneManager.LoadScene("Home"));
     }

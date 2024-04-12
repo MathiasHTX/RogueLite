@@ -28,7 +28,10 @@ public class ShipLandingSequence : MonoBehaviour
     public GameObject ship;
     public Transform cameraShipPosition;
 
+    public AudioSource loopingSoundtrack;
+
     public float waitTime;
+    public float waitTimeSound;
 
     public bool canLookAround;
 
@@ -54,7 +57,7 @@ public class ShipLandingSequence : MonoBehaviour
         thisCam.SetActive(true);
         spaceshipAnim.Play("SpaceShipLandingEG");
         StartCoroutine(changeCam());
-
+        StartCoroutine(playMusic());
     }
 
     void Update()
@@ -87,6 +90,15 @@ public class ShipLandingSequence : MonoBehaviour
             transform.position = cameraShipPosition.position;
             canLookAround = true;
             UIManager.instance.ShowSpaceshipText(false);
+        }
+    }
+
+    private IEnumerator playMusic()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTimeSound);
+            loopingSoundtrack.Play();
         }
     }
 
