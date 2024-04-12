@@ -110,6 +110,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
         startYScale = transform.localScale.y;
 
         health = startHealth;
+
+        PlayerPrefsKeysManager.Initialize();
     }
 
     private void Update()
