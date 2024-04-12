@@ -6,6 +6,7 @@ using UnityEngine;
 public class WeaponSO : ScriptableObject
 {
     public string weaponName;
+    public string description;
     public int damage;
     public int price;
     public ItemSO requiredItem;

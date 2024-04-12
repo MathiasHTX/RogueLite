@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e38b1b4a7f8b9344799c5875b207a33b, type: 3}
-  m_Name: WoodenSword
+  m_Name: SlimeSword
   m_EditorClassIdentifier: 
-  weaponName: Wooden Sword
-  description: It's very woody and stuff and blahblah
-  damage: 10
-  price: 10
-  requiredItem: {fileID: 11400000, guid: 41d17254904a22844a5e6b1b98d244d6, type: 2}
-  requiredItemAmount: 0
+  weaponName: Slime Sword
+  description: Slimy slimy Slimy slimySlimy slimySlimy slimySlimy slimy
+  damage: 20
+  price: 20
+  requiredItem: {fileID: 11400000, guid: 7aabf8bbdff19da4fa0aa0b57a0e2fa2, type: 2}
