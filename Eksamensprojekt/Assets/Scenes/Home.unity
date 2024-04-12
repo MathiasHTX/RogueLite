@@ -7726,7 +7726,9 @@ MonoBehaviour:
   player: {fileID: 166748062}
   ship: {fileID: 1752555389}
   cameraShipPosition: {fileID: 43823569}
+  loopingSoundtrack: {fileID: 0}
   waitTime: 12
+  waitTimeSound: 0
   canLookAround: 0
 --- !u!114 &1207072967
 MonoBehaviour:
@@ -14689,6 +14691,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4702256854093812358, guid: 5a6713122d22d0242bb1cd9fe1887cc3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5881979655153040297, guid: 5a6713122d22d0242bb1cd9fe1887cc3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14870,7 +14876,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4702256854093812358, guid: 5a6713122d22d0242bb1cd9fe1887cc3, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a6713122d22d0242bb1cd9fe1887cc3, type: 3}
