@@ -5,10 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class Spaceship : MonoBehaviour
 {
+    public static Spaceship instance;
+
     bool hasExitedSpaceship;
     bool canOpenSpaceShip;
 
     bool sceneIsHome;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
 
     private void Start()
     {
@@ -33,7 +43,7 @@ public class Spaceship : MonoBehaviour
             {
                 if (WaveManager.instance.IsWaveComplete())
                 {
-                    OpenSpaceship();
+                    UIManager.instance.ShowHoldToLeave();
                 }
                 else
                 {
@@ -42,14 +52,18 @@ public class Spaceship : MonoBehaviour
             }
 
         }
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            UIManager.instance.HideHoldToLeave();
+        }
     }
 
-    void OpenSpaceship()
+    public void OpenSpaceship()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        PlayerPrefs.SetInt("SceneThatOpenedShip", SceneManager.GetActiveScene().buildIndex);
         SceneManager.LoadScene(1);
     }
 

@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     // Spaceship
     [SerializeField] TextMeshProUGUI spaceshipText;
     [SerializeField] CanvasGroup cantEnterShip;
+    [SerializeField] CanvasGroup holdToExit;
+    [SerializeField] Image holdToExitCircle;
 
     // Intro
     [SerializeField] Image whiteFade;
@@ -80,22 +82,9 @@ public class UIManager : MonoBehaviour
 
         PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
 
-        if (PlayerPrefs.GetInt("StartSpaceshipAnim") == 1)
-        {
-            ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
-            if(!sceneIsHome)
-                gameUI.SetActive(false);
-        }
-        else
-        {
-            if (!sceneIsHome)
-            {
-                LoadGameUI();
-            }
-
-            blackBarBottom.gameObject.SetActive(false);
-            blackBarTop.gameObject.SetActive(false);
-        }
+        ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
+        if (!sceneIsHome)
+            gameUI.SetActive(false);
 
         spaceshipText.gameObject.SetActive(false);
         whiteFade.gameObject.SetActive(true);
@@ -292,5 +281,19 @@ public class UIManager : MonoBehaviour
         cantEnterShip.gameObject.SetActive(true);
         cantEnterShip.DOFade(1, 0.2f);
         cantEnterShip.DOFade(0, 0.5f).SetDelay(2).OnComplete(() => cantEnterShip.gameObject.SetActive(false));
-    } 
+    }
+    
+    public void ShowHoldToLeave()
+    {
+        holdToExitCircle.fillAmount = 0;
+        holdToExit.gameObject.SetActive(true);
+        holdToExit.DOFade(1, 0.2f);
+        holdToExitCircle.DOFillAmount(1, 2).OnComplete(()=> Spaceship.instance.OpenSpaceship());
+    }
+
+    public void HideHoldToLeave()
+    {
+        holdToExitCircle.DOKill();
+        holdToExit.DOFade(0, 0.2f).OnComplete(() => holdToExit.gameObject.SetActive(false));
+    }
 }

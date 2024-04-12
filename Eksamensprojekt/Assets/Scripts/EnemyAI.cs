@@ -43,6 +43,18 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] ParticleSystem slimeParticle;
 
+    //Audio
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] slimeSounds;
+    [SerializeField] AudioClip hitSound;
+    [SerializeField] AudioClip shootSound;
+
+    //Shoot projectile
+    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] float shootInterval = 2f;
+    [SerializeField] float shootForce = 10f;
+    [SerializeField] float minShootDistance = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +67,14 @@ public class EnemyAI : MonoBehaviour
 
         FindSize();
         UpdateHealthBar();
+
+        // Play Sound every 2 seconds
+        float soundWaitTime = Random.Range(5, 10);
+        InvokeRepeating("PlaySound", soundWaitTime, 2);
+
+        //Shoot projectile
+        float shootWaitTime = Random.Range(5, 10);
+        InvokeRepeating("ShootProjectile", shootWaitTime, shootInterval);
     }
 
     // Update is called once per frame
@@ -158,6 +178,25 @@ public class EnemyAI : MonoBehaviour
     }
     */
 
+    void ShootProjectile()
+    {
+        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+        Debug.Log(distanceToPlayer);
+
+        if(distanceToPlayer > minShootDistance)
+        {
+            Vector3 enemyOffset = new Vector3(0, 0.5f, 0);
+            Vector3 playerOffset = new Vector3(0, 2f, 0);
+
+            GameObject projectile = Instantiate(projectilePrefab, transform.position + enemyOffset, Quaternion.identity);
+            Vector3 direction = ((player.transform.position + playerOffset) - (transform.position + enemyOffset)).normalized;
+
+            projectile.GetComponent<Projectile>().Shoot(direction);
+
+            audioSource.PlayOneShot(shootSound);
+        }
+    }
+
 
     public void EnemyHit(int damage)
     {
@@ -174,6 +213,8 @@ public class EnemyAI : MonoBehaviour
             else
             {
                 StartCoroutine(ApplyKnockback(forceDirection));
+
+                PlayHitSound();
             }
 
         }
@@ -214,7 +255,7 @@ public class EnemyAI : MonoBehaviour
     {
         enemyDead = true;
         Instantiate(slimeParticle, transform.position, Quaternion.identity);
-        WaveManager.instance.EnemyKilled();
+        WaveManager.instance.EnemyKilled(this.transform.position);
         Destroy(this.gameObject);
     }
 
@@ -223,5 +264,17 @@ public class EnemyAI : MonoBehaviour
         float fillAmount = (float)health / (float)startHealth;
         healthBar.DOFillAmount(fillAmount, 0.2f);
         healthBar.color = colorGradient.Evaluate(fillAmount);
+    }
+
+    void PlaySound()
+    {
+        audioSource.clip = slimeSounds[Random.Range(0, slimeSounds.Length)];
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
+        audioSource.Play();
+    }
+
+    void PlayHitSound()
+    {
+        audioSource.PlayOneShot(hitSound);
     }
 }
