@@ -11,7 +11,8 @@ public class Projectile : MonoBehaviour
     public void Shoot(Vector3 direction)
     {
         Debug.Log("Shooting" + direction);
-        transform.DOMove(direction * scaleFactor, time).OnComplete(() => Destroy(this.gameObject));
+        // Vector3 projectilePosition = new Vector3(direction.x * scaleFactor, direction.y - 0.1f * (float)System.Math.Pow(Time.deltaTime, 2), direction.z);
+        transform.DOMove(direction, time).OnComplete(() => Destroy(this.gameObject));
     }
 
     private void OnTriggerEnter(Collider other)

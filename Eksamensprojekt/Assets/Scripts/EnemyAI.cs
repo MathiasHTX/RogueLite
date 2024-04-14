@@ -34,6 +34,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float sightRange, attackRange;
     bool playerInSight, playerInAttackRange;
 
+    [Header("Health and UI")]
     //Health and UI
     int startHealth;
     int health;
@@ -41,6 +42,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] Gradient colorGradient;
     bool isHit;
 
+    [Header("")]
     [SerializeField] ParticleSystem slimeParticle;
 
     //Audio
