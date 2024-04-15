@@ -6,33 +6,49 @@ using TMPro;
 
 public class CraftingUI : MonoBehaviour
 {
-    [SerializeField] Image[] buttonBackgrounds;
-    [SerializeField] Color32 enabledColor;
-    [SerializeField] Color32 disabledColor;
-
+    [SerializeField] CraftItem craftItemScript;
+    [SerializeField] Toggle firstToggle;
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI descriptionText;
     [SerializeField] TextMeshProUGUI priceText;
+    [SerializeField] TextMeshProUGUI powerLevelText;
+    [SerializeField] Button craftBtn;
+    [SerializeField] TextMeshProUGUI missingItemText;
+    WeaponSO selectedWeapon;
+
+    private void Start()
+    {
+        firstToggle.isOn = true;
+    }
 
     public void OpenWeapon(WeaponSO weaponSO)
     {
+        int price = weaponSO.price;
+        int amountOfItem = PlayerPrefs.GetInt(weaponSO.requiredItem.itemName + "Amount", 0);
+        if(amountOfItem >= price)
+        {
+            craftBtn.interactable = true;
+            missingItemText.gameObject.SetActive(false);
+        }
+        else
+        {
+            int missingAmount = price - amountOfItem;
+            craftBtn.interactable = false;
+            missingItemText.text = "Missing " + missingAmount + " " + weaponSO.requiredItem.itemName;
+            missingItemText.gameObject.SetActive(true);
+        }
+
+
         nameText.text = weaponSO.weaponName;
         descriptionText.text = weaponSO.description;
-        priceText.text = weaponSO.price + "x";
+        priceText.text = price + "x";
+        powerLevelText.text = "Power level " + weaponSO.powerLevel;
+
+        selectedWeapon = weaponSO;
     }
 
-    public void ChangeButtonBackground(Image background)
+    public void CraftSelectedItem()
     {
-        for(int i = 0; i < buttonBackgrounds.Length; i++)
-        {
-            if(buttonBackgrounds[i] == background)
-            {
-                background.color = enabledColor;
-            }
-            else
-            {
-                background.color = disabledColor;
-            }
-        }
+        craftItemScript.CraftItems(selectedWeapon);
     }
 }

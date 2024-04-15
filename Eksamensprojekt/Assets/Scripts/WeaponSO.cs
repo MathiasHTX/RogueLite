@@ -10,4 +10,5 @@ public class WeaponSO : ScriptableObject
     public int damage;
     public int price;
     public ItemSO requiredItem;
+    public int powerLevel;
 }
