@@ -28,7 +28,7 @@ public class Spaceship : MonoBehaviour
 
     private void ShipLandingSequence_OnExitShip()
     {
-        hasExitedSpaceship = true;
+        //hasExitedSpaceship = true;
     }
 
     private void Update()
@@ -71,7 +71,7 @@ public class Spaceship : MonoBehaviour
     {
         if (other.CompareTag("Player") && hasExitedSpaceship)
         {
-            UIManager.instance.ShowSpaceshipText(true);
+            UIManager.instance.ShowPressEText("to enter");
             canOpenSpaceShip = true;
         }
     }
@@ -80,7 +80,7 @@ public class Spaceship : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            UIManager.instance.HideSpaceshipText();
+            UIManager.instance.HidePressEText();
             hasExitedSpaceship = true;
             canOpenSpaceShip = false;
         }

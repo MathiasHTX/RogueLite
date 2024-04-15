@@ -17,8 +17,10 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject gameUI;
 
+    [SerializeField] TextMeshProUGUI pressEText;
+    [SerializeField] GameObject pressE;
+
     [Header("Spaceship")]
-    [SerializeField] TextMeshProUGUI spaceshipText;
     [SerializeField] CanvasGroup cantEnterShip;
     [SerializeField] CanvasGroup holdToExit;
     [SerializeField] Image holdToExitCircle;
@@ -92,7 +94,7 @@ public class UIManager : MonoBehaviour
         if (!sceneIsHome)
             gameUI.SetActive(false);
 
-        spaceshipText.gameObject.SetActive(false);
+        pressE.SetActive(false);
         whiteFade.gameObject.SetActive(true);
         whiteFade.DOFade(0, 2).OnComplete(() => whiteFade.gameObject.SetActive(false));
 
@@ -109,7 +111,7 @@ public class UIManager : MonoBehaviour
             LoadGameUI();
         }
 
-        spaceshipText.gameObject.SetActive(false);
+        pressE.SetActive(false);
 
         blackBarBottom.DOAnchorPosY(-20, 1);
         blackBarTop.DOAnchorPosY(20, 1);
@@ -124,23 +126,16 @@ public class UIManager : MonoBehaviour
         gameUI.SetActive(true);
     }
 
-    public void ShowSpaceshipText(bool enter)
+    public void ShowPressEText(string message)
     {
-        if (enter)
-        {
-            spaceshipText.text = "Press E to enter";
-        }
-        else
-        {
-            spaceshipText.text = "Press E to exit";
-        }
+        pressEText.text = message;
 
-        spaceshipText.gameObject.SetActive(true);
+        pressE.SetActive(true);
     }
 
-    public void HideSpaceshipText()
+    public void HidePressEText()
     {
-        spaceshipText.gameObject.SetActive(false);
+        pressE.SetActive(false);
     }
 
     private void PlayerMovementAdvanced_onPlayerHit(int health)

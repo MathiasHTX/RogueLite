@@ -166,7 +166,7 @@ public class ShipLandingSequence : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         transform.position = cameraShipPosition.position;
         canLookAround = true;
-        UIManager.instance.ShowSpaceshipText(false);
+        UIManager.instance.ShowPressEText("to exit");
     }
 
     private IEnumerator playMusic()

@@ -24,6 +24,7 @@ public class InsideCraftingTable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInsideTrigger = true;
+            UIManager.instance.ShowPressEText("Press E to interact");
         }
     }
 
@@ -32,6 +33,7 @@ public class InsideCraftingTable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInsideTrigger = false;
+            UIManager.instance.HidePressEText();
         }
     }
 
@@ -47,6 +49,7 @@ public class InsideCraftingTable : MonoBehaviour
                 UIManager.instance.OpenCraftingUI();
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                UIManager.instance.HidePressEText();
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -55,6 +58,7 @@ public class InsideCraftingTable : MonoBehaviour
                 UIManager.instance.CloseCraftingUI();
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                UIManager.instance.ShowPressEText("to interact");
             }
         }
     }

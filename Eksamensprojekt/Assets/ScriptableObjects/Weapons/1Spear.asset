@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e38b1b4a7f8b9344799c5875b207a33b, type: 3}
-  m_Name: Spear
+  m_Name: 1Spear
   m_EditorClassIdentifier: 
   weaponName: Stone Spear
   description: A long reaching weapon with a slow attack speed.
   damage: 15
-  price: 10
-  requiredItem: {fileID: 11400000, guid: 41d17254904a22844a5e6b1b98d244d6, type: 2}
+  requiredItemAmounts: 0f0000000a000000
+  requiredItems:
+  - {fileID: 11400000, guid: 41d17254904a22844a5e6b1b98d244d6, type: 2}
+  - {fileID: 11400000, guid: 7a3c04a221f723d499cd59f5c970ae05, type: 2}
+  powerLevel: 1

@@ -15,6 +15,7 @@ MonoBehaviour:
   weaponName: Wooden Sword
   description: It's very woody and stuff and blahblah
   damage: 10
-  price: 10
-  requiredItem: {fileID: 11400000, guid: 41d17254904a22844a5e6b1b98d244d6, type: 2}
+  requiredItemAmounts: 0a000000
+  requiredItems:
+  - {fileID: 11400000, guid: 41d17254904a22844a5e6b1b98d244d6, type: 2}
   powerLevel: 1
