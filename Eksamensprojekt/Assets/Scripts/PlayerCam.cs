@@ -20,7 +20,7 @@ public class PlayerCam : MonoBehaviour
     public GameObject camObj;
     public Transform orientation;
 
-    bool isPaused;
+    bool camEnabled = true;
     bool isDead;
 
     private void Start()
@@ -33,6 +33,12 @@ public class PlayerCam : MonoBehaviour
         UIManager.isPaused += UIManager_isPaused;
 
         PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
+        InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
+    }
+
+    private void InsideCraftingTable_onCraftingTable(bool openClose)
+    {
+        camEnabled = openClose;
     }
 
     private void PlayerMovementAdvanced_onDeath()
@@ -42,12 +48,12 @@ public class PlayerCam : MonoBehaviour
 
     private void UIManager_isPaused(bool paused)
     {
-        isPaused = paused;
+        camEnabled = !paused;
     }
 
     private void Update()
     {
-        if (!isPaused && !isDead)
+        if (camEnabled && !isDead)
         {
             MyInput();
 

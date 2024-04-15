@@ -24,6 +24,8 @@ public class WeaponController : MonoBehaviour
     AudioSource audioSrc;
     [SerializeField] AudioClip[] swordSounds;
 
+    bool isPaused;
+
     private void Awake()
     {
         if(Instance == null)
@@ -37,6 +39,18 @@ public class WeaponController : MonoBehaviour
         anim = sword.GetComponent<Animator>();
         audioSrc = GetComponent<AudioSource>();
         PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
+        UIManager.isPaused += UIManager_isPaused;
+        InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
+    }
+
+    private void InsideCraftingTable_onCraftingTable(bool openClose)
+    {
+        isPaused = !openClose;
+    }
+
+    private void UIManager_isPaused(bool paused)
+    {
+        isPaused = paused;
     }
 
     private void PlayerMovementAdvanced_onDeath()
@@ -48,7 +62,7 @@ public class WeaponController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (canAttack && !isDead)
+            if (canAttack && !isDead && !isPaused)
             {
                 SwordAttack();
             }
