@@ -35,13 +35,13 @@ public class CraftItem : MonoBehaviour
 
     public void CraftItems(WeaponSO weaponSO)
     {
-        string itemAmountKey = weaponSO.requiredItem.itemName + "Amount";
+        string itemAmountKey = weaponSO.requiredItems[0].itemName + "Amount";
         int amount = PlayerPrefs.GetInt(itemAmountKey, 0);
-        int price = weaponSO.price;
+        int requiredAmount = weaponSO.requiredItemAmounts[0];
 
-        if (amount >= price)
+        if (amount >= requiredAmount)
         {
-            PlayerPrefs.SetInt(itemAmountKey, amount - price);
+            PlayerPrefs.SetInt(itemAmountKey, amount - requiredAmount);
             PlayerPrefsKeysManager.RegisterKey(itemAmountKey);  // Ensure item is updated
 
             int craftedItemCount = PlayerPrefs.GetInt(weaponSO.weaponName + "Amount");
@@ -52,7 +52,7 @@ public class CraftItem : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not enough " + weaponSO.requiredItem.itemName + " to craft a " + weaponSO.weaponName + ". You need at least " + price);
+            Debug.Log("Not enough " + weaponSO.requiredItems[0].itemName + " to craft a " + weaponSO.weaponName + ". You need at least " + requiredAmount);
         }
     }
 }

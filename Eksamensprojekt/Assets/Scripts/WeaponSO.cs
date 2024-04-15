@@ -8,7 +8,8 @@ public class WeaponSO : ScriptableObject
     public string weaponName;
     public string description;
     public int damage;
-    public int price;
-    public ItemSO requiredItem;
+    public int[] requiredItemAmounts;
+    public ItemSO[] requiredItems;
     public int powerLevel;
+    public Vector3 boxSize;
 }
