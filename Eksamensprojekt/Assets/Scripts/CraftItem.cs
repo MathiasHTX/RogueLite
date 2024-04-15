@@ -5,14 +5,14 @@ using UnityEngine;
 public class CraftItem : MonoBehaviour
 {
 
-    public WeaponSO woodSwordSO;
-
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.E) && PlayerIsInTrigger)
         {
             CraftItems(woodSwordSO);
         }
+        */
     }
 
     private bool PlayerIsInTrigger = false;
@@ -35,19 +35,19 @@ public class CraftItem : MonoBehaviour
 
     public void CraftItems(WeaponSO weaponSO)
     {
-        string materialAmountKey = weaponSO.requiredItem.itemName + "Amount";
-        int amount = PlayerPrefs.GetInt(materialAmountKey, 0);
+        string itemAmountKey = weaponSO.requiredItem.itemName + "Amount";
+        int amount = PlayerPrefs.GetInt(itemAmountKey, 0);
         int price = weaponSO.price;
 
         if (amount >= price)
         {
-            PlayerPrefs.SetInt(materialAmountKey, amount - price);
-            PlayerPrefsKeysManager.RegisterKey(materialAmountKey);  // Ensure 'Wood' is updated
+            PlayerPrefs.SetInt(itemAmountKey, amount - price);
+            PlayerPrefsKeysManager.RegisterKey(itemAmountKey);  // Ensure item is updated
 
             int craftedItemCount = PlayerPrefs.GetInt(weaponSO.weaponName + "Amount");
-            PlayerPrefs.SetInt(weaponSO.weaponName + "Amount", craftedItemCount + 1);  // Add 1 WoodSword to inventory
+            PlayerPrefs.SetInt(weaponSO.weaponName + "Amount", craftedItemCount + 1);  // Add 1 crafted item to inventory
             PlayerPrefs.Save();
-            PlayerPrefsKeysManager.RegisterKey(weaponSO.weaponName + "Amount"); // Register 'WoodSword'
+            PlayerPrefsKeysManager.RegisterKey(weaponSO.weaponName + "Amount"); // Register crafted item;
             Debug.Log("New " + weaponSO.weaponName + " count: " + PlayerPrefs.GetInt(weaponSO.weaponName + "Amount"));
         }
         else

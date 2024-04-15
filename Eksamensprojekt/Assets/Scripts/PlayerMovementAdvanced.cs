@@ -86,6 +86,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] painSounds;
 
+    bool movementEnabled = true;
 
     public MovementState state;
     public enum MovementState
@@ -106,6 +107,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void Start()
     {
+        InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -124,7 +127,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
         float extraHeight = grounded ? 0.2f : 0.5f; // Extend the check further if not grounded
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + extraHeight, whatIsGround);
 
-        if (!isDead)
+        if (!isDead && movementEnabled)
         {
             MyInput();
             SpeedControl();
@@ -529,5 +532,10 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public int GetStartHealth()
     {
         return startHealth;
+    }
+
+    private void InsideCraftingTable_onCraftingTable(bool openClose)
+    {
+        movementEnabled = openClose;
     }
 }

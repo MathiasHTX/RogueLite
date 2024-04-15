@@ -17,52 +17,58 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject gameUI;
 
-    // Spaceship
+    [Header("Spaceship")]
     [SerializeField] TextMeshProUGUI spaceshipText;
     [SerializeField] CanvasGroup cantEnterShip;
     [SerializeField] CanvasGroup holdToExit;
     [SerializeField] Image holdToExitCircle;
 
-    // Intro
+    [Header("Intro")]
     [SerializeField] Image whiteFade;
     [SerializeField] RectTransform blackBarTop;
     [SerializeField] RectTransform blackBarBottom;
 
-    //Health bar
+    [Header("Health bar")]
     [SerializeField] Transform healthBar;
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] Image healthBarFill;
     [SerializeField] Gradient healthBarGradient;
     int startHealth;
 
-    //Enemies Killed
+    [Header("Enemies killed")]
     [SerializeField] TextMeshProUGUI enemiesKilledText;
     [SerializeField] RectTransform enemiesKilledTransform;
 
-    //New wave
+    [Header("New wave")]
     [SerializeField] GameObject newWave;
     [SerializeField] TextMeshProUGUI waveText;
     [SerializeField] RectTransform waveBackground;
     [SerializeField] TextMeshProUGUI currentWaveText;
 
-    //Wave complete
+    [Header("Wave complete")]
     [SerializeField] GameObject waveComplete;
     [SerializeField] RectTransform waveCompletedBackground;
     [SerializeField] TextMeshProUGUI waveCompletedText;
 
-    //Time before wave
+    [Header("Time before wave")]
     bool timerEnabled;
     [SerializeField] RectTransform timeBeforeNewWaveTransform;
     [SerializeField] TextMeshProUGUI timerText;
 
-    //Game Over
+    [Header("Game over")]
     [SerializeField] GameObject gameOver;
     [SerializeField] RectTransform gameOverBackground;
     [SerializeField] TextMeshProUGUI gameOverText;
 
-    // Pause screen
+    [Header("Pause screen")]
     [SerializeField] RectTransform pauseScreen;
+    [SerializeField] GameObject holdMenuMessage;
+    [SerializeField] Image holdMenuRing;
     bool paused;
+
+    [Header("Crafting table")]
+    [SerializeField] RectTransform craftingTableRect;
+    bool craftingTableOpen;
 
 
     bool sceneIsHome;
@@ -89,6 +95,11 @@ public class UIManager : MonoBehaviour
         spaceshipText.gameObject.SetActive(false);
         whiteFade.gameObject.SetActive(true);
         whiteFade.DOFade(0, 2).OnComplete(() => whiteFade.gameObject.SetActive(false));
+
+        if (craftingTableRect != null)
+            craftingTableRect.gameObject.SetActive(false);
+
+        holdMenuMessage.SetActive(false);
     }
 
     private void ShipLandingSequence_OnExitShip()
@@ -253,8 +264,9 @@ public class UIManager : MonoBehaviour
 
     void PauseGame()
     {
-        if (!paused)
+        if (!paused && !craftingTableOpen && ShipLandingSequence.instance.HasExitedShip())
         {
+            UIAudio.instance.PlayOpenSound();
             pauseScreen.anchoredPosition = new Vector2(-170, 0);
             pauseScreen.DOAnchorPosX(130, 0.3f).SetUpdate(true);
             pauseScreen.gameObject.SetActive(true);
@@ -274,6 +286,7 @@ public class UIManager : MonoBehaviour
         pauseScreen.DOAnchorPosX(-170, 0.3f).OnComplete(() => pauseScreen.gameObject.SetActive(false));
         isPaused?.Invoke(false);
         paused = false;
+        UIAudio.instance.PlayCloseSound();
     }
 
     public void ShowCantEnterShipUI()
@@ -295,5 +308,39 @@ public class UIManager : MonoBehaviour
     {
         holdToExitCircle.DOKill();
         holdToExit.DOFade(0, 0.2f).OnComplete(() => holdToExit.gameObject.SetActive(false));
+    }
+
+    public void ShowHoldMenu()
+    {
+        holdMenuMessage.SetActive(true);
+        holdMenuRing.fillAmount = 0;
+        holdMenuRing.DOFillAmount(1, 3).SetUpdate(true).OnComplete(() => {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(0);
+        });
+    }
+
+    public void HideHoldMenu()
+    {
+        holdMenuRing.DOKill();
+        holdMenuMessage.SetActive(false);
+    }
+
+    public void OpenCraftingUI()
+    {
+        craftingTableRect.localScale = new Vector2(1, 0);
+        craftingTableRect.gameObject.SetActive(true);
+        craftingTableRect.DOScaleY(1, 0.2f);
+        craftingTableOpen = true;
+        UIAudio.instance.PlayOpenSound();
+    }
+
+    public void CloseCraftingUI()
+    {
+        UIAudio.instance.PlayCloseSound();
+        craftingTableRect.DOScaleY(0, 0.2f).OnComplete(() => {
+            craftingTableRect.gameObject.SetActive(false);
+            craftingTableOpen = false;
+        });
     }
 }

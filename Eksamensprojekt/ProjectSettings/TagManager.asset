@@ -10,6 +10,7 @@ TagManager:
   - PlayerOrientation
   - Sword
   - Tree
+  - CraftingTable
   layers:
   - Default
   - TransparentFX

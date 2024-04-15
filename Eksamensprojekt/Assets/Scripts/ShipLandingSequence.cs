@@ -197,4 +197,9 @@ public class ShipLandingSequence : MonoBehaviour
         yRotation = Mathf.Clamp(yRotation, -70f, 75f);
         xRotation = Mathf.Clamp(xRotation, -70f, 75f);
     }
+
+    public bool HasExitedShip()
+    {
+        return hasExitedSpaceShip;
+    }
 }

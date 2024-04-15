@@ -26,14 +26,21 @@ public class WeaponSway : MonoBehaviour
     private float playerSpeed;
 
     bool isDead;
+    bool swayEnabled = true;
 
     private void Start()
     {
         PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
+        InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
 
         origin_rotation = transform.localRotation;
         defaultPosY = transform.localPosition.y;
         lastPosition = playerTransform.position;
+    }
+
+    private void InsideCraftingTable_onCraftingTable(bool obj)
+    {
+        swayEnabled = obj;
     }
 
     private void PlayerMovementAdvanced_onDeath()
@@ -43,7 +50,7 @@ public class WeaponSway : MonoBehaviour
 
     private void Update()
     {
-        if (!isDead)
+        if (!isDead && swayEnabled)
         {
             UpdateSway();
             UpdateBob();
