@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image damageVignette;
 
     [SerializeField] GameObject gameUI;
+    [SerializeField] GameObject crossHair;
 
     [SerializeField] TextMeshProUGUI pressEText;
     [SerializeField] GameObject pressE;
@@ -102,6 +103,7 @@ public class UIManager : MonoBehaviour
             craftingTableRect.gameObject.SetActive(false);
 
         holdMenuMessage.SetActive(false);
+        crossHair.SetActive(false);
     }
 
     private void ShipLandingSequence_OnExitShip()
@@ -115,6 +117,8 @@ public class UIManager : MonoBehaviour
 
         blackBarBottom.DOAnchorPosY(-20, 1);
         blackBarTop.DOAnchorPosY(20, 1);
+
+        crossHair.SetActive(true);
     }
 
     void LoadGameUI()

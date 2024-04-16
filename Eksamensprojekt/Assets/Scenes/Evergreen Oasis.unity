@@ -1362,7 +1362,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4203506926604580830, guid: b038a2cca0d05d546a6f40171b142711, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6313,6 +6314,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7458476583619758682, guid: 7dc28e8b8f98f974ea7c331769f0d372, type: 3}
   m_PrefabInstance: {fileID: 1656114539}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1799321219 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4958019697573402100, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
+  m_PrefabInstance: {fileID: 804391051}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1809132813 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8945000759204743508, guid: d58cc166323d26a4ca3f91e1f0d55980, type: 3}
@@ -7359,6 +7365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageVignette: {fileID: 217940133}
   gameUI: {fileID: 1469304395}
+  crossHair: {fileID: 1799321219}
   pressEText: {fileID: 804391056}
   pressE: {fileID: 804391055}
   cantEnterShip: {fileID: 352930400}

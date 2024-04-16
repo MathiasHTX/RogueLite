@@ -165,7 +165,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        if (!isDead && movementEnabled)
+            MovePlayer();
 
         // Apply dash force if dashing
         if (isDashing)

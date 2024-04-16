@@ -3206,6 +3206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageVignette: {fileID: 516792688}
   gameUI: {fileID: 516792687}
+  crossHair: {fileID: 1405201534}
   pressEText: {fileID: 140107411}
   pressE: {fileID: 140107410}
   cantEnterShip: {fileID: 516792685}
@@ -4712,6 +4713,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6908656363998969129, guid: c5a6b794b35974f44815a83c713eafc6, type: 3}
   m_PrefabInstance: {fileID: 662177960}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1405201534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4958019697573402100, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
+  m_PrefabInstance: {fileID: 516792672}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1405222251 stripped
 GameObject:

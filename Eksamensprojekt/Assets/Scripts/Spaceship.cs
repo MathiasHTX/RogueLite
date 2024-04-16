@@ -53,10 +53,10 @@ public class Spaceship : MonoBehaviour
 
         }
 
-        // if (Input.GetKeyUp(KeyCode.E))
-        //{
-          //  UIManager.instance.HideHoldToLeave();
-        //}
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            UIManager.instance.HideHoldToLeave();
+        }
     }
 
     public void OpenSpaceship()

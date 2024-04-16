@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1WoodenSword
   m_EditorClassIdentifier: 
   weaponName: Wooden Sword
-  description: It's very woody and stuff and blahblah
+  description: A basic sword to start your journey.
   damage: 10
   requiredItemAmounts: 0a000000
   requiredItems:

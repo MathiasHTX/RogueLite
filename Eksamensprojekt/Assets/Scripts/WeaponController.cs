@@ -113,7 +113,7 @@ public class WeaponController : MonoBehaviour
     void ChangeWeapon(int number)
     {
         Debug.Log(canChangeWeapon);
-        if (canChangeWeapon)
+        if (canChangeWeapon && !isPaused)
         {
             usingWeapon = number;
 
