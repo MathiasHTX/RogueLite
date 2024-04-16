@@ -40,7 +40,7 @@ public class WeaponSway : MonoBehaviour
 
     private void InsideCraftingTable_onCraftingTable(bool obj)
     {
-        swayEnabled = obj;
+        swayEnabled = !obj;
     }
 
     private void PlayerMovementAdvanced_onDeath()

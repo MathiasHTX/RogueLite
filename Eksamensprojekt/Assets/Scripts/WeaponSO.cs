@@ -12,5 +12,4 @@ public class WeaponSO : ScriptableObject
     public ItemSO[] requiredItems;
     public int powerLevel;
     public Vector3 boxSize;
-    public Sprite icon;
 }

@@ -45,7 +45,7 @@ public class WeaponController : MonoBehaviour
 
     private void InsideCraftingTable_onCraftingTable(bool openClose)
     {
-        isPaused = !openClose;
+        isPaused = openClose;
     }
 
     private void UIManager_isPaused(bool paused)

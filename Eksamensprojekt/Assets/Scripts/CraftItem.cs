@@ -35,24 +35,20 @@ public class CraftItem : MonoBehaviour
 
     public void CraftItems(WeaponSO weaponSO)
     {
-        string itemAmountKey = weaponSO.requiredItems[0].itemName + "Amount";
-        int amount = PlayerPrefs.GetInt(itemAmountKey, 0);
-        int requiredAmount = weaponSO.requiredItemAmounts[0];
-
-        if (amount >= requiredAmount)
+        for (int i = 0; i < weaponSO.requiredItems.Length; i++)
         {
+            string itemAmountKey = weaponSO.requiredItems[i].itemName + "Amount";
+            int amount = PlayerPrefs.GetInt(itemAmountKey, 0);
+            int requiredAmount = weaponSO.requiredItemAmounts[i];
+
             PlayerPrefs.SetInt(itemAmountKey, amount - requiredAmount);
-            PlayerPrefsKeysManager.RegisterKey(itemAmountKey);  // Ensure item is updated
+            PlayerPrefsKeysManager.RegisterKey(itemAmountKey);
+        }
 
-            int craftedItemCount = PlayerPrefs.GetInt(weaponSO.weaponName + "Amount");
-            PlayerPrefs.SetInt(weaponSO.weaponName + "Amount", craftedItemCount + 1);  // Add 1 crafted item to inventory
-            PlayerPrefs.Save();
-            PlayerPrefsKeysManager.RegisterKey(weaponSO.weaponName + "Amount"); // Register crafted item;
-            Debug.Log("New " + weaponSO.weaponName + " count: " + PlayerPrefs.GetInt(weaponSO.weaponName + "Amount"));
-        }
-        else
-        {
-            Debug.Log("Not enough " + weaponSO.requiredItems[0].itemName + " to craft a " + weaponSO.weaponName + ". You need at least " + requiredAmount);
-        }
+        int craftedItemCount = PlayerPrefs.GetInt(weaponSO.weaponName + "Amount");
+        PlayerPrefs.SetInt(weaponSO.weaponName + "Amount", craftedItemCount + 1);  // Add 1 crafted item to inventory
+        PlayerPrefs.Save();
+        PlayerPrefsKeysManager.RegisterKey(weaponSO.weaponName + "Amount"); // Register crafted item;
+        Debug.Log("New " + weaponSO.weaponName + " count: " + PlayerPrefs.GetInt(weaponSO.weaponName + "Amount"));
     }
 }
