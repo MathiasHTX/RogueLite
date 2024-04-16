@@ -14,9 +14,14 @@ public class PlanetSelector : MonoBehaviour
     public Transform planets;
     Transform selectedPlanetTransform;
     PlanetSO selectedPlanetSO;
+    public PlanetSO[] planetSOs;
+    public Transform[] planetTransforms;
+    private int planetIndex = 0;
+
 
     bool planetSelected;
     bool camFollowPlanets;
+    bool goingToPlanet = false;
 
     // UI
     public GameObject planetMenu;
@@ -97,6 +102,25 @@ public class PlanetSelector : MonoBehaviour
             Vector3 targetPosition = selectedPlanetTransform.position + camOffset;
             float transitionSpeed = 0.5f;
             m_camera.position = Vector3.Lerp(m_camera.position, targetPosition, transitionSpeed * Time.deltaTime);
+        } 
+
+        if (planetSelected && Input.GetKeyDown(KeyCode.Return)) 
+        {
+            GoToPlanet();
+        }
+
+        if (planetSelected && Input.GetKeyDown(KeyCode.Escape) && !goingToPlanet)
+        {
+            BackButton();
+        }
+
+        // Use numbers on keyboard to zoom to planets
+        for (int i = 0; i < planetTransforms.Length; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            {
+                ZoomToPlanet(planetTransforms[i], planetSOs[i]);
+            }
         }
     }
 
@@ -112,6 +136,7 @@ public class PlanetSelector : MonoBehaviour
         camFollowPlanets = false;
         CloseMenu();
         backBtn.SetActive(false);
+        goingToPlanet = true;
 
         Vector3 zoomOutOffset = new Vector3(2, 4, -7);
         m_camera.DOMove(selectedPlanetTransform.position + zoomOutOffset, 0.5f).SetEase(Ease.OutCirc).OnComplete(() =>
