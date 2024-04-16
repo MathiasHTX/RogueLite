@@ -5014,7 +5014,9 @@ MonoBehaviour:
   - {fileID: 744823377}
   - {fileID: 473067091}
   snowball: {fileID: 4776027194539203370, guid: 19a6ea40b6e899d4ca5995f68acf6141, type: 3}
-  launchForce: 100
+  launchForce: 40
+  rollForce: 20
+  isActive: 0
 --- !u!4 &1714470571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6908656363998969129, guid: c5a6b794b35974f44815a83c713eafc6, type: 3}
