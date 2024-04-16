@@ -19,9 +19,9 @@ TagManager:
   - Water
   - UI
   - whatIsPlayer
-  - Wire
+  - HitDetectionLayer
   - Enemy
-  - 
+  - Overlay
   - 
   - 
   - 

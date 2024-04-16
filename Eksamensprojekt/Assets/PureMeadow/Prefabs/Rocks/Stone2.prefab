@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9cd6bd6bcce7cef4dbef357533e0568a, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
     - target: {fileID: 3914639510706987756, guid: 9cd6bd6bcce7cef4dbef357533e0568a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
