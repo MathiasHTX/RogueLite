@@ -12,19 +12,26 @@ public class WeaponController : MonoBehaviour
     public GameObject sword;
     bool canAttack = true;
     public float swingCooldown = 0.3f;
+
     Animator anim;
+    RuntimeAnimatorController ac;
+    float animationLength;
 
     [SerializeField] Transform cameraHolder;
     [SerializeField] LayerMask enemyLayerMask;
     [SerializeField] Vector3 boxSize;
 
     [SerializeField] WeaponSO[] weaponSOs;
+    [SerializeField] GameObject[] weapons;
     int usingWeapon = 0;
+    bool canChangeWeapon = true;
 
     AudioSource audioSrc;
     [SerializeField] AudioClip[] swordSounds;
 
     bool isPaused;
+
+    float changeWeaponTimer;
 
     private void Awake()
     {
@@ -36,11 +43,11 @@ public class WeaponController : MonoBehaviour
 
     private void Start()
     {
-        anim = sword.GetComponent<Animator>();
         audioSrc = GetComponent<AudioSource>();
         PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
         UIManager.isPaused += UIManager_isPaused;
         InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
+        ChangeWeapon(0);
     }
 
     private void InsideCraftingTable_onCraftingTable(bool openClose)
@@ -64,9 +71,67 @@ public class WeaponController : MonoBehaviour
         {
             if (canAttack && !isDead && !isPaused)
             {
-                SwordAttack();
+                WeaponAttack();
             }
         }
+
+        if(Input.GetAxisRaw("Mouse ScrollWheel") > 0f && usingWeapon < weapons.Length - 1)
+        {
+            ChangeWeapon(usingWeapon + 1);
+        }
+        else if(Input.GetAxisRaw("Mouse ScrollWheel") < 0f && usingWeapon > 0)
+        {
+            ChangeWeapon(usingWeapon - 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ChangeWeapon(0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ChangeWeapon(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ChangeWeapon(2);
+        }
+
+        // Makes sure you can't change weapon while anim is playing
+        if (canChangeWeapon == false)
+        {
+            changeWeaponTimer += Time.deltaTime;
+            if (changeWeaponTimer >= animationLength)
+            {
+                canChangeWeapon = true;
+            }
+        }
+    }
+
+    void ChangeWeapon(int number)
+    {
+        Debug.Log(canChangeWeapon);
+        if (canChangeWeapon)
+        {
+            usingWeapon = number;
+
+            for (int i = 0; i < weapons.Length; i++)
+            {
+                if (i == usingWeapon)
+                {
+                    weapons[i].SetActive(true);
+                }
+                else
+                    weapons[i].SetActive(false);
+            }
+
+            anim = weapons[usingWeapon].GetComponent<Animator>();
+            ac = anim.runtimeAnimatorController;
+            animationLength = weaponSOs[usingWeapon].animationLength / 0.6f;
+        }
+
     }
 
     /*
@@ -84,11 +149,14 @@ public class WeaponController : MonoBehaviour
     }
     */
 
-    public void SwordAttack()
+    public void WeaponAttack()
     {
         //OnSwordSwing?.Invoke();
         canAttack = false;
-        anim.Play("SwordSwing", 0, 0);
+
+        int randomIndex = UnityEngine.Random.Range(0, ac.animationClips.Length);
+        string randomClipName = ac.animationClips[randomIndex].name;
+        anim.Play(randomClipName, 0, 0);
 
         // Sound
         int randomSound = UnityEngine.Random.Range(0, swordSounds.Length);
@@ -97,6 +165,7 @@ public class WeaponController : MonoBehaviour
         audioSrc.clip = swordSounds[randomSound];
         audioSrc.Play();
 
+        Vector3 boxSize = weaponSOs[usingWeapon].boxSize;
         Vector3 boxCenter = cameraHolder.position + cameraHolder.forward * (boxSize.z / 2f);
 
         Collider[] colliders = Physics.OverlapBox(boxCenter, boxSize / 2f, cameraHolder.rotation, enemyLayerMask);
@@ -120,6 +189,9 @@ public class WeaponController : MonoBehaviour
         }
 
         StartCoroutine(SwingCooldown());
+
+        changeWeaponTimer = 0;
+        canChangeWeapon = false;
     }
 
     private void OnDrawGizmosSelected()
@@ -134,4 +206,5 @@ public class WeaponController : MonoBehaviour
         yield return new WaitForSeconds(swingCooldown);
         canAttack = true;
     }
+
 }

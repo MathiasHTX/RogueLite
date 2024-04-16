@@ -19,3 +19,5 @@ MonoBehaviour:
   requiredItems:
   - {fileID: 11400000, guid: 41d17254904a22844a5e6b1b98d244d6, type: 2}
   powerLevel: 1
+  boxSize: {x: 2, y: 2, z: 2.75}
+  animationLength: 0.5

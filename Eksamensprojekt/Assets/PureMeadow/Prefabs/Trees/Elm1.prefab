@@ -70,11 +70,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ff1034aff585fcf488012125dcb10a81, type: 2}
     - target: {fileID: -3495856182769208953, guid: 618d26b8b72c85c4bb5f40018f09562f, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1508218048058067047, guid: 618d26b8b72c85c4bb5f40018f09562f, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -298352223584862538, guid: 618d26b8b72c85c4bb5f40018f09562f, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 618d26b8b72c85c4bb5f40018f09562f, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 618d26b8b72c85c4bb5f40018f09562f, type: 3}
       propertyPath: m_TagString
@@ -102,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3754078336747894704, guid: 618d26b8b72c85c4bb5f40018f09562f, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4742473837712756890, guid: 618d26b8b72c85c4bb5f40018f09562f, type: 3}
       propertyPath: m_FadeMode
@@ -126,7 +126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5148662070988992235, guid: 618d26b8b72c85c4bb5f40018f09562f, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

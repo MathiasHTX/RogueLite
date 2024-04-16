@@ -19,3 +19,4 @@ MonoBehaviour:
   requiredItems:
   - {fileID: 11400000, guid: 7aabf8bbdff19da4fa0aa0b57a0e2fa2, type: 2}
   powerLevel: 2
+  boxSize: {x: 2, y: 2, z: 3}

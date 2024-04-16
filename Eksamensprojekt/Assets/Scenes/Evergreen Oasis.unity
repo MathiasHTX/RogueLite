@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 24300002, guid: 06d753813be94d84280c7390a390e4bb, type: 2}
+    - target: {fileID: 3523870288940725826, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 62603559}
+    - target: {fileID: 3588316773077986592, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+      propertyPath: cameraHolder
+      value: 
+      objectReference: {fileID: 1054878245}
     - target: {fileID: 5193626161539037940, guid: 949f4d70839942441b4da82724cdacda, type: 3}
       propertyPath: m_Name
       value: ThePlayer
@@ -417,6 +425,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1566775907131901078, guid: 713ec2450c006e84a8704e75ceac602f, type: 3}
   m_PrefabInstance: {fileID: 1667213144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &62603559 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2864586139203616821, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+  m_PrefabInstance: {fileID: 3380330}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &77902160 stripped
 Transform:
@@ -3672,6 +3685,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3372020455016539924, guid: 7dc8747ee75d4624c8c0923eb52ab568, type: 3}
   m_PrefabInstance: {fileID: 809390071}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1054878245 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7519647619724640928, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+  m_PrefabInstance: {fileID: 3380330}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1057308151
 PrefabInstance:

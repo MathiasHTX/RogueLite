@@ -2406,11 +2406,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208923496}
   m_Mesh: {fileID: 2476890036328598241, guid: c1ce40cf0584e6b47ad5ba46ffe8e4cd, type: 3}
---- !u!4 &228275750 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7519647619724640928, guid: 949f4d70839942441b4da82724cdacda, type: 3}
-  m_PrefabInstance: {fileID: 1764125364}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &236570406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4117,6 +4112,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 7a3c04a221f723d499cd59f5c970ae05, type: 2}
   GatherChance: 1
+  rayLength: 10
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  rayOrigin: {fileID: 0}
+  forwardOffset: 1
+  hitParticles: {fileID: 0}
+  gatherParticles: {fileID: 0}
+  audioSrc: {fileID: 0}
+  hitSounds: []
+  gatherSound: {fileID: 0}
 --- !u!65 &483591455
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10618,6 +10624,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 41d17254904a22844a5e6b1b98d244d6, type: 2}
   GatherChance: 1
+  rayLength: 10
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  rayOrigin: {fileID: 0}
+  forwardOffset: 1
+  hitParticles: {fileID: 0}
+  gatherParticles: {fileID: 0}
+  audioSrc: {fileID: 0}
+  hitSounds: []
+  gatherSound: {fileID: 0}
 --- !u!65 &1559277926
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11991,33 +12008,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 202478043904838923, guid: 949f4d70839942441b4da82724cdacda, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 06d753813be94d84280c7390a390e4bb, type: 2}
-    - target: {fileID: 2985079072346969419, guid: 949f4d70839942441b4da82724cdacda, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.747
-      objectReference: {fileID: 0}
-    - target: {fileID: 2985079072346969419, guid: 949f4d70839942441b4da82724cdacda, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.915
-      objectReference: {fileID: 0}
-    - target: {fileID: 3482476059475194238, guid: 949f4d70839942441b4da82724cdacda, type: 3}
-      propertyPath: m_RendererIndex
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3482476059475194238, guid: 949f4d70839942441b4da82724cdacda, type: 3}
-      propertyPath: m_RenderPostProcessing
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5193626161539037940, guid: 949f4d70839942441b4da82724cdacda, type: 3}
       propertyPath: m_Name
       value: ThePlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 5193626161539037940, guid: 949f4d70839942441b4da82724cdacda, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6883064366382552482, guid: 949f4d70839942441b4da82724cdacda, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12059,32 +12052,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9002788902705511596, guid: 949f4d70839942441b4da82724cdacda, type: 3}
-      propertyPath: intensity
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9002788902705511596, guid: 949f4d70839942441b4da82724cdacda, type: 3}
-      propertyPath: jumpingBobAmount
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 9002788902705511596, guid: 949f4d70839942441b4da82724cdacda, type: 3}
-      propertyPath: walkingBobAmount
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 9002788902705511596, guid: 949f4d70839942441b4da82724cdacda, type: 3}
-      propertyPath: bobAmountHorizontal
-      value: 0.007
-      objectReference: {fileID: 0}
-    - target: {fileID: 9068941791376041934, guid: 949f4d70839942441b4da82724cdacda, type: 3}
-      propertyPath: cameraHolder
-      value: 
-      objectReference: {fileID: 228275750}
-    - target: {fileID: 9068941791376041934, guid: 949f4d70839942441b4da82724cdacda, type: 3}
-      propertyPath: enemyLayerMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5809167783555986014, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

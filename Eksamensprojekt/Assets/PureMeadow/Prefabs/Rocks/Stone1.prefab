@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1372324344512385855, guid: 467fffc619167d048a7885483e2d127f, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
     - target: {fileID: 2538483891785888642, guid: 467fffc619167d048a7885483e2d127f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -92,9 +96,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3690800251513112552, guid: 467fffc619167d048a7885483e2d127f, type: 3}
+      propertyPath: m_TagString
+      value: Tree
+      objectReference: {fileID: 0}
     - target: {fileID: 7105939649091349457, guid: 467fffc619167d048a7885483e2d127f, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7105939649091349457, guid: 467fffc619167d048a7885483e2d127f, type: 3}
+      propertyPath: m_TagString
+      value: Tree
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -1101183125716405984, guid: 467fffc619167d048a7885483e2d127f, type: 3}
