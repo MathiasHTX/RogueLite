@@ -20,5 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 41d17254904a22844a5e6b1b98d244d6, type: 2}
   - {fileID: 11400000, guid: 7a3c04a221f723d499cd59f5c970ae05, type: 2}
   powerLevel: 1
-  boxSize: {x: 2, y: 2, z: 4}
-  animationLength: 0.3
+  boxSize: {x: 0, y: 0, z: 0}

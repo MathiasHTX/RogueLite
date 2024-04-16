@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneBuildIndex: 2
   title: HOME
+  planetNumber: 0
   description: Just like any other beings, one needs a place to return home to after
     a long day filled with action. Your home planet is the place you know best, where
     you have a cottage, a garden, and beautiful green landscapes, just like back

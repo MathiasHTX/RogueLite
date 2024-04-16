@@ -507,7 +507,7 @@ PrefabInstance:
       objectReference: {fileID: 1543592149}
     - target: {fileID: 7829317361116748989, guid: 2f39c46a19c39254384ebce4d980a348, type: 3}
       propertyPath: m_Name
-      value: Planet (2)
+      value: Snowdrift
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2178,7 +2178,7 @@ PrefabInstance:
       objectReference: {fileID: 1543592149}
     - target: {fileID: 7829317361116748989, guid: 2f39c46a19c39254384ebce4d980a348, type: 3}
       propertyPath: m_Name
-      value: Planet (5)
+      value: Unknown 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2607,7 +2607,7 @@ PrefabInstance:
       objectReference: {fileID: 1543592149}
     - target: {fileID: 7829317361116748989, guid: 2f39c46a19c39254384ebce4d980a348, type: 3}
       propertyPath: m_Name
-      value: Planet (4)
+      value: Unknown 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3787,6 +3787,18 @@ MonoBehaviour:
   m_camera: {fileID: 1543592149}
   camOffset: {x: 2, y: 3, z: -5}
   planets: {fileID: 1691238699}
+  planetSOs:
+  - {fileID: 11400000, guid: 9a124546756f8d64f932be9a59924265, type: 2}
+  - {fileID: 11400000, guid: 4e67507826ff67a47b393a312a3148d5, type: 2}
+  - {fileID: 11400000, guid: 128a6062a5848d245ba2cbd0b5866175, type: 2}
+  - {fileID: 11400000, guid: 11db76634336f0f44a6ef035dea1857e, type: 2}
+  - {fileID: 11400000, guid: d859d1781eb70f94d856d7fedda80b00, type: 2}
+  planetTransforms:
+  - {fileID: 1062414745}
+  - {fileID: 941254882}
+  - {fileID: 1561053480}
+  - {fileID: 1421193869}
+  - {fileID: 1350077938}
   planetMenu: {fileID: 1363033532}
   titleText: {fileID: 1838369419}
   descriptionText: {fileID: 892586807}
@@ -4057,7 +4069,7 @@ PrefabInstance:
       objectReference: {fileID: 1543592149}
     - target: {fileID: 7829317361116748989, guid: 2f39c46a19c39254384ebce4d980a348, type: 3}
       propertyPath: m_Name
-      value: Planet (1)
+      value: Home
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4864,7 +4876,7 @@ PrefabInstance:
       objectReference: {fileID: 1543592149}
     - target: {fileID: 7829317361116748989, guid: 2f39c46a19c39254384ebce4d980a348, type: 3}
       propertyPath: m_Name
-      value: Planet
+      value: Evergreen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

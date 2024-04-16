@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 103243bcf88d3bd4986f473925c2957f, type: 3}
-  m_Name: UnknownPlanet
+  m_Name: UnknownPlanet 1
   m_EditorClassIdentifier: 
   sceneBuildIndex: 0
   title: UNKNOWN PLANET
-  planetNumber: 3
+  planetNumber: 4
   description: Unlock this planet as you progress
   material: {fileID: 2100000, guid: 3cad05e3a76cd2c4c961a302fb3cebba, type: 2}
   unlocked: 0

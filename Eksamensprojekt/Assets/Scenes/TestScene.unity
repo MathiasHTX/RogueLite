@@ -263,19 +263,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 7a3c04a221f723d499cd59f5c970ae05, type: 2}
   GatherChance: 0.5
-  rayLength: 10
+  rayLength: 30
   hitLayers:
     serializedVersion: 2
-    m_Bits: 1
-  rayOrigin: {fileID: 0}
+    m_Bits: 8
+  rayOrigin: {fileID: 2080119351}
   forwardOffset: 0.75
   hitParticles: {fileID: 5403154854008942850, guid: 6008dd9b49b424f4f9f0c377f99af681, type: 3}
   gatherParticles: {fileID: 1715944312650657683, guid: 27489be1a68adbf4eba09f8508d40908, type: 3}
   audioSrc: {fileID: 250938664}
   hitSounds:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 9f0e94126c9fce2428f30883b5c57519, type: 3}
+  - {fileID: 8300000, guid: f4d0ec97a12ce334abb0f19921071426, type: 3}
+  - {fileID: 8300000, guid: d77b7372a1a44fb4099116363a7072aa, type: 3}
   gatherSound: {fileID: 8300000, guid: 11f210ba8331ff843860ea3309520b17, type: 3}
 --- !u!65 &250938660
 BoxCollider:
@@ -1266,7 +1266,7 @@ MonoBehaviour:
   rayLength: 30
   hitLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8
   rayOrigin: {fileID: 2080119351}
   forwardOffset: 0.75
   hitParticles: {fileID: 6658923636286810460, guid: f397d3feec6e5ca4084c8c9349942a71, type: 3}
@@ -1608,7 +1608,7 @@ GameObject:
   - component: {fileID: 1888376679}
   - component: {fileID: 1888376678}
   - component: {fileID: 1888376677}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}

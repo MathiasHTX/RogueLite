@@ -14,9 +14,14 @@ public class PlanetSelector : MonoBehaviour
     public Transform planets;
     Transform selectedPlanetTransform;
     PlanetSO selectedPlanetSO;
+    public PlanetSO[] planetSOs;
+    public Transform[] planetTransforms;
+    private int planetIndex = -1;
+    private int currentPlanetIndex = -1; // Starts with -1 to indicate no planet is selected initially
 
     bool planetSelected;
     bool camFollowPlanets;
+    bool goingToPlanet = false;
 
     // UI
     public GameObject planetMenu;
@@ -97,6 +102,51 @@ public class PlanetSelector : MonoBehaviour
             Vector3 targetPosition = selectedPlanetTransform.position + camOffset;
             float transitionSpeed = 0.5f;
             m_camera.position = Vector3.Lerp(m_camera.position, targetPosition, transitionSpeed * Time.deltaTime);
+        } 
+
+        if (planetSelected && Input.GetKeyDown(KeyCode.Return)) 
+        {
+            GoToPlanet();
+        }
+
+        if (planetSelected && Input.GetKeyDown(KeyCode.Escape) && !goingToPlanet)
+        {
+            BackButton();
+            planetIndex = -1;
+        }
+
+        // Use numbers on the keyboard to zoom to planets
+        for (int i = 0; i < planetTransforms.Length; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            {
+                if (i != currentPlanetIndex)
+                {
+                    currentPlanetIndex = i;  // Update current planet index
+                    planetIndex = currentPlanetIndex;
+                    ZoomToPlanet(planetTransforms[i], planetSOs[i]);
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (planetIndex < planetTransforms.Length - 1)
+            {
+                planetIndex += 1;
+                currentPlanetIndex = planetIndex;
+                ZoomToPlanet(planetTransforms[planetIndex], planetSOs[planetIndex]);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (planetIndex > 0)
+            {
+                planetIndex -= 1;
+                currentPlanetIndex = planetIndex;
+                ZoomToPlanet(planetTransforms[planetIndex], planetSOs[planetIndex]);
+            }
         }
     }
 
@@ -112,6 +162,8 @@ public class PlanetSelector : MonoBehaviour
         camFollowPlanets = false;
         CloseMenu();
         backBtn.SetActive(false);
+        goingToPlanet = true;
+        m_camera.DOKill();
 
         Vector3 zoomOutOffset = new Vector3(2, 4, -7);
         m_camera.DOMove(selectedPlanetTransform.position + zoomOutOffset, 0.5f).SetEase(Ease.OutCirc).OnComplete(() =>
@@ -131,6 +183,7 @@ public class PlanetSelector : MonoBehaviour
 
     public void CloseMenu()
     {
+        m_camera.DOKill();
         m_camera.DOMove(originalPosition, 0.5f);
         planetMenu.transform.DOScaleY(0, 0.2f);
     }
