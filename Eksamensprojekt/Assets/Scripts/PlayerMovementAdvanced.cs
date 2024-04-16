@@ -536,6 +536,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void InsideCraftingTable_onCraftingTable(bool openClose)
     {
-        movementEnabled = openClose;
+        movementEnabled = !openClose;
     }
 }

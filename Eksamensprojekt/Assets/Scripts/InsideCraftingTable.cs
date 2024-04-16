@@ -8,6 +8,7 @@ public class InsideCraftingTable : MonoBehaviour
     bool playerInsideTrigger;
     public static event Action<bool> onCraftingTable;
     bool isPaused;
+    bool insideCraftingTable;
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class InsideCraftingTable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInsideTrigger = true;
-            UIManager.instance.ShowPressEText("Press E to interact");
+            UIManager.instance.ShowPressEText("to interact");
         }
     }
 
@@ -44,22 +45,25 @@ public class InsideCraftingTable : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                onCraftingTable?.Invoke(false);
+                onCraftingTable?.Invoke(true);
 
                 UIManager.instance.OpenCraftingUI();
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 UIManager.instance.HidePressEText();
+                insideCraftingTable = true;
             }
-            else if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                onCraftingTable?.Invoke(true);
+        }
 
-                UIManager.instance.CloseCraftingUI();
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                UIManager.instance.ShowPressEText("to interact");
-            }
+        if (Input.GetKeyDown(KeyCode.Escape) && insideCraftingTable)
+        {
+            onCraftingTable?.Invoke(false);
+
+            UIManager.instance.CloseCraftingUI();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            UIManager.instance.ShowPressEText("to interact");
+            insideCraftingTable = false;
         }
     }
 }

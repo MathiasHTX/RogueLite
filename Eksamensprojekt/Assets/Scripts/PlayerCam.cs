@@ -38,7 +38,7 @@ public class PlayerCam : MonoBehaviour
 
     private void InsideCraftingTable_onCraftingTable(bool openClose)
     {
-        camEnabled = openClose;
+        camEnabled = !openClose;
     }
 
     private void PlayerMovementAdvanced_onDeath()
