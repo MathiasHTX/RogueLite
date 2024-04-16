@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneBuildIndex: 4
   title: SNOWDRIFT SUMMIT
+  planetNumber: 2
   description: The landscape of this planet is covered in what appears to be snow,
     stretching endlessly. If that wasn't enough, it is also inhabited by large dangerous
     enemies, even more aggressive than the green slimy blobs on Evergreen Oasis.

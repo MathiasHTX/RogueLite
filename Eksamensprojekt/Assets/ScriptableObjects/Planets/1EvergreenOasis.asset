@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneBuildIndex: 3
   title: EVERGREEN OASIS
+  planetNumber: 1
   description: This alien planet, reminiscent of your home planet in many ways, is
     flooded with green slimy blobs that do not welcome foreign life forms on their
     beloved planet. However, it is rumored that if one can defeat them, they carry
