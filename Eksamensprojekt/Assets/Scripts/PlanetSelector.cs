@@ -27,6 +27,7 @@ public class PlanetSelector : MonoBehaviour
     public GameObject planetMenu;
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI descriptionText;
+    public TextMeshProUGUI powerLevelText;
     public Image whiteFade;
     public GameObject backBtn;
     public GameObject goBtn;
@@ -64,6 +65,7 @@ public class PlanetSelector : MonoBehaviour
         m_camera.DOMove(selectedPlanetTransform.position + camOffset, 0.4f).OnComplete(() => camFollowPlanets = true);
 
         titleText.text = planetSO.title;
+        powerLevelText.text = "Power level " + planetSO.powerLevel;
         descriptionText.text = planetSO.description;
 
         if (planetSO.unlocked)

@@ -22,3 +22,4 @@ MonoBehaviour:
     higher.
   material: {fileID: 2100000, guid: de3cc23eab6e7154fa7aee705e1c0623, type: 2}
   unlocked: 1
+  powerLevel: 2

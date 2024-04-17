@@ -50,5 +50,11 @@ public class CraftItem : MonoBehaviour
         PlayerPrefs.Save();
         PlayerPrefsKeysManager.RegisterKey(weaponSO.weaponName + "Amount"); // Register crafted item;
         Debug.Log("New " + weaponSO.weaponName + " count: " + PlayerPrefs.GetInt(weaponSO.weaponName + "Amount"));
+
+        int powerLevel = weaponSO.powerLevel;
+        if(powerLevel > PlayerPrefs.GetInt("HighestPowerLevel"))
+        {
+            PlayerPrefs.SetInt("HighestPowerLevel", powerLevel);
+        }
     }
 }

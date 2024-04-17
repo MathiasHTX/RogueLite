@@ -11,4 +11,5 @@ public class PlanetSO : ScriptableObject
     public string description;
     public Material material;
     public bool unlocked = true;
+    public int powerLevel;
 }
