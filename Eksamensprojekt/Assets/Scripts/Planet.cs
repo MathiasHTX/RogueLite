@@ -60,7 +60,7 @@ public class Planet : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (!planetSelector.PlanetSelected() && !planetSelector.GoingToPlanet() && !mouseOver && planetLockedState != 0)
+        if (!planetSelector.PlanetSelected() && !planetSelector.GoingToPlanet() && !mouseOver)
         {
             transform.DOScale(hoverSize, 0.2f);
             planetSelector.PlayHoverSound();
@@ -81,6 +81,7 @@ public class Planet : MonoBehaviour
             switch (planetLockedState)
             {
                 case 0: // Deny sound
+                    planetSelector.ZoomToPlanet(this.transform, planetSO);
                     break;
                 case 1: // Unlock planet
                     planetSelector.UnlockPlanet(this.transform, planetSO);

@@ -107,6 +107,14 @@ public class UIManager : MonoBehaviour
         crossHair.SetActive(false);
     }
 
+    private void OnDestroy()
+    {
+        PlayerMovementAdvanced.onDeath -= PlayerMovementAdvanced_onDeath;
+        PlayerMovementAdvanced.onDeathByArea -= PlayerMovementAdvanced_onDeathByArea;
+
+        ShipLandingSequence.OnExitShip -= ShipLandingSequence_OnExitShip;
+    }
+
     private void PlayerMovementAdvanced_onDeathByArea()
     {
         whiteFade.gameObject.SetActive(true);

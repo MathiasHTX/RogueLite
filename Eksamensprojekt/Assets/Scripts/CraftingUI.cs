@@ -33,8 +33,14 @@ public class CraftingUI : MonoBehaviour
         InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
         UpdateCheckmarks();
         OpenGrid(0);
+        OpenWeapon(firstWeapon);
 
         selectedWeapon = firstWeapon;
+    }
+
+    private void OnDestroy()
+    {
+        InsideCraftingTable.onCraftingTable -= InsideCraftingTable_onCraftingTable;
     }
 
     private void InsideCraftingTable_onCraftingTable(bool obj)
