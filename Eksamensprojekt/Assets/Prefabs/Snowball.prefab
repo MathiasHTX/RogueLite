@@ -5101,7 +5101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snowballRb: {fileID: 3568303454536118446}
-  rollForce: 5
+  rollForce: 8.5
   dissolve: {fileID: 6657822029725837572}
   groundLayer: 3
   pushForceY: 8.5

@@ -14,7 +14,7 @@ public class Snowball : MonoBehaviour
     public ParticleSystem dissolve;
     private Vector3 force;
     private bool playerHit;
-    private float decreasingValue = 15f;
+    private float decreasingValue = 20f;
     private Rigidbody playerRb;
     public int groundLayer;
 
@@ -42,7 +42,7 @@ public class Snowball : MonoBehaviour
         dissolve.Stop();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // Apply continous force to snowball, ensuring it moves
         if (snowballRb != null)

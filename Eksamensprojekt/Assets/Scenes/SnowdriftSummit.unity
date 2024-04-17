@@ -2467,7 +2467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5193626161539037940, guid: 949f4d70839942441b4da82724cdacda, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5193626161539037940, guid: 949f4d70839942441b4da82724cdacda, type: 3}
       propertyPath: m_TagString
@@ -2694,7 +2694,7 @@ GameObject:
   - component: {fileID: 765893987}
   - component: {fileID: 765893990}
   m_Layer: 0
-  m_Name: FogLayer
+  m_Name: FogAndDeathLayer
   m_TagString: DeathArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3433,6 +3433,7 @@ MonoBehaviour:
   holdMenuMessage: {fileID: 1473755955}
   holdMenuRing: {fileID: 530236836}
   craftingTableRect: {fileID: 0}
+  inventoryRect: {fileID: 0}
 --- !u!4 &978342931
 Transform:
   m_ObjectHideFlags: 0
@@ -3970,7 +3971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1136284773
 MonoBehaviour:
   m_ObjectHideFlags: 0
