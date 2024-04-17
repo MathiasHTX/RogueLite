@@ -23,7 +23,9 @@ public class PlanetSelector : MonoBehaviour
     bool camFollowPlanets;
     bool goingToPlanet = false;
 
-    // UI
+    [SerializeField] GameObject unlockParSys;
+
+    [Header("UI")]
     public GameObject planetMenu;
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI descriptionText;
@@ -37,7 +39,7 @@ public class PlanetSelector : MonoBehaviour
     public Image whiteTop;
     public Image whiteBottom;
 
-    // Audio
+    [Header("Audio")]
     public AudioSource audioSrc;
     public AudioClip hoverSound;
     public AudioClip goToPlanetSound;
@@ -120,7 +122,7 @@ public class PlanetSelector : MonoBehaviour
         // Use numbers on the keyboard to zoom to planets
         for (int i = 0; i < planetTransforms.Length; i++)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i) && !goingToPlanet)
             {
                 if (i != currentPlanetIndex)
                 {
@@ -131,7 +133,7 @@ public class PlanetSelector : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) && !goingToPlanet)
         {
             if (planetIndex < planetTransforms.Length - 1)
             {
@@ -141,7 +143,7 @@ public class PlanetSelector : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && !goingToPlanet)
         {
             if (planetIndex > 0)
             {
@@ -167,7 +169,7 @@ public class PlanetSelector : MonoBehaviour
         goingToPlanet = true;
         m_camera.DOKill();
 
-        Vector3 zoomOutOffset = new Vector3(2, 4, -7);
+        Vector3 zoomOutOffset = new Vector3(2, 5.5f, -7);
         m_camera.DOMove(selectedPlanetTransform.position + zoomOutOffset, 0.5f).SetEase(Ease.OutCirc).OnComplete(() =>
         {
             m_camera.DOMove(selectedPlanetTransform.position, 2).SetEase(Ease.InQuart);
@@ -177,8 +179,43 @@ public class PlanetSelector : MonoBehaviour
         audioSrc.PlayOneShot(goToPlanetSound);
     }
 
+    public void UnlockPlanet(Transform planetTransform, PlanetSO planetSO)
+    {
+        goingToPlanet = true;
+        Vector3 zoomOutOffset = new Vector3(0, 1, -2);
+        m_camera.DOMove(originalPosition + zoomOutOffset, 1).SetEase(Ease.OutCirc).OnComplete(() =>
+        {
+            Instantiate(unlockParSys, planetTransform);
+
+            whiteFade.DOFade(1, 0.1f).OnComplete(() =>
+            {
+                m_camera.position = originalPosition;
+                whiteFade.DOFade(0, 1);
+                m_camera.DOShakePosition(2, 0.7f, 20);
+
+                PlayerPrefs.SetInt(planetSO.planetNumber + "LockedState", 2);
+                planetTransform.gameObject.GetComponent<Planet>().CheckLockedState();
+
+                goingToPlanet = false;
+            });
+
+        });
+    }
+
     void OpenMenu()
     {
+        if (selectedPlanetSO.planetNumber == 0)
+        {
+            powerLevelText.gameObject.SetActive(false);
+            descriptionText.rectTransform.anchoredPosition = new Vector2(0, -170);
+        }
+        else
+        {
+            powerLevelText.gameObject.SetActive(true);
+            descriptionText.rectTransform.anchoredPosition = new Vector2(0, -195);
+        }
+
+
         planetMenu.transform.localScale = new Vector2(1, 0);
         planetMenu.transform.DOScaleY(1, 0.2f);
     }
@@ -198,5 +235,10 @@ public class PlanetSelector : MonoBehaviour
     public void PlayHoverSound()
     {
         audioSrc.PlayOneShot(hoverSound);
+    }
+
+    public bool GoingToPlanet()
+    {
+        return goingToPlanet;
     }
 }

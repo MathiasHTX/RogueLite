@@ -9,7 +9,8 @@ public class CraftingUI : MonoBehaviour
 {
     [SerializeField] WeaponSO[] weaponSOs;
     [SerializeField] CraftItem craftItemScript;
-    [SerializeField] Toggle firstToggle;
+    [SerializeField] Toggle[] firstItemToggles;
+    [SerializeField] Toggle firstTabsToggle;
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI descriptionText;
     [SerializeField] GameObject[] requiredItemsUI;
@@ -20,6 +21,7 @@ public class CraftingUI : MonoBehaviour
     [SerializeField] Button craftBtn;
     [SerializeField] TextMeshProUGUI missingItemText;
     [SerializeField] GameObject ownedText;
+    [SerializeField] GameObject[] grids;
 
     WeaponSO selectedWeapon;
 
@@ -27,9 +29,10 @@ public class CraftingUI : MonoBehaviour
 
     private void Start()
     {
-        firstToggle.isOn = true;
+        firstTabsToggle.isOn = true;
         InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
         UpdateCheckmarks();
+        OpenGrid(0);
 
         selectedWeapon = firstWeapon;
     }
@@ -37,7 +40,6 @@ public class CraftingUI : MonoBehaviour
     private void InsideCraftingTable_onCraftingTable(bool obj)
     {
         OpenWeapon(firstWeapon);
-        firstToggle.isOn = true;
     }
 
     public void OpenWeapon(WeaponSO weaponSO)
@@ -134,6 +136,21 @@ public class CraftingUI : MonoBehaviour
             }
             else
                 weaponCheckmarks[i].SetActive(false);
+        }
+    }
+
+    public void OpenGrid(int gridNumber)
+    {
+        firstItemToggles[gridNumber].isOn = true;
+
+        for(int i = 0; i < grids.Length; i++)
+        {
+            if(i == gridNumber)
+            {
+                grids[i].SetActive(true);
+            }
+            else
+                grids[i].SetActive(false);
         }
     }
 }

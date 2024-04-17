@@ -16,6 +16,7 @@ public class Planet : MonoBehaviour
 
     // UI
     public TextMeshProUGUI planetText;
+    public TextMeshProUGUI powerLevelText;
     public Image lockImage;
     public Sprite unlockIcon;
     public Canvas titleCanvas;
@@ -31,7 +32,8 @@ public class Planet : MonoBehaviour
     private void Start()
     {
         originalSize = transform.localScale.x;
-        planetText.text = planetSO.title;
+
+        powerLevelText.text = planetSO.powerLevel.ToString();
 
         // Unlock home planet
         if (!PlayerPrefs.HasKey("0LockedState"))
@@ -58,7 +60,7 @@ public class Planet : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (!planetSelector.PlanetSelected() && !mouseOver && planetLockedState != 0)
+        if (!planetSelector.PlanetSelected() && !planetSelector.GoingToPlanet() && !mouseOver && planetLockedState != 0)
         {
             transform.DOScale(hoverSize, 0.2f);
             planetSelector.PlayHoverSound();
@@ -78,18 +80,19 @@ public class Planet : MonoBehaviour
         {
             switch (planetLockedState)
             {
-                case 0:
-                    break; //Deny sound
-                case 1:
-                    break; // unlock
-                case 2:
+                case 0: // Deny sound
+                    break;
+                case 1: // Unlock planet
+                    planetSelector.UnlockPlanet(this.transform, planetSO);
+                    break;
+                case 2: // Go to planet
                     planetSelector.ZoomToPlanet(this.transform, planetSO); break;
 
             }
         }
     }
 
-    void CheckLockedState()
+    public void CheckLockedState()
     {
         planetLockedState = PlayerPrefs.GetInt(planetSO.planetNumber + "LockedState");
         int highestPowerLevel = PlayerPrefs.GetInt("HighestPowerLevel");
@@ -97,6 +100,7 @@ public class Planet : MonoBehaviour
         if (highestPowerLevel >= planetSO.powerLevel && planetLockedState == 0)
         {
             planetLockedState = 1; // Can be unlocked
+            PlayerPrefs.SetInt(planetSO.planetNumber + "LockedState", 1);
         }
 
         Debug.Log(planetSO + " " + highestPowerLevel);
@@ -112,7 +116,7 @@ public class Planet : MonoBehaviour
                 lockImage.gameObject.SetActive(true); break;
             case 1: // Can be unlocked
                 planetMeshRenderer.material = unlockedPlanetMat;
-                planetText.text = "UNLOCK!";
+                planetText.text = "UNLOCK";
                 lockImage.sprite = unlockIcon;
                 lockImage.gameObject.SetActive(true); break;
             case 2: // Unlocked
