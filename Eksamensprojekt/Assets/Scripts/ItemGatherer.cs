@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class ItemGatherer : MonoBehaviour
@@ -63,7 +64,6 @@ public class ItemGatherer : MonoBehaviour
                         PlayerPrefs.SetInt(item.itemName + "Amount", PlayerPrefs.GetInt(item.itemName + "Amount") + 1);
                         PlayerPrefs.Save();
                         PlayerPrefsKeysManager.RegisterKey(item.itemName + "Amount");
-                        Debug.Log("Gathered Item at " + adjustedHitPosition);
 
                         // Play the particle system at the adjusted hit position
                         Destroy(Instantiate(hitParticles, adjustedHitPosition, Quaternion.identity), 1);
@@ -78,7 +78,7 @@ public class ItemGatherer : MonoBehaviour
                     audioSrc.pitch = randomPitch;
                     audioSrc.PlayOneShot(hitSounds[randomSound]);
                 }
-            }
+            } 
         }
     }
 
