@@ -9,16 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e38b1b4a7f8b9344799c5875b207a33b, type: 3}
-  m_Name: 1WoodenSword
+  m_Script: {fileID: 11500000, guid: 3ae25c21267f2db43acd7f6f287d9818, type: 3}
+  m_Name: Arrow
   m_EditorClassIdentifier: 
-  weaponName: Wooden Sword
-  description: A basic sword to start your journey.
-  damage: 10
-  requiredItemAmounts: 0a000000
+  itemName: Arrow
+  description: An arrow for your crossbow.
+  itemIcon: {fileID: 0}
+  requiredItemAmounts: 0a00000005000000
   requiredItems:
   - {fileID: 11400000, guid: 41d17254904a22844a5e6b1b98d244d6, type: 2}
-  powerLevel: 1
-  boxSize: {x: 2, y: 2, z: 2.75}
-  animationLength: 0.5
-  weaponIcon: {fileID: 21300000, guid: efa4bd6878d79db41b7ce4968d890498, type: 3}
+  - {fileID: 11400000, guid: 7a3c04a221f723d499cd59f5c970ae05, type: 2}

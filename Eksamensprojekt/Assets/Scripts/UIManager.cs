@@ -73,8 +73,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] RectTransform craftingTableRect;
     bool craftingTableOpen;
 
+    [Header("Inventory")]
+    [SerializeField] RectTransform inventoryRect;
+    bool inventoryOpen;
+
 
     bool sceneIsHome;
+
+    bool hasExitedShip;
 
     private void Awake()
     {
@@ -105,6 +111,9 @@ public class UIManager : MonoBehaviour
 
         holdMenuMessage.SetActive(false);
         crossHair.SetActive(false);
+
+        inventoryRect.localScale = new Vector2(1, 0);
+        inventoryRect.gameObject.SetActive(false);
     }
 
     private void OnDestroy()
@@ -134,6 +143,8 @@ public class UIManager : MonoBehaviour
         blackBarTop.DOAnchorPosY(20, 1);
 
         crossHair.SetActive(true);
+
+        hasExitedShip = true;
     }
 
     void LoadGameUI()
@@ -254,9 +265,18 @@ public class UIManager : MonoBehaviour
             timerText.text = WaveManager.instance.GetTimer().ToString("F0") + "s";
         }
 
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape) && !inventoryOpen)
         {
             PauseGame();
+        }
+        else if(Input.GetKeyUp(KeyCode.Escape) && inventoryOpen)
+        {
+            CloseInventoryUI();
+        }
+
+        if(Input.GetKey(KeyCode.Tab) && !craftingTableOpen && !inventoryOpen && hasExitedShip)
+        {
+            OpenInventoryUI();
         }
     }
 
@@ -281,7 +301,7 @@ public class UIManager : MonoBehaviour
 
     void PauseGame()
     {
-        if (!paused && !craftingTableOpen && ShipLandingSequence.instance.HasExitedShip())
+        if (!paused && !craftingTableOpen && hasExitedShip)
         {
             UIAudio.instance.PlayOpenSound();
             pauseScreen.anchoredPosition = new Vector2(-170, 0);
@@ -358,6 +378,25 @@ public class UIManager : MonoBehaviour
         craftingTableRect.DOScaleY(0, 0.2f).OnComplete(() => {
             craftingTableRect.gameObject.SetActive(false);
             craftingTableOpen = false;
+        });
+    }
+
+    public void OpenInventoryUI()
+    {
+        inventoryRect.localScale = new Vector2(1, 0);
+        inventoryRect.gameObject.SetActive(true);
+        inventoryRect.DOScaleY(1, 0.2f);
+        inventoryOpen = true;
+        UIAudio.instance.PlayOpenSound();
+    }
+
+    public void CloseInventoryUI()
+    {
+        UIAudio.instance.PlayCloseSound();
+        Debug.Log("daiwh");
+        inventoryRect.DOScaleY(0, 0.2f).OnComplete(() => {
+            inventoryRect.gameObject.SetActive(false);
+            inventoryOpen = false;
         });
     }
 }

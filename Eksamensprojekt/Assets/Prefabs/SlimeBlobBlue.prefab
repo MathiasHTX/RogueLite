@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 7523050306266196213}
   - component: {fileID: 3015401053716795392}
   m_Layer: 8
-  m_Name: SlimeBlobIce
+  m_Name: SlimeBlobBlue
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -393,6 +393,7 @@ MonoBehaviour:
   shootInterval: 10
   shootForce: 20
   minShootDistance: 10
+  slimePickUp: {fileID: 6641168166501560300, guid: 5b2f2959232ca1c4a85704182b8f1db3, type: 3}
 --- !u!195 &66691764960631579
 NavMeshAgent:
   m_ObjectHideFlags: 0

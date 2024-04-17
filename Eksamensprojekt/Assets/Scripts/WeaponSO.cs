@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Weapon", menuName = "Scriptable Objects/Weapon", order = 1)]
 public class WeaponSO : ScriptableObject
@@ -13,4 +14,5 @@ public class WeaponSO : ScriptableObject
     public int powerLevel;
     public Vector3 boxSize;
     public float animationLength;
+    public Sprite weaponIcon;
 }

@@ -42,20 +42,23 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] Gradient colorGradient;
     bool isHit;
 
-    [Header("")]
+    [Header("Particles")]
     [SerializeField] ParticleSystem slimeParticle;
 
-    //Audio
+    [Header("Audio")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] slimeSounds;
     [SerializeField] AudioClip hitSound;
     [SerializeField] AudioClip shootSound;
 
-    //Shoot projectile
+    [Header("Shoot projectile")]
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] float shootInterval = 2f;
     [SerializeField] float shootForce = 10f;
     [SerializeField] float minShootDistance = 10;
+
+    [Header("Slime ball")]
+    [SerializeField] GameObject slimePickUp;
 
     // Start is called before the first frame update
     void Start()
@@ -253,8 +256,41 @@ public class EnemyAI : MonoBehaviour
         isHit = false;
     }
 
+    void SpawnSlimePickUps()
+    {
+        int waveCount = WaveManager.instance.GetWaveCount();
+        int slimePickUpChance;
+
+        if (waveCount <= 2)
+        {
+            slimePickUpChance = 100; // 10% chance
+        }
+        else if (waveCount <= 5)
+        {
+            slimePickUpChance = 20; // 20% chance
+        }
+        else if(waveCount <= 10)
+        {
+            slimePickUpChance = 30; // 30% chance
+        }
+        else
+            slimePickUpChance = 40; // 40% chance
+
+        int randomNumber = Random.Range(1, 101);
+
+        if (randomNumber <= slimePickUpChance)
+        {
+            int amount = Random.Range(1, 4);
+            for(int i = 0; i < amount; i++)
+            {
+                Instantiate(slimePickUp, transform.position, Quaternion.identity);
+            }
+        }
+    }
+
     void Death()
     {
+        SpawnSlimePickUps();
         enemyDead = true;
         Instantiate(slimeParticle, transform.position, Quaternion.identity);
         WaveManager.instance.EnemyKilled(this.transform.position);
