@@ -11,6 +11,8 @@ TagManager:
   - Sword
   - Tree
   - CraftingTable
+  - Snowball
+  - DeathArea
   layers:
   - Default
   - TransparentFX

@@ -64,7 +64,6 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-
     void SpawnEnemies(int amount = 5)
     {
         Debug.Log("Spawned " + amount);

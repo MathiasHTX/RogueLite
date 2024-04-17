@@ -90,6 +90,7 @@ public class UIManager : MonoBehaviour
         sceneIsHome = SceneManager.GetActiveScene().buildIndex == 2;
 
         PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
+        PlayerMovementAdvanced.onDeathByArea += PlayerMovementAdvanced_onDeathByArea;
 
         ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
         if (!sceneIsHome)
@@ -104,6 +105,12 @@ public class UIManager : MonoBehaviour
 
         holdMenuMessage.SetActive(false);
         crossHair.SetActive(false);
+    }
+
+    private void PlayerMovementAdvanced_onDeathByArea()
+    {
+        whiteFade.gameObject.SetActive(true);
+        whiteFade.DOFade(1f, 1f);
     }
 
     private void ShipLandingSequence_OnExitShip()
