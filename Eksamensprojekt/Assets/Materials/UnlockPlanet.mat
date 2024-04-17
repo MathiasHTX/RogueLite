@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: UnknownPlanet
+  m_Name: UnlockPlanet
   m_Shader: {fileID: -6465566751694194690, guid: af5b64cbbff4c90429a65580669dccc1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,6 +37,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _FresnelPower: 4.97
     - _GradientNoiseScale: 13.7
     - _Outline1Size: 0.2
     - _Outline2Size: 0.1
@@ -47,6 +48,7 @@ Material:
     - _VoronoiDensity: 1.85
     m_Colors:
     - _Color: {r: 0.01886791, g: 0.01886791, b: 0.01886791, a: 0}
+    - _FresnelColor: {r: 0, g: 2.4347446, b: 2.712534, a: 0}
     - _GradientNoiseSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _Layer1Color: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 0}
     - _Layer2Color: {r: 0.01886791, g: 0.01886791, b: 0.01886791, a: 0}

@@ -21,3 +21,4 @@ MonoBehaviour:
     around valuable materials that can help upgrade one's weapons.
   material: {fileID: 2100000, guid: e3d496184d1e0294a813c6bc8cb2e737, type: 2}
   unlocked: 1
+  powerLevel: 1

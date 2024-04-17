@@ -18,3 +18,4 @@ MonoBehaviour:
   description: Unlock this planet as you progress
   material: {fileID: 2100000, guid: 3cad05e3a76cd2c4c961a302fb3cebba, type: 2}
   unlocked: 0
+  powerLevel: 3
