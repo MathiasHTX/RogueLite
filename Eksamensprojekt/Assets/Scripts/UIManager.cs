@@ -230,9 +230,12 @@ public class UIManager : MonoBehaviour
         gameOverBackground.DOSizeDelta(new Vector2(256, 45), 0.5f).SetEase(Ease.InOutCubic);
 
         // Disappear
-        gameOverText.DOFade(0, 0.3f).SetDelay(3.3f);
-        gameOverText.transform.DOLocalMoveY(-7, 0.3f).SetDelay(3.3f);
-        gameOverBackground.DOSizeDelta(new Vector2(0, 45), 0.5f).SetEase(Ease.InOutCubic).SetDelay(3f);
+        gameOverText.DOFade(0, 0.3f).SetDelay(4.3f);
+        gameOverText.transform.DOLocalMoveY(-7, 0.3f).SetDelay(4.3f);
+        gameOverBackground.DOSizeDelta(new Vector2(0, 45), 0.5f).SetEase(Ease.InOutCubic).SetDelay(4f);
+
+        whiteFade.gameObject.SetActive(true);
+        whiteFade.DOFade(1, 1).SetDelay(4).OnComplete(() => SceneManager.LoadScene(2));
 
     }
 

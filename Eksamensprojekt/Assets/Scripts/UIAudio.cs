@@ -6,7 +6,7 @@ public class UIAudio : MonoBehaviour
 {
     public static UIAudio instance;
 
-    [SerializeField] AudioClip openSound, closeSound;
+    [SerializeField] AudioClip openSound, closeSound, clickSound, craftingSound;
     AudioSource audioSrc;
 
     private void Awake()
@@ -30,6 +30,16 @@ public class UIAudio : MonoBehaviour
     public void PlayCloseSound()
     {
         audioSrc.PlayOneShot(closeSound);
+    }
+
+    public void PlayClickSound()
+    {
+        audioSrc.PlayOneShot(clickSound);
+    }
+
+    public void PlayCraftingSound()
+    {
+        audioSrc.PlayOneShot(craftingSound);
     }
 
 }
