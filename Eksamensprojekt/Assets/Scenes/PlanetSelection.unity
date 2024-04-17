@@ -3980,6 +3980,7 @@ MonoBehaviour:
   hoverSound: {fileID: 8300000, guid: 75bb000a3191eda40b1ecb06fb8f3c8e, type: 3}
   goToPlanetSound: {fileID: 8300000, guid: e585ee2858b430746b7659cfa1afae8d, type: 3}
   clickSound: {fileID: 8300000, guid: 65102d43a6ce1164094337f22342c655, type: 3}
+  unlockSound: {fileID: 8300000, guid: 7c3276a47a1a4ee4d996f192693f238f, type: 3}
 --- !u!4 &1626764437
 Transform:
   m_ObjectHideFlags: 0

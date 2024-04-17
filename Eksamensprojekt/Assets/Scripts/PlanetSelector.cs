@@ -44,6 +44,7 @@ public class PlanetSelector : MonoBehaviour
     public AudioClip hoverSound;
     public AudioClip goToPlanetSound;
     public AudioClip clickSound;
+    public AudioClip unlockSound;
 
     private void Start()
     {
@@ -181,6 +182,8 @@ public class PlanetSelector : MonoBehaviour
 
     public void UnlockPlanet(Transform planetTransform, PlanetSO planetSO)
     {
+        audioSrc.PlayOneShot(unlockSound);
+
         goingToPlanet = true;
         Vector3 zoomOutOffset = new Vector3(0, 1, -2);
         m_camera.DOMove(originalPosition + zoomOutOffset, 1).SetEase(Ease.OutCirc).OnComplete(() =>

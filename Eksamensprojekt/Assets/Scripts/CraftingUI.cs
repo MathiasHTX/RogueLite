@@ -39,6 +39,8 @@ public class CraftingUI : MonoBehaviour
 
     private void InsideCraftingTable_onCraftingTable(bool obj)
     {
+        firstTabsToggle.isOn = true;
+        firstItemToggles[0].isOn = true;
         OpenWeapon(firstWeapon);
     }
 

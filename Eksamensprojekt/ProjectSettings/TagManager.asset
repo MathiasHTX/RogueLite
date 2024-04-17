@@ -13,6 +13,7 @@ TagManager:
   - CraftingTable
   - Snowball
   - DeathArea
+  - SlimePickUp
   layers:
   - Default
   - TransparentFX
