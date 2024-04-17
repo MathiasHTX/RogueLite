@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class Snowball : MonoBehaviour
 {
+    [Header("Snowball Properties")]
     public Rigidbody snowballRb;
     private Vector3 originForce;
     public float rollForce;
@@ -13,10 +15,16 @@ public class Snowball : MonoBehaviour
     private Vector3 force;
     private bool playerHit;
     private float decreasingValue = 15f;
-    Rigidbody playerRb;
+    private Rigidbody playerRb;
+    public int groundLayer;
 
+    [Header("Player Forces")]
     public float pushForceY;
     public float playerPushForce;
+
+    [Header("Sounds")]
+    public AudioSource rollingAudioSrc;
+    public AudioSource hitPlayerAudioSrc;
 
     void Start()
     {
@@ -36,11 +44,13 @@ public class Snowball : MonoBehaviour
 
     void Update()
     {
+        // Apply continous force to snowball, ensuring it moves
         if (snowballRb != null)
         {
             snowballRb.AddForce(originForce * rollForce, ForceMode.Force);
         }
 
+        // Airborne player force
         if (playerHit && decreasingValue > 0)
         {
             float decreaseRate = 6.5f;
@@ -52,7 +62,16 @@ public class Snowball : MonoBehaviour
             }
         }
     }
-        IEnumerator dragAdjustment(float delayUntilNotHit)
+
+    // Check if snowball is grounded & play rolling sound
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == groundLayer)
+            rollingAudioSrc.DOFade(0.5f, 1f);
+            rollingAudioSrc.Play();
+    }
+
+    IEnumerator dragAdjustment(float delayUntilNotHit)
     {
         yield return new WaitForSeconds(delayUntilNotHit);
         playerRb.drag = 0.125f;
@@ -71,10 +90,16 @@ public class Snowball : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerRb = other.GetComponent<Rigidbody>();
-            Vector3 yForce = new Vector3(0, pushForceY, 0);
-            playerRb.AddForce(yForce * playerPushForce, ForceMode.Force);
-            playerHit = true;
-            StartCoroutine(dragAdjustment(2f));
+            playerHitBySnowball();
+            hitPlayerAudioSrc.Play();
         }
+    }
+
+    void playerHitBySnowball()
+    {
+        Vector3 yForce = new Vector3(0, pushForceY, 0);
+        playerRb.AddForce(yForce * playerPushForce, ForceMode.Force);
+        playerHit = true;
+        StartCoroutine(dragAdjustment(2f));
     }
 }

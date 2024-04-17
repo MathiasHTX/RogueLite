@@ -131,9 +131,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1889803279}
     m_Modifications:
+    - target: {fileID: 2404852856987101477, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144369375774213322, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7284758493071525086, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_Name
       value: SnowCliff (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284758493071525086, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7949831823179751012, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_LocalScale.x
@@ -190,6 +202,10 @@ PrefabInstance:
     - target: {fileID: 7949831823179751012, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959814832354435138, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -871,9 +887,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1889803279}
     m_Modifications:
+    - target: {fileID: 2404852856987101477, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144369375774213322, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7284758493071525086, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_Name
       value: SnowCliff
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284758493071525086, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7949831823179751012, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_LocalScale.x
@@ -930,6 +958,10 @@ PrefabInstance:
     - target: {fileID: 7949831823179751012, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959814832354435138, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1098,9 +1130,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1889803279}
     m_Modifications:
+    - target: {fileID: 2404852856987101477, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144369375774213322, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7284758493071525086, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_Name
       value: SnowCliff (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284758493071525086, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7949831823179751012, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_LocalScale.x
@@ -1157,6 +1201,10 @@ PrefabInstance:
     - target: {fileID: 7949831823179751012, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959814832354435138, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1448,9 +1496,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1889803279}
     m_Modifications:
+    - target: {fileID: 2404852856987101477, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144369375774213322, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7284758493071525086, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_Name
       value: SnowCliff (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284758493071525086, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7949831823179751012, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_LocalScale.x
@@ -1507,6 +1567,10 @@ PrefabInstance:
     - target: {fileID: 7949831823179751012, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959814832354435138, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3083,9 +3147,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1889803279}
     m_Modifications:
+    - target: {fileID: 2404852856987101477, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144369375774213322, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7284758493071525086, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_Name
       value: SnowCliff (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284758493071525086, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7949831823179751012, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_LocalScale.x
@@ -3142,6 +3218,10 @@ PrefabInstance:
     - target: {fileID: 7949831823179751012, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959814832354435138, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3438,9 +3518,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1889803279}
     m_Modifications:
+    - target: {fileID: 2404852856987101477, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144369375774213322, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7284758493071525086, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_Name
       value: SnowCliff (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284758493071525086, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7949831823179751012, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_LocalScale.x
@@ -3497,6 +3589,10 @@ PrefabInstance:
     - target: {fileID: 7949831823179751012, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959814832354435138, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5660,6 +5756,7 @@ MonoBehaviour:
   enemiesKilled: 0
   audioSrc: {fileID: 1831024954}
   deathSound: {fileID: 8300000, guid: 9b86f58593e51f448b2fcc0e67085cdf, type: 3}
+  gameOverSound: {fileID: 0}
   waveCompleteSound: {fileID: 8300000, guid: 8321f84fd06947e4091aeee62d2a67df, type: 3}
 --- !u!4 &1831024956
 Transform:
@@ -6038,6 +6135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openSound: {fileID: 8300000, guid: 8966547292f4cb0489493eb0320aeee8, type: 3}
   closeSound: {fileID: 8300000, guid: 6f020b4c25d6ec6448a64d54cc56129d, type: 3}
+  clickSound: {fileID: 0}
+  craftingSound: {fileID: 0}
 --- !u!4 &1972406759
 Transform:
   m_ObjectHideFlags: 0
@@ -6341,9 +6440,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1889803279}
     m_Modifications:
+    - target: {fileID: 2404852856987101477, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144369375774213322, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7284758493071525086, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_Name
       value: SnowCliff (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7284758493071525086, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7949831823179751012, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_LocalScale.x
@@ -6400,6 +6511,10 @@ PrefabInstance:
     - target: {fileID: 7949831823179751012, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959814832354435138, guid: ea7edbdf6cba2ce4c8525333a2c0edd2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
