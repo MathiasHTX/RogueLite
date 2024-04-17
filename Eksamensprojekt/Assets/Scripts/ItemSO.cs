@@ -7,5 +7,8 @@ using UnityEngine.UI;
 public class ItemSO : ScriptableObject
 {
     public string itemName;
+    public string description;
     public Sprite itemIcon;
+    public int[] requiredItemAmounts;
+    public ItemSO[] requiredItems;
 }

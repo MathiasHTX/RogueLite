@@ -4731,7 +4731,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1626764436}
         m_TargetAssemblyTypeName: PlanetSelector, Assembly-CSharp
-        m_MethodName: GoToOriginalPos
+        m_MethodName: BackButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

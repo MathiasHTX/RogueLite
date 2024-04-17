@@ -33,7 +33,7 @@ public class CraftItem : MonoBehaviour
         }
     }
 
-    public void CraftItems(WeaponSO weaponSO)
+    public void CraftWeapon(WeaponSO weaponSO)
     {
         for (int i = 0; i < weaponSO.requiredItems.Length; i++)
         {
@@ -45,8 +45,8 @@ public class CraftItem : MonoBehaviour
             PlayerPrefsKeysManager.RegisterKey(itemAmountKey);
         }
 
-        int craftedItemCount = PlayerPrefs.GetInt(weaponSO.weaponName + "Amount");
-        PlayerPrefs.SetInt(weaponSO.weaponName + "Amount", craftedItemCount + 1);  // Add 1 crafted item to inventory
+        int craftedWeaponCount = PlayerPrefs.GetInt(weaponSO.weaponName + "Amount");
+        PlayerPrefs.SetInt(weaponSO.weaponName + "Amount", craftedWeaponCount + 1);  // Add 1 crafted item to inventory
         PlayerPrefs.Save();
         PlayerPrefsKeysManager.RegisterKey(weaponSO.weaponName + "Amount"); // Register crafted item;
         Debug.Log("New " + weaponSO.weaponName + " count: " + PlayerPrefs.GetInt(weaponSO.weaponName + "Amount"));
@@ -56,5 +56,25 @@ public class CraftItem : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighestPowerLevel", powerLevel);
         }
+
+        WeaponController.Instance.FindAvailableWeapons();
+    }
+
+    public void CraftItems(ItemSO itemSO)
+    {
+        for (int i = 0; i < itemSO.requiredItems.Length; i++)
+        {
+            string itemAmountKey = itemSO.requiredItems[i].itemName + "Amount";
+            int amount = PlayerPrefs.GetInt(itemAmountKey, 0);
+            int requiredAmount = itemSO.requiredItemAmounts[i];
+
+            PlayerPrefs.SetInt(itemAmountKey, amount - requiredAmount);
+            PlayerPrefsKeysManager.RegisterKey(itemAmountKey);
+        }
+
+        int craftedItemCount = PlayerPrefs.GetInt(itemSO.itemName + "Amount");
+        PlayerPrefs.SetInt(itemSO.itemName + "Amount", craftedItemCount + 1);  // Add 1 crafted item to inventory
+        PlayerPrefs.Save();
+        PlayerPrefsKeysManager.RegisterKey(itemSO.itemName + "Amount");
     }
 }

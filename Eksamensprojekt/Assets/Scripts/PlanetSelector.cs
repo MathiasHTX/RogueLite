@@ -67,20 +67,24 @@ public class PlanetSelector : MonoBehaviour
 
         m_camera.DOMove(selectedPlanetTransform.position + camOffset, 0.4f).OnComplete(() => camFollowPlanets = true);
 
-        titleText.text = planetSO.title;
-        powerLevelText.text = "Power level " + planetSO.powerLevel;
-        descriptionText.text = planetSO.description;
-
-        if (planetSO.unlocked)
+        if(PlayerPrefs.GetInt(planetSO.planetNumber + "LockedState") == 2)
         {
+            titleText.text = planetSO.title;
+            descriptionText.text = planetSO.description;
+
             goBtn.SetActive(true);
             closeBtn.SetActive(false);
         }
         else
         {
+            titleText.text = "UNKNOWN";
+            descriptionText.text = "Unlock this planet by crafting a weapon of at least power level " + planetSO.powerLevel + ".";
+
             goBtn.SetActive(false);
             closeBtn.SetActive(true);
         }
+
+        powerLevelText.text = "Power level " + planetSO.powerLevel;
 
         OpenMenu();
 

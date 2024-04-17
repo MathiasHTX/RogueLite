@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using static UnityEditor.Progress;
 
 public class SlimePickUp : MonoBehaviour
 {
     AudioSource audioSource;
     bool pickedUp;
+    public ItemSO slimePickUpSO;
 
     private void Start()
     {
@@ -22,6 +24,7 @@ public class SlimePickUp : MonoBehaviour
                 transform.DOScale(0, 0.2f);
                 audioSource.Play();
                 pickedUp = true;
+                PlayerPrefs.SetInt(slimePickUpSO.itemName + "Amount", PlayerPrefs.GetInt(slimePickUpSO.itemName + "Amount") + 1);
                 StartCoroutine(DeletePickUp());
             }
         }

@@ -9,7 +9,6 @@ public class WeaponController : MonoBehaviour
 
     bool isDead;
 
-    public GameObject sword;
     bool canAttack = true;
     public float swingCooldown = 0.3f;
 
@@ -22,14 +21,18 @@ public class WeaponController : MonoBehaviour
     [SerializeField] Vector3 boxSize;
 
     [SerializeField] WeaponSO[] weaponSOs;
-    [SerializeField] GameObject[] weapons;
+    [SerializeField] GameObject[] allWeapons;
+    public List<GameObject> availableWeapons = new List<GameObject>();
     int usingWeapon = 0;
     bool canChangeWeapon = true;
+    bool hasNoWeapons;
 
     AudioSource audioSrc;
     [SerializeField] AudioClip[] swordSounds;
 
     bool isPaused;
+
+    bool insideCraftingTable;
 
     float changeWeaponTimer;
 
@@ -47,12 +50,33 @@ public class WeaponController : MonoBehaviour
         PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
         UIManager.isPaused += UIManager_isPaused;
         InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
-        ChangeWeapon(0);
+        FindAvailableWeapons();
+    }
+
+    public void FindAvailableWeapons()
+    {
+        for(int i = 0; i < weaponSOs.Length; i++)
+        {
+            if (PlayerPrefs.GetInt(weaponSOs[i].weaponName + "Amount") >= 1)
+            {
+                if (!availableWeapons.Contains(allWeapons[i]))
+                {
+                    availableWeapons.Add(allWeapons[i]);
+                }
+            }
+        }
+
+        hasNoWeapons = availableWeapons.Count == 0 ? true : false;
+
+        if (!hasNoWeapons)
+        {
+            ChangeWeapon(availableWeapons.Count - 1);
+        }
     }
 
     private void InsideCraftingTable_onCraftingTable(bool openClose)
     {
-        isPaused = openClose;
+        insideCraftingTable = openClose;
     }
 
     private void UIManager_isPaused(bool paused)
@@ -69,13 +93,13 @@ public class WeaponController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (canAttack && !isDead && !isPaused)
+            if (canAttack && !isDead && !insideCraftingTable && !hasNoWeapons)
             {
                 WeaponAttack();
             }
         }
 
-        if(Input.GetAxisRaw("Mouse ScrollWheel") > 0f && usingWeapon < weapons.Length - 1)
+        if(Input.GetAxisRaw("Mouse ScrollWheel") > 0f && usingWeapon < availableWeapons.Count - 1)
         {
             ChangeWeapon(usingWeapon + 1);
         }
@@ -113,23 +137,28 @@ public class WeaponController : MonoBehaviour
     void ChangeWeapon(int number)
     {
         Debug.Log(canChangeWeapon);
-        if (canChangeWeapon && !isPaused)
+
+        if(!hasNoWeapons)
         {
-            usingWeapon = number;
-
-            for (int i = 0; i < weapons.Length; i++)
+            if (canChangeWeapon && !isPaused)
             {
-                if (i == usingWeapon)
-                {
-                    weapons[i].SetActive(true);
-                }
-                else
-                    weapons[i].SetActive(false);
-            }
+                usingWeapon = number;
 
-            anim = weapons[usingWeapon].GetComponent<Animator>();
-            ac = anim.runtimeAnimatorController;
-            animationLength = weaponSOs[usingWeapon].animationLength / 0.6f;
+                for (int i = 0; i < availableWeapons.Count; i++)
+                {
+                    if (i == usingWeapon)
+                    {
+                        availableWeapons[i].SetActive(true);
+                    }
+                    else
+                        availableWeapons[i].SetActive(false);
+                }
+
+                anim = availableWeapons[usingWeapon].GetComponent<Animator>();
+                ac = anim.runtimeAnimatorController;
+                Debug.Log(weaponSOs[usingWeapon]);
+                animationLength = weaponSOs[usingWeapon].animationLength / 0.6f;
+            }
         }
 
     }
