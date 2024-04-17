@@ -181,9 +181,9 @@ public class ShipLandingSequence : MonoBehaviour
     void ExitShip()
     {
         player.SetActive(true);
-        thisCam.SetActive(false);
         OnExitShip?.Invoke();
         hasExitedSpaceShip = true;
+        thisCam.SetActive(false);
     }
 
     void MyInput()

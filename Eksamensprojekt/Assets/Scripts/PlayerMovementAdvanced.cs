@@ -16,6 +16,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     [SerializeField] int hitCooldown = 2;
     public static event Action<int> onPlayerHit;
     public static event Action onDeath;
+    public static event Action onDeathByArea;
     bool isDead;
 
     [Header("Movement")]
@@ -519,9 +520,24 @@ public class PlayerMovementAdvanced : MonoBehaviour
         isHit = false;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("DeathArea"))
+        {
+            DeathByArea();
+        }
+    }
+
     void Death()
     {
         isDead = true;
+        onDeath?.Invoke();
+    }
+
+    void DeathByArea()
+    {
+        isDead = true;
+        onDeathByArea?.Invoke();
         onDeath?.Invoke();
     }
 

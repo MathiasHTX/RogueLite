@@ -18,8 +18,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] int enemiesKilled = 0;
 
     [SerializeField] AudioSource audioSrc;
-    [SerializeField] AudioClip deathSound;
-    [SerializeField] AudioClip waveCompleteSound;
+    [SerializeField] AudioClip deathSound, gameOverSound, waveCompleteSound;
 
     private void Awake()
     {
@@ -33,6 +32,7 @@ public class WaveManager : MonoBehaviour
     void Start()
     {
         ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
+        PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
     }
 
     private void ShipLandingSequence_OnExitShip()
@@ -63,7 +63,6 @@ public class WaveManager : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
         }
     }
-
 
     void SpawnEnemies(int amount = 5)
     {
@@ -108,6 +107,11 @@ public class WaveManager : MonoBehaviour
                 NewWave();
             }
         }
+    }
+
+    private void PlayerMovementAdvanced_onDeath()
+    {
+        audioSrc.PlayOneShot(gameOverSound, 0.5f);
     }
 
     public int GetWaveCount()

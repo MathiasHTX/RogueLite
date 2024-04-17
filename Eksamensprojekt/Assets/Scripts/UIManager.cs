@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject crossHair;
 
     [SerializeField] TextMeshProUGUI pressEText;
-    [SerializeField] GameObject pressE;
+    public GameObject pressE;
 
     [Header("Spaceship")]
     [SerializeField] CanvasGroup cantEnterShip;
@@ -90,6 +90,7 @@ public class UIManager : MonoBehaviour
         sceneIsHome = SceneManager.GetActiveScene().buildIndex == 2;
 
         PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
+        PlayerMovementAdvanced.onDeathByArea += PlayerMovementAdvanced_onDeathByArea;
 
         ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
         if (!sceneIsHome)
@@ -106,6 +107,12 @@ public class UIManager : MonoBehaviour
         crossHair.SetActive(false);
     }
 
+    private void PlayerMovementAdvanced_onDeathByArea()
+    {
+        whiteFade.gameObject.SetActive(true);
+        whiteFade.DOFade(1f, 1f);
+    }
+
     private void ShipLandingSequence_OnExitShip()
     {
         if(!sceneIsHome)
@@ -113,7 +120,7 @@ public class UIManager : MonoBehaviour
             LoadGameUI();
         }
 
-        pressE.SetActive(false);
+        pressE.gameObject.SetActive(false);
 
         blackBarBottom.DOAnchorPosY(-20, 1);
         blackBarTop.DOAnchorPosY(20, 1);
@@ -223,9 +230,12 @@ public class UIManager : MonoBehaviour
         gameOverBackground.DOSizeDelta(new Vector2(256, 45), 0.5f).SetEase(Ease.InOutCubic);
 
         // Disappear
-        gameOverText.DOFade(0, 0.3f).SetDelay(3.3f);
-        gameOverText.transform.DOLocalMoveY(-7, 0.3f).SetDelay(3.3f);
-        gameOverBackground.DOSizeDelta(new Vector2(0, 45), 0.5f).SetEase(Ease.InOutCubic).SetDelay(3f);
+        gameOverText.DOFade(0, 0.3f).SetDelay(4.3f);
+        gameOverText.transform.DOLocalMoveY(-7, 0.3f).SetDelay(4.3f);
+        gameOverBackground.DOSizeDelta(new Vector2(0, 45), 0.5f).SetEase(Ease.InOutCubic).SetDelay(4f);
+
+        whiteFade.gameObject.SetActive(true);
+        whiteFade.DOFade(1, 1).SetDelay(4).OnComplete(() => SceneManager.LoadScene(2));
 
     }
 

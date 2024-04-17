@@ -124,3 +124,5 @@ MonoBehaviour:
   hoverSize: 2.2
   planetText: {fileID: 0}
   titleCanvas: {fileID: 0}
+  cameraTransform: {fileID: 0}
+  lockedPlanetMat: {fileID: 0}
