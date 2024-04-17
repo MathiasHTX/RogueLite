@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject crossHair;
 
     [SerializeField] TextMeshProUGUI pressEText;
-    [SerializeField] GameObject pressE;
+    public GameObject pressE;
 
     [Header("Spaceship")]
     [SerializeField] CanvasGroup cantEnterShip;
@@ -120,7 +120,7 @@ public class UIManager : MonoBehaviour
             LoadGameUI();
         }
 
-        pressE.SetActive(false);
+        pressE.gameObject.SetActive(false);
 
         blackBarBottom.DOAnchorPosY(-20, 1);
         blackBarTop.DOAnchorPosY(20, 1);

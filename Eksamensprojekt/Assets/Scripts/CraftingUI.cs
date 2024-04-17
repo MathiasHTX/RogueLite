@@ -50,10 +50,12 @@ public class CraftingUI : MonoBehaviour
         string missingItemsString = "";
 
         // Start by disabling every required item
-        for(int i = 0; i < requiredItemsUI.Length; i++)
+        for (int i = 0; i < requiredItemsUI.Length; i++)
+        {
             requiredItemsUI[i].SetActive(false);
+        }
 
-        if(PlayerPrefs.GetInt(weaponSO.weaponName + "Amount") >= 1)
+        if (PlayerPrefs.GetInt(weaponSO.weaponName + "Amount") >= 1)
         {
             missingItemText.gameObject.SetActive(false);
             craftBtn.gameObject.SetActive(false);
