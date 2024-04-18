@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 7336788288395659513}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.224, y: 0.258, z: 0.006}
+  m_LocalPosition: {x: -0.224, y: 0.262, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,6 +42,10 @@ PrefabInstance:
     - target: {fileID: -9214944795527955203, guid: 4a0b926d265ce774d9cd07a51560d164, type: 3}
       propertyPath: m_Name
       value: Pulled4
+      objectReference: {fileID: 0}
+    - target: {fileID: -9214944795527955203, guid: 4a0b926d265ce774d9cd07a51560d164, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -9075921454374925850, guid: 4a0b926d265ce774d9cd07a51560d164, type: 3}
       propertyPath: m_Name
@@ -111,6 +115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pulled2
       objectReference: {fileID: 0}
+    - target: {fileID: 254957270886110310, guid: 4a0b926d265ce774d9cd07a51560d164, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4a0b926d265ce774d9cd07a51560d164, type: 3}
       propertyPath: m_Name
       value: Crossbow
@@ -119,9 +127,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pulled5
       objectReference: {fileID: 0}
+    - target: {fileID: 1617042269038571819, guid: 4a0b926d265ce774d9cd07a51560d164, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1789746787157782626, guid: 4a0b926d265ce774d9cd07a51560d164, type: 3}
       propertyPath: m_Name
       value: Pulled1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1789746787157782626, guid: 4a0b926d265ce774d9cd07a51560d164, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1925002969516105515, guid: 4a0b926d265ce774d9cd07a51560d164, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -146,6 +162,10 @@ PrefabInstance:
     - target: {fileID: 7453051217967745100, guid: 4a0b926d265ce774d9cd07a51560d164, type: 3}
       propertyPath: m_Name
       value: Pulled3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7453051217967745100, guid: 4a0b926d265ce774d9cd07a51560d164, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8456046728689790304, guid: 4a0b926d265ce774d9cd07a51560d164, type: 3}
       propertyPath: m_Materials.Array.data[0]

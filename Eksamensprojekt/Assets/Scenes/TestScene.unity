@@ -831,6 +831,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -57.659}
+--- !u!1 &1120478440 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5463620401079145528, guid: 7ecf700a698ced64fb4be7eb9b8f2fff, type: 3}
+  m_PrefabInstance: {fileID: 4935947300509949565}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1120478444
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120478440}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1329340890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,14 +1502,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crossbow
       objectReference: {fileID: 0}
-    - target: {fileID: 8559661659984930977, guid: 307f2daf392a53e4fa8b7e537b7eb0a8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.262
-      objectReference: {fileID: 0}
-    - target: {fileID: 8559661659984930977, guid: 307f2daf392a53e4fa8b7e537b7eb0a8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1538,7 +1562,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5463620401079145528, guid: 7ecf700a698ced64fb4be7eb9b8f2fff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1120478444}
   m_SourcePrefab: {fileID: 100100000, guid: 7ecf700a698ced64fb4be7eb9b8f2fff, type: 3}
 --- !u!1001 &4952979705322315081
 PrefabInstance:
