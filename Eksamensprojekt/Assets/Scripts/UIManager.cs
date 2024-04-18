@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public event Action<bool> isPaused;
 
     [SerializeField] Image damageVignette;
+    [SerializeField] Image healVignette;
 
     [SerializeField] GameObject gameUI;
     [SerializeField] GameObject crossHair;
@@ -92,6 +93,8 @@ public class UIManager : MonoBehaviour
 
         playerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
         playerMovementAdvanced.onDeathByArea += PlayerMovementAdvanced_onDeathByArea;
+
+        playerMovementAdvanced.onHeal += PlayerMovementAdvanced_onHeal;
 
         shipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
         if (!sceneIsHome)
@@ -175,6 +178,17 @@ public class UIManager : MonoBehaviour
         healthText.text = "HP " + health;
 
         damageVignette.DOFade(0.5f, 0.1f).OnComplete(() => damageVignette.DOFade(0f, 0.3f));
+    }
+
+    private void PlayerMovementAdvanced_onHeal(int health)
+    {
+        float fillAmount = (float)health / startHealth;
+        float duration = 0.2f;
+        healthBarFill.DOFillAmount(fillAmount, duration);
+        healthBarFill.DOColor(healthBarGradient.Evaluate(fillAmount), duration);
+        healthText.text = "HP " + health;
+
+        healVignette.DOFade(0.3f, 0.1f).OnComplete(() => healVignette.DOFade(0f, 0.3f));
     }
 
     public void UpdateEnemiesKilledUI(int enemiesKilled, int totalEnemies)

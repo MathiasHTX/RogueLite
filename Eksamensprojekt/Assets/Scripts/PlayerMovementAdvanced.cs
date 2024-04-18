@@ -15,7 +15,9 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public event Action<int> onPlayerHit;
     public event Action onDeath;
     public event Action onDeathByArea;
+    public event Action<int> onHeal;
     bool isDead;
+    int healingGain = 10;
 
     [Header("Movement")]
     private float moveSpeed;
@@ -123,8 +125,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
             MyInput();
             SpeedControl();
             StateHandler();
-        }
 
+        }
 
         // handle drag
         if (grounded)
@@ -168,6 +170,11 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void MyInput()
     {
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            GetHealth();
+        }
+
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
@@ -501,6 +508,16 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
             audioSource.clip = painSounds[UnityEngine.Random.Range(0, painSounds.Length)];
             audioSource.Play();
+        }
+    }
+
+    public void GetHealth()
+    {
+        if (!isDead && (healingGain + health) <= startHealth)
+        {
+            health += healingGain;
+            onHeal?.Invoke(health);
+            Debug.Log("Heal");
         }
     }
 
