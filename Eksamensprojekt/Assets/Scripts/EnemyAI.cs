@@ -40,6 +40,7 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Health and UI")]
     //Health and UI
+    public int baseHealth = 50;
     int startHealth;
     int health;
     [SerializeField] Image healthBar;
@@ -112,7 +113,7 @@ public class EnemyAI : MonoBehaviour
         // Health
 
         // StartHealth can be 4, 8 or 12
-        int baseHealth = 50 + (20 * waveManager.GetWaveCount());
+        baseHealth += (20 * waveManager.GetWaveCount());
         startHealth = baseHealth * size;
 
         float scaleFactor = 1f + (size - 1f) * 0.5f;

@@ -90,8 +90,8 @@ public class UIManager : MonoBehaviour
     {
         sceneIsHome = SceneManager.GetActiveScene().buildIndex == 2;
 
-        PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
-        PlayerMovementAdvanced.onDeathByArea += PlayerMovementAdvanced_onDeathByArea;
+        playerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
+        playerMovementAdvanced.onDeathByArea += PlayerMovementAdvanced_onDeathByArea;
 
         shipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
         if (!sceneIsHome)
@@ -113,8 +113,8 @@ public class UIManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerMovementAdvanced.onDeath -= PlayerMovementAdvanced_onDeath;
-        PlayerMovementAdvanced.onDeathByArea -= PlayerMovementAdvanced_onDeathByArea;
+        playerMovementAdvanced.onDeath -= PlayerMovementAdvanced_onDeath;
+        playerMovementAdvanced.onDeathByArea -= PlayerMovementAdvanced_onDeathByArea;
 
         shipLandingSequence.OnExitShip -= ShipLandingSequence_OnExitShip;
     }
@@ -144,7 +144,7 @@ public class UIManager : MonoBehaviour
 
     void LoadGameUI()
     {
-        PlayerMovementAdvanced.onPlayerHit += PlayerMovementAdvanced_onPlayerHit;
+        playerMovementAdvanced.onPlayerHit += PlayerMovementAdvanced_onPlayerHit;
         healthBarFill.color = healthBarGradient.Evaluate(1);
         startHealth = playerMovementAdvanced.GetStartHealth();
         healthText.text = "HP " + startHealth;

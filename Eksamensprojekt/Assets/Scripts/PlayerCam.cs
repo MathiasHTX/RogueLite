@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCam : MonoBehaviour
 {
     [SerializeField] UIManager uiManager;
+    [SerializeField] PlayerMovementAdvanced playerMovementAdvanced;
 
     [SerializeField] private float sensX;
     [SerializeField] private float sensY;
@@ -34,7 +35,7 @@ public class PlayerCam : MonoBehaviour
 
         uiManager.isPaused += UIManager_isPaused;
 
-        PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
+        playerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
         InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
     }
 

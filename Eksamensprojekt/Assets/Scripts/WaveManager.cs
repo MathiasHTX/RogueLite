@@ -6,6 +6,7 @@ public class WaveManager : MonoBehaviour
 {
     [SerializeField] UIManager uIManager;
     [SerializeField] ShipLandingSequence shipLandingSequence;
+    [SerializeField] PlayerMovementAdvanced playerMovementAdvanced;
 
     int waveCount = -1;
     bool waveComplete;
@@ -21,11 +22,16 @@ public class WaveManager : MonoBehaviour
     [SerializeField] AudioSource audioSrc;
     [SerializeField] AudioClip deathSound, gameOverSound, waveCompleteSound;
 
+    int initialSlimePickUpAmount;
+    [SerializeField] ItemSO slimePickUpSO;
+
     // Start is called before the first frame update
     void Start()
     {
         shipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
-        PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
+        playerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
+
+        initialSlimePickUpAmount = PlayerPrefs.GetInt(slimePickUpSO.itemName + "Amount");
     }
 
     private void ShipLandingSequence_OnExitShip()
@@ -105,6 +111,8 @@ public class WaveManager : MonoBehaviour
     private void PlayerMovementAdvanced_onDeath()
     {
         audioSrc.PlayOneShot(gameOverSound, 0.5f);
+
+        PlayerPrefs.SetInt(slimePickUpSO.itemName + "Amount", initialSlimePickUpAmount);
     }
 
     public int GetWaveCount()

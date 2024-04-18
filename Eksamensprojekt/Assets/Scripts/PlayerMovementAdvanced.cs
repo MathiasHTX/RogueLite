@@ -12,9 +12,9 @@ public class PlayerMovementAdvanced : MonoBehaviour
     int health;
     bool isHit;
     [SerializeField] int hitCooldown = 2;
-    public static event Action<int> onPlayerHit;
-    public static event Action onDeath;
-    public static event Action onDeathByArea;
+    public event Action<int> onPlayerHit;
+    public event Action onDeath;
+    public event Action onDeathByArea;
     bool isDead;
 
     [Header("Movement")]
@@ -515,6 +515,11 @@ public class PlayerMovementAdvanced : MonoBehaviour
         if (other.gameObject.CompareTag("DeathArea"))
         {
             DeathByArea();
+        }
+
+        if (other.CompareTag("Snowball"))
+        {
+            TakeDamage();
         }
     }
 

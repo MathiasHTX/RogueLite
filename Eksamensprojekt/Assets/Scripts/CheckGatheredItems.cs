@@ -17,7 +17,6 @@ public class CheckGatheredItems : MonoBehaviour
         }
     }
 
-
     private bool PlayerIsInTrigger = false;
 
     private void OnTriggerEnter(Collider other)

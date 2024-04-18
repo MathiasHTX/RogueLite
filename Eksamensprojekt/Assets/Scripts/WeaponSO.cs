@@ -15,4 +15,5 @@ public class WeaponSO : ScriptableObject
     public Vector3 boxSize;
     public float animationLength;
     public Sprite weaponIcon;
+    public float swingCooldown;
 }

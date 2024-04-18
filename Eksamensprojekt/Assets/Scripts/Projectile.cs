@@ -5,9 +5,14 @@ using DG.Tweening;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] PlayerMovementAdvanced playerMovementAdvanced;
+    PlayerMovementAdvanced playerMovementAdvanced;
     [SerializeField] float scaleFactor = 100;
     [SerializeField] float time = 10;
+
+    private void Start()
+    {
+        playerMovementAdvanced = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementAdvanced>();
+    }
 
     public void Shoot(Vector3 direction)
     {

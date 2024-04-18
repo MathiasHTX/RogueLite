@@ -32,7 +32,7 @@ public class WeaponSway : MonoBehaviour
 
     private void Start()
     {
-        PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
+        playerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
         InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
 
         origin_rotation = transform.localRotation;
