@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] PlayerMovementAdvanced playerMovementAdvanced;
     [SerializeField] float scaleFactor = 100;
     [SerializeField] float time = 10;
 
@@ -19,7 +20,7 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerMovementAdvanced.instance.TakeDamage();
+            playerMovementAdvanced.TakeDamage();
 
             Destroy(this.gameObject);
         }

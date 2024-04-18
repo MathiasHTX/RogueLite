@@ -5,24 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Spaceship : MonoBehaviour
 {
-    public static Spaceship instance;
+    [SerializeField] UIManager uIManager;
+    [SerializeField] WaveManager waveManager;
+    [SerializeField] ShipLandingSequence shipLandingSequence;
 
     bool hasExitedSpaceship;
     bool canOpenSpaceShip;
 
     bool sceneIsHome;
 
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-    }
-
     private void Start()
     {
-        ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
+        shipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
         sceneIsHome = SceneManager.GetActiveScene().buildIndex == 2;
     }
 
@@ -41,21 +35,21 @@ public class Spaceship : MonoBehaviour
             }
             else
             {
-                if (WaveManager.instance.IsWaveComplete())
+                if (waveManager.IsWaveComplete())
                 {
-                    UIManager.instance.ShowHoldToLeave();
+                    uIManager.ShowHoldToLeave();
                 }
                 else
                 {
-                    UIManager.instance.ShowCantEnterShipUI();
+                    uIManager.ShowCantEnterShipUI();
                 }
             }
 
         }
 
-        if (Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E) && !sceneIsHome)
         {
-            UIManager.instance.HideHoldToLeave();
+            uIManager.HideHoldToLeave();
         }
     }
 
@@ -71,7 +65,7 @@ public class Spaceship : MonoBehaviour
     {
         if (other.CompareTag("Player") && hasExitedSpaceship)
         {
-            UIManager.instance.ShowPressEText("to enter");
+            uIManager.ShowPressEText("to enter");
             canOpenSpaceShip = true;
         }
     }
@@ -80,7 +74,7 @@ public class Spaceship : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            UIManager.instance.HidePressEText();
+            uIManager.HidePressEText();
             hasExitedSpaceship = true;
             canOpenSpaceShip = false;
         }

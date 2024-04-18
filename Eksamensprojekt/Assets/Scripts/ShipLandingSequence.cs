@@ -6,9 +6,9 @@ using DG.Tweening;
 
 public class ShipLandingSequence : MonoBehaviour
 {
-    public static ShipLandingSequence instance;
+    [SerializeField] UIManager uIManager;
 
-    public static event Action OnExitShip;
+    public event Action OnExitShip;
 
     [Header("Ship animator")]
     [SerializeField] Animator spaceshipAnim;
@@ -64,15 +64,6 @@ public class ShipLandingSequence : MonoBehaviour
     ParticleSystem.EmissionModule uLtSmokeem;
     ParticleSystem.EmissionModule uRtFireem;
     ParticleSystem.EmissionModule uRtSmokeem;
-
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this;
-
-        }
-    }
 
     private void Start()
     {
@@ -167,7 +158,7 @@ public class ShipLandingSequence : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         transform.position = cameraShipPosition.position;
         canLookAround = true;
-        UIManager.instance.ShowPressEText("to exit");
+        uIManager.ShowPressEText("to exit");
     }
 
     private IEnumerator playMusic()
