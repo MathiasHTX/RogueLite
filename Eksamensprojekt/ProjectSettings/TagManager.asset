@@ -17,6 +17,7 @@ TagManager:
   - Stone
   - UIManager
   - WaveManager
+  - Arrow
   layers:
   - Default
   - TransparentFX
