@@ -22,3 +22,4 @@ MonoBehaviour:
   boxSize: {x: 2, y: 2, z: 2.75}
   animationLength: 0.5
   weaponIcon: {fileID: 21300000, guid: efa4bd6878d79db41b7ce4968d890498, type: 3}
+  swingCooldown: 0.3
