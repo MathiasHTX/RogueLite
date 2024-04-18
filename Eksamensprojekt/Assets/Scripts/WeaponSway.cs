@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class WeaponSway : MonoBehaviour
 {
+    [SerializeField] PlayerMovementAdvanced playerMovementAdvanced;
+
     public float intensity;
     public float smoothReturnSpeed;
 
@@ -76,7 +78,7 @@ public class WeaponSway : MonoBehaviour
         playerSpeed = (playerTransform.position - lastPosition).magnitude / Time.deltaTime;
         lastPosition = playerTransform.position;
 
-        bool isGrounded = PlayerMovementAdvanced.instance.IsGrounded();
+        bool isGrounded = playerMovementAdvanced.IsGrounded();
 
         if (playerSpeed > 0.1f && isGrounded)
         {

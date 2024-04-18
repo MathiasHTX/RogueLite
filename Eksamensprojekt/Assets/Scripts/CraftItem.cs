@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class CraftItem : MonoBehaviour
 {
-
-    void Update()
-    {
-        /*
-        if (Input.GetKeyDown(KeyCode.E) && PlayerIsInTrigger)
-        {
-            CraftItems(woodSwordSO);
-        }
-        */
-    }
-
+    [SerializeField] WeaponController weaponController;
     private bool PlayerIsInTrigger = false;
 
     private void OnTriggerEnter(Collider other)
@@ -57,7 +47,7 @@ public class CraftItem : MonoBehaviour
             PlayerPrefs.SetInt("HighestPowerLevel", powerLevel);
         }
 
-        WeaponController.Instance.FindAvailableWeapons();
+        weaponController.FindAvailableWeapons();
     }
 
     public void CraftItems(ItemSO itemSO)

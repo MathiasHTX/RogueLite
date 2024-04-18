@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 
 public class Snowball : MonoBehaviour
 {
+    [SerializeField] PlayerMovementAdvanced playerMovementAdvanced;
+
     [Header("Snowball Properties")]
     public Rigidbody snowballRb;
     private Vector3 originForce;
@@ -56,7 +58,7 @@ public class Snowball : MonoBehaviour
             float decreaseRate = 6.5f;
             decreasingValue -= decreaseRate * Time.deltaTime;
             playerRb.AddForce(force * decreasingValue, ForceMode.Impulse);
-            if (PlayerMovementAdvanced.instance.IsGrounded())
+            if (playerMovementAdvanced.IsGrounded())
             {
                 playerHit = false;
             }

@@ -4,7 +4,8 @@ using System;
 
 public class WaveManager : MonoBehaviour
 {
-    public static WaveManager instance;
+    [SerializeField] UIManager uIManager;
+    [SerializeField] ShipLandingSequence shipLandingSequence;
 
     int waveCount = -1;
     bool waveComplete;
@@ -20,18 +21,10 @@ public class WaveManager : MonoBehaviour
     [SerializeField] AudioSource audioSrc;
     [SerializeField] AudioClip deathSound, gameOverSound, waveCompleteSound;
 
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
+        shipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
         PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
     }
 
@@ -48,9 +41,9 @@ public class WaveManager : MonoBehaviour
         enemiesSpawned = 0;
         float spawnInterval = 20f;
         StartCoroutine(SpawnEnemiesCoroutine(spawnInterval));
-        UIManager.instance.UpdateEnemiesKilledUI(enemiesKilled, totalEnemies);
-        UIManager.instance.NewWave(waveCount);
-        UIManager.instance.OpenEnemiesKilled();
+        uIManager.UpdateEnemiesKilledUI(enemiesKilled, totalEnemies);
+        uIManager.NewWave(waveCount);
+        uIManager.OpenEnemiesKilled();
     }
 
     private IEnumerator SpawnEnemiesCoroutine(float spawnInterval)
@@ -79,7 +72,7 @@ public class WaveManager : MonoBehaviour
     public void EnemyKilled(Vector3 deathPosition)
     {
         enemiesKilled++;
-        UIManager.instance.UpdateEnemiesKilledUI(enemiesKilled, totalEnemies);
+        uIManager.UpdateEnemiesKilledUI(enemiesKilled, totalEnemies);
         AudioSource.PlayClipAtPoint(deathSound, deathPosition, 20);
 
         if (enemiesKilled >= totalEnemies && !waveComplete)
@@ -92,8 +85,8 @@ public class WaveManager : MonoBehaviour
     {
         timer = timeBetweenWaves;
         waveComplete = true;
-        UIManager.instance.WaveComplete();
-        UIManager.instance.OpenTimeBeforeNewWave();
+        uIManager.WaveComplete();
+        uIManager.OpenTimeBeforeNewWave();
         audioSrc.PlayOneShot(waveCompleteSound);
     }
 

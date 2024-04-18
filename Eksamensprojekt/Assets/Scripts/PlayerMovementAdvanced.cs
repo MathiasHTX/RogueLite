@@ -6,8 +6,6 @@ using System;
 
 public class PlayerMovementAdvanced : MonoBehaviour
 {
-    public static PlayerMovementAdvanced instance { get; private set; }
-
     // Health
     [SerializeField] int startHealth = 200;
     [SerializeField] int healthDamage = 10;
@@ -96,14 +94,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
         sprinting,
         crouching,
         air
-    }
-
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
     }
 
     private void Start()

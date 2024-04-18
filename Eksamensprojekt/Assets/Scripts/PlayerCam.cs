@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
+    [SerializeField] UIManager uiManager;
+
     [SerializeField] private float sensX;
     [SerializeField] private float sensY;
 
@@ -30,7 +32,7 @@ public class PlayerCam : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        UIManager.isPaused += UIManager_isPaused;
+        uiManager.isPaused += UIManager_isPaused;
 
         PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
         InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;

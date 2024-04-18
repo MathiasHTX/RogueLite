@@ -9,9 +9,12 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;
+    [SerializeField] WaveManager waveManager;
+    [SerializeField] Spaceship spaceShipScript;
+    [SerializeField] PlayerMovementAdvanced playerMovementAdvanced;
+    [SerializeField] ShipLandingSequence shipLandingSequence;
 
-    public static event Action<bool> isPaused;
+    public event Action<bool> isPaused;
 
     [SerializeField] Image damageVignette;
 
@@ -82,14 +85,6 @@ public class UIManager : MonoBehaviour
 
     bool hasExitedShip;
 
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -98,7 +93,7 @@ public class UIManager : MonoBehaviour
         PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
         PlayerMovementAdvanced.onDeathByArea += PlayerMovementAdvanced_onDeathByArea;
 
-        ShipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
+        shipLandingSequence.OnExitShip += ShipLandingSequence_OnExitShip;
         if (!sceneIsHome)
             gameUI.SetActive(false);
 
@@ -121,7 +116,7 @@ public class UIManager : MonoBehaviour
         PlayerMovementAdvanced.onDeath -= PlayerMovementAdvanced_onDeath;
         PlayerMovementAdvanced.onDeathByArea -= PlayerMovementAdvanced_onDeathByArea;
 
-        ShipLandingSequence.OnExitShip -= ShipLandingSequence_OnExitShip;
+        shipLandingSequence.OnExitShip -= ShipLandingSequence_OnExitShip;
     }
 
     private void PlayerMovementAdvanced_onDeathByArea()
@@ -151,7 +146,7 @@ public class UIManager : MonoBehaviour
     {
         PlayerMovementAdvanced.onPlayerHit += PlayerMovementAdvanced_onPlayerHit;
         healthBarFill.color = healthBarGradient.Evaluate(1);
-        startHealth = PlayerMovementAdvanced.instance.GetStartHealth();
+        startHealth = playerMovementAdvanced.GetStartHealth();
         healthText.text = "HP " + startHealth;
         gameUI.SetActive(true);
     }
@@ -262,7 +257,7 @@ public class UIManager : MonoBehaviour
     {
         if (timerEnabled)
         {
-            timerText.text = WaveManager.instance.GetTimer().ToString("F0") + "s";
+            timerText.text = waveManager.GetTimer().ToString("F0") + "s";
         }
 
         if (Input.GetKeyUp(KeyCode.Escape) && !inventoryOpen)
@@ -274,9 +269,14 @@ public class UIManager : MonoBehaviour
             CloseInventoryUI();
         }
 
-        if(Input.GetKey(KeyCode.Tab) && !craftingTableOpen && !inventoryOpen && hasExitedShip)
+        if(Input.GetKeyUp(KeyCode.Tab) && !craftingTableOpen && !inventoryOpen && hasExitedShip)
         {
             OpenInventoryUI();
+        }
+
+        if(Input.GetKeyUp(KeyCode.Tab) && inventoryOpen)
+        {
+            CloseInventoryUI();
         }
     }
 
@@ -338,7 +338,7 @@ public class UIManager : MonoBehaviour
         holdToExitCircle.fillAmount = 0;
         holdToExit.gameObject.SetActive(true);
         holdToExit.DOFade(1, 0.2f);
-        holdToExitCircle.DOFillAmount(1, 2).OnComplete(()=> Spaceship.instance.OpenSpaceship());
+        holdToExitCircle.DOFillAmount(1, 2).OnComplete(()=> spaceShipScript.OpenSpaceship());
     }
 
     public void HideHoldToLeave()
@@ -385,8 +385,7 @@ public class UIManager : MonoBehaviour
     {
         inventoryRect.localScale = new Vector2(1, 0);
         inventoryRect.gameObject.SetActive(true);
-        inventoryRect.DOScaleY(1, 0.2f);
-        inventoryOpen = true;
+        inventoryRect.DOScaleY(1, 0.2f).OnComplete(() => inventoryOpen = true);
         UIAudio.instance.PlayOpenSound();
     }
 

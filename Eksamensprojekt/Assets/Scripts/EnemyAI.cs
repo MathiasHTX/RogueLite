@@ -7,6 +7,10 @@ using DG.Tweening;
 
 public class EnemyAI : MonoBehaviour
 {
+    WaveManager waveManager;
+    PlayerMovementAdvanced playerMovementAdvanced;
+    
+
     GameObject player;
 
     NavMeshAgent agent;
@@ -63,6 +67,8 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        waveManager = GameObject.FindGameObjectWithTag("WaveManager").GetComponent<WaveManager>();
+        playerMovementAdvanced = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementAdvanced>();
 
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player");
@@ -106,7 +112,7 @@ public class EnemyAI : MonoBehaviour
         // Health
 
         // StartHealth can be 4, 8 or 12
-        int baseHealth = 50 + (20 * WaveManager.instance.GetWaveCount());
+        int baseHealth = 50 + (20 * waveManager.GetWaveCount());
         startHealth = baseHealth * size;
 
         float scaleFactor = 1f + (size - 1f) * 0.5f;
@@ -207,7 +213,7 @@ public class EnemyAI : MonoBehaviour
     {
         Vector3 playerDirection = playerOrientation.transform.forward;
         Vector3 forceDirection = new Vector3(playerDirection.x * hitForce, hitYForce, playerDirection.z * hitForce);
-        if (!isHit && !enemyDead && !PlayerMovementAdvanced.instance.IsDead())
+        if (!isHit && !enemyDead && !playerMovementAdvanced.IsDead())
         {
             health -= damage;
 
@@ -258,12 +264,12 @@ public class EnemyAI : MonoBehaviour
 
     void SpawnSlimePickUps()
     {
-        int waveCount = WaveManager.instance.GetWaveCount();
+        int waveCount = waveManager.GetWaveCount();
         int slimePickUpChance;
 
         if (waveCount <= 2)
         {
-            slimePickUpChance = 100; // 10% chance
+            slimePickUpChance = 10; // 10% chance
         }
         else if (waveCount <= 5)
         {
@@ -293,7 +299,7 @@ public class EnemyAI : MonoBehaviour
         SpawnSlimePickUps();
         enemyDead = true;
         Instantiate(slimeParticle, transform.position, Quaternion.identity);
-        WaveManager.instance.EnemyKilled(this.transform.position);
+        waveManager.EnemyKilled(this.transform.position);
         Destroy(this.gameObject);
     }
 

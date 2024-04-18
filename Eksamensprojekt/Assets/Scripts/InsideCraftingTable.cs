@@ -5,6 +5,8 @@ using System;
 
 public class InsideCraftingTable : MonoBehaviour
 {
+    [SerializeField] UIManager uIManager;
+
     bool playerInsideTrigger;
     public static event Action<bool> onCraftingTable;
     bool isPaused;
@@ -12,7 +14,7 @@ public class InsideCraftingTable : MonoBehaviour
 
     private void Start()
     {
-        UIManager.isPaused += UIManager_isPaused;
+        uIManager.isPaused += UIManager_isPaused;
     }
 
     private void UIManager_isPaused(bool paused)
@@ -25,7 +27,7 @@ public class InsideCraftingTable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInsideTrigger = true;
-            UIManager.instance.ShowPressEText("to interact");
+            uIManager.ShowPressEText("to interact");
         }
     }
 
@@ -34,7 +36,7 @@ public class InsideCraftingTable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInsideTrigger = false;
-            UIManager.instance.HidePressEText();
+            uIManager.HidePressEText();
         }
     }
 
@@ -47,10 +49,10 @@ public class InsideCraftingTable : MonoBehaviour
             {
                 onCraftingTable?.Invoke(true);
 
-                UIManager.instance.OpenCraftingUI();
+                uIManager.OpenCraftingUI();
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-                UIManager.instance.HidePressEText();
+                uIManager.HidePressEText();
                 insideCraftingTable = true;
             }
         }
@@ -59,10 +61,10 @@ public class InsideCraftingTable : MonoBehaviour
         {
             onCraftingTable?.Invoke(false);
 
-            UIManager.instance.CloseCraftingUI();
+            uIManager.CloseCraftingUI();
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            UIManager.instance.ShowPressEText("to interact");
+            uIManager.ShowPressEText("to interact");
             insideCraftingTable = false;
         }
     }

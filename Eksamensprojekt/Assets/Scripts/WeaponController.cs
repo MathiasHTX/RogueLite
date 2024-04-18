@@ -5,7 +5,7 @@ using System;
 
 public class WeaponController : MonoBehaviour
 {
-    public static WeaponController Instance;
+    [SerializeField] UIManager uIManager;
 
     bool isDead;
 
@@ -36,19 +36,11 @@ public class WeaponController : MonoBehaviour
 
     float changeWeaponTimer;
 
-    private void Awake()
-    {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-    }
-
     private void Start()
     {
         audioSrc = GetComponent<AudioSource>();
         PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
-        UIManager.isPaused += UIManager_isPaused;
+        uIManager.isPaused += UIManager_isPaused;
         InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
         FindAvailableWeapons();
     }
@@ -138,7 +130,7 @@ public class WeaponController : MonoBehaviour
     {
         Debug.Log(canChangeWeapon);
 
-        if(!hasNoWeapons)
+        if(!hasNoWeapons && number < availableWeapons.Count)
         {
             if (canChangeWeapon && !isPaused)
             {
