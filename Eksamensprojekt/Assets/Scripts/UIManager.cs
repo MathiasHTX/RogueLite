@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Spaceship spaceShipScript;
     [SerializeField] PlayerMovementAdvanced playerMovementAdvanced;
     [SerializeField] ShipLandingSequence shipLandingSequence;
+    [SerializeField] UIAudio uIAudioScript;
 
     public event Action<bool> isPaused;
 
@@ -317,7 +318,7 @@ public class UIManager : MonoBehaviour
     {
         if (!paused && !craftingTableOpen && hasExitedShip)
         {
-            UIAudio.instance.PlayOpenSound();
+            uIAudioScript.PlayOpenSound();
             pauseScreen.anchoredPosition = new Vector2(-170, 0);
             pauseScreen.DOAnchorPosX(130, 0.3f).SetUpdate(true);
             pauseScreen.gameObject.SetActive(true);
@@ -337,7 +338,7 @@ public class UIManager : MonoBehaviour
         pauseScreen.DOAnchorPosX(-170, 0.3f).OnComplete(() => pauseScreen.gameObject.SetActive(false));
         isPaused?.Invoke(false);
         paused = false;
-        UIAudio.instance.PlayCloseSound();
+        uIAudioScript.PlayCloseSound();
     }
 
     public void ShowCantEnterShipUI()
@@ -383,12 +384,12 @@ public class UIManager : MonoBehaviour
         craftingTableRect.gameObject.SetActive(true);
         craftingTableRect.DOScaleY(1, 0.2f);
         craftingTableOpen = true;
-        UIAudio.instance.PlayOpenSound();
+        uIAudioScript.PlayOpenSound();
     }
 
     public void CloseCraftingUI()
     {
-        UIAudio.instance.PlayCloseSound();
+        uIAudioScript.PlayCloseSound();
         craftingTableRect.DOScaleY(0, 0.2f).OnComplete(() => {
             craftingTableRect.gameObject.SetActive(false);
             craftingTableOpen = false;
@@ -400,12 +401,12 @@ public class UIManager : MonoBehaviour
         inventoryRect.localScale = new Vector2(1, 0);
         inventoryRect.gameObject.SetActive(true);
         inventoryRect.DOScaleY(1, 0.2f).OnComplete(() => inventoryOpen = true);
-        UIAudio.instance.PlayOpenSound();
+        uIAudioScript.PlayOpenSound();
     }
 
     public void CloseInventoryUI()
     {
-        UIAudio.instance.PlayCloseSound();
+        uIAudioScript.PlayCloseSound();
         Debug.Log("daiwh");
         inventoryRect.DOScaleY(0, 0.2f).OnComplete(() => {
             inventoryRect.gameObject.SetActive(false);

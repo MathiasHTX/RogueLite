@@ -5,9 +5,15 @@ using UnityEngine;
 
 public class ItemGatherer : MonoBehaviour
 {
+    [Header("For mushroom")]
+    public bool removeItem;
+    public GameObject visual;
+    bool hasRemoved;
+
     [Header("Gathering Settings")]
     public ItemSO item; // Name of the item the player is gonna gather
     public float GatherChance;
+    Vector3 adjustedHitPosition;
 
     [Header("Hit Detection")]
     public float rayLength = 10.0f; // Length of the ray
@@ -53,54 +59,53 @@ public class ItemGatherer : MonoBehaviour
             if (Physics.Raycast(rayOrigin.position, rayOrigin.forward, out hit, rayLength, hitLayers))
             {
                 // Adjust hit position with the forward offset
-                Vector3 adjustedHitPosition = hit.point + rayOrigin.forward * forwardOffset;
+                adjustedHitPosition = hit.point + rayOrigin.forward * forwardOffset;
 
                 // Check if the hit position is near any "Tree" tree
                 if (IsNearTree(hit.point)) // check proximity using the original hit point
                 {
-                    if (Random.value <= GatherChance)
-                    {
-                        // Increment item count in PlayerPrefs
-                        PlayerPrefs.SetInt(item.itemName + "Amount", PlayerPrefs.GetInt(item.itemName + "Amount") + 1);
-                        PlayerPrefs.Save();
-                        PlayerPrefsKeysManager.RegisterKey(item.itemName + "Amount");
-
-                        // Play the particle system at the adjusted hit position
-                        Destroy(Instantiate(hitParticles, adjustedHitPosition, Quaternion.identity), 1);
-                        Destroy(Instantiate(gatherParticles, adjustedHitPosition, Quaternion.identity), 1);
-                        audioSrc.PlayOneShot(gatherSound);
-                    }
-                    else
-                    // Play the particle system at the adjusted hit position
-                    Destroy(Instantiate(hitParticles, adjustedHitPosition, Quaternion.identity), 1);
-                    int randomSound = Random.Range(0, hitSounds.Length);
-                    float randomPitch = Random.Range(0.9f, 1.5f);
-                    audioSrc.pitch = randomPitch;
-                    audioSrc.PlayOneShot(hitSounds[randomSound]);
+                    GatherItem();
                 }
                 else if (hit.collider.tag == "Stone")
                 {
-                    if (Random.value <= GatherChance)
-                    {
-                        // Increment item count in PlayerPrefs
-                        PlayerPrefs.SetInt(item.itemName + "Amount", PlayerPrefs.GetInt(item.itemName + "Amount") + 1);
-                        PlayerPrefs.Save();
-                        PlayerPrefsKeysManager.RegisterKey(item.itemName + "Amount");
-
-                        // Play the particle system at the adjusted hit position
-                        Destroy(Instantiate(hitParticles, adjustedHitPosition, Quaternion.identity), 1);
-                        Destroy(Instantiate(gatherParticles, adjustedHitPosition, Quaternion.identity), 1);
-                        audioSrc.PlayOneShot(gatherSound);
-                    }
-                    else
-                    // Play the particle system at the adjusted hit position
-                    Destroy(Instantiate(hitParticles, adjustedHitPosition, Quaternion.identity), 1);
-                    int randomSound = Random.Range(0, hitSounds.Length);
-                    float randomPitch = Random.Range(0.9f, 1.5f);
-                    audioSrc.pitch = randomPitch;
-                    audioSrc.PlayOneShot(hitSounds[randomSound]);
+                    GatherItem();
                 }
             } 
+        }
+    }
+
+    void GatherItem()
+    {
+        if (!hasRemoved)
+        {
+            if (Random.value <= GatherChance)
+            {
+                // Increment item count in PlayerPrefs
+                PlayerPrefs.SetInt(item.itemName + "Amount", PlayerPrefs.GetInt(item.itemName + "Amount") + 1);
+                PlayerPrefs.Save();
+                PlayerPrefsKeysManager.RegisterKey(item.itemName + "Amount");
+
+                // Play the particle system at the adjusted hit position
+                Destroy(Instantiate(hitParticles, adjustedHitPosition, Quaternion.identity), 1);
+                Destroy(Instantiate(gatherParticles, adjustedHitPosition, Quaternion.identity), 1);
+                audioSrc.PlayOneShot(gatherSound);
+            }
+            else
+            {
+                // Play the particle system at the adjusted hit position
+                Destroy(Instantiate(hitParticles, adjustedHitPosition, Quaternion.identity), 1);
+                int randomSound = Random.Range(0, hitSounds.Length);
+                float randomPitch = Random.Range(0.9f, 1.5f);
+                audioSrc.pitch = randomPitch;
+                audioSrc.PlayOneShot(hitSounds[randomSound]);
+            }
+
+            // For mushrooms
+            if (removeItem)
+            {
+                visual.SetActive(false);
+                hasRemoved = true;
+            }
         }
     }
 

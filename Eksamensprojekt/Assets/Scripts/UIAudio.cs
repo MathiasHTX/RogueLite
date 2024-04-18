@@ -4,18 +4,8 @@ using UnityEngine;
 
 public class UIAudio : MonoBehaviour
 {
-    public static UIAudio instance;
-
-    [SerializeField] AudioClip openSound, closeSound, clickSound, craftingSound;
+    [SerializeField] AudioClip openSound, closeSound, clickSound, craftingSound, eatMushroomSound;
     AudioSource audioSrc;
-
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-    }
 
     private void Start()
     {
@@ -42,4 +32,8 @@ public class UIAudio : MonoBehaviour
         audioSrc.PlayOneShot(craftingSound);
     }
 
+    public void PlayEatMushroomSound()
+    {
+        audioSrc.PlayOneShot(eatMushroomSound);
+    }
 }

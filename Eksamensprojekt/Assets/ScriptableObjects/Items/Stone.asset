@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae25c21267f2db43acd7f6f287d9818, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  itemName: Stone
+  itemName: Cave Stone
+  description: 
   itemIcon: {fileID: 21300000, guid: 912acb3cbf6e86f4d8f5f8ea68eba81e, type: 3}
+  requiredItemAmounts: 
+  requiredItems: []

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovementAdvanced : MonoBehaviour
 {
-    // Health
+    [SerializeField] UIAudio uIAudioScript;
+
+    [Header("Health")]
     [SerializeField] int startHealth = 200;
     [SerializeField] int healthDamage = 10;
     int health;
@@ -18,6 +21,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public event Action<int> onHeal;
     bool isDead;
     int healingGain = 10;
+    [SerializeField] ItemSO healingItemSO;
 
     [Header("Movement")]
     private float moveSpeed;
@@ -89,6 +93,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     bool movementEnabled = true;
 
+    bool sceneIsHome;
+
     public MovementState state;
     public enum MovementState
     {
@@ -112,6 +118,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
         health = startHealth;
 
         PlayerPrefsKeysManager.Initialize();
+
+        sceneIsHome = SceneManager.GetActiveScene().buildIndex == 2 ? true : false;
     }
 
     private void Update()
@@ -170,7 +178,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void MyInput()
     {
-        if (Input.GetKeyUp(KeyCode.F))
+        if (Input.GetKeyUp(KeyCode.F) && !sceneIsHome)
         {
             GetHealth();
         }
@@ -513,11 +521,15 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     public void GetHealth()
     {
-        if (!isDead && (healingGain + health) <= startHealth)
+        int amount = PlayerPrefs.GetInt(healingItemSO.itemName + "Amount");
+
+        if (!isDead && (healingGain + health) <= startHealth && amount > 0)
         {
             health += healingGain;
             onHeal?.Invoke(health);
             Debug.Log("Heal");
+            PlayerPrefs.SetInt(healingItemSO.itemName + "Amount", amount - 1);
+            uIAudioScript.PlayEatMushroomSound();
         }
     }
 

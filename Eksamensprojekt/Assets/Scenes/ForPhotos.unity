@@ -957,6 +957,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 286289793969011682, guid: 7ecf700a698ced64fb4be7eb9b8f2fff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4654889550585663106, guid: 7ecf700a698ced64fb4be7eb9b8f2fff, type: 3}
       propertyPath: m_LocalScale.x
       value: 6.10852
@@ -1184,6 +1188,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 286289793969011682, guid: 7ecf700a698ced64fb4be7eb9b8f2fff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4654889550585663106, guid: 7ecf700a698ced64fb4be7eb9b8f2fff, type: 3}
       propertyPath: m_LocalScale.x
       value: 6.10852
@@ -1245,6 +1253,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ecf700a698ced64fb4be7eb9b8f2fff, type: 3}
+--- !u!1001 &1732697308
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1975639756488919492, guid: ffce5e3a54975ec4c899d259cc988636, type: 3}
+      propertyPath: m_Name
+      value: HealthMushroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877101447076841723, guid: ffce5e3a54975ec4c899d259cc988636, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877101447076841723, guid: ffce5e3a54975ec4c899d259cc988636, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877101447076841723, guid: ffce5e3a54975ec4c899d259cc988636, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877101447076841723, guid: ffce5e3a54975ec4c899d259cc988636, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.952981
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877101447076841723, guid: ffce5e3a54975ec4c899d259cc988636, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.23759352
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877101447076841723, guid: ffce5e3a54975ec4c899d259cc988636, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.07915622
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877101447076841723, guid: ffce5e3a54975ec4c899d259cc988636, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.17061917
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877101447076841723, guid: ffce5e3a54975ec4c899d259cc988636, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -28.676
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877101447076841723, guid: ffce5e3a54975ec4c899d259cc988636, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -4.563
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877101447076841723, guid: ffce5e3a54975ec4c899d259cc988636, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -19.134
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ffce5e3a54975ec4c899d259cc988636, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1262,3 +1327,4 @@ SceneRoots:
   - {fileID: 1412395126}
   - {fileID: 1675450657}
   - {fileID: 1474530487}
+  - {fileID: 1732697308}

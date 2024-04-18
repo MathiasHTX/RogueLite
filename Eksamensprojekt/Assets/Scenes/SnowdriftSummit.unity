@@ -2613,6 +2613,14 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 337769282749060813, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+      propertyPath: healingItemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 5381f50287b55a240a1a19699f62be45, type: 2}
+    - target: {fileID: 337769282749060813, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+      propertyPath: uIAudioScript
+      value: 
+      objectReference: {fileID: 1972406758}
+    - target: {fileID: 337769282749060813, guid: 949f4d70839942441b4da82724cdacda, type: 3}
       propertyPath: whatIsSlippery.m_Bits
       value: 0
       objectReference: {fileID: 0}
@@ -3544,6 +3552,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1617866232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &912750550 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2555610262205043248, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
+  m_PrefabInstance: {fileID: 516792672}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &916750365 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5731077476133941631, guid: ff6ab7f1d8fffc648a5f5cf4da2a4434, type: 3}
@@ -3582,7 +3601,9 @@ MonoBehaviour:
   spaceShipScript: {fileID: 1383114321}
   playerMovementAdvanced: {fileID: 729357418}
   shipLandingSequence: {fileID: 563764397}
+  uIAudioScript: {fileID: 1972406758}
   damageVignette: {fileID: 516792688}
+  healVignette: {fileID: 912750550}
   gameUI: {fileID: 516792687}
   crossHair: {fileID: 1405201534}
   pressEText: {fileID: 140107411}
@@ -5829,6 +5850,7 @@ MonoBehaviour:
   gameOverSound: {fileID: 0}
   waveCompleteSound: {fileID: 8300000, guid: 8321f84fd06947e4091aeee62d2a67df, type: 3}
   slimePickUpSO: {fileID: 11400000, guid: c86e71678e053d14b8bc33086ae8f0c7, type: 2}
+  mushroomSO: {fileID: 11400000, guid: 5381f50287b55a240a1a19699f62be45, type: 2}
 --- !u!4 &1831024956
 Transform:
   m_ObjectHideFlags: 0
@@ -6206,8 +6228,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openSound: {fileID: 8300000, guid: 8966547292f4cb0489493eb0320aeee8, type: 3}
   closeSound: {fileID: 8300000, guid: 6f020b4c25d6ec6448a64d54cc56129d, type: 3}
-  clickSound: {fileID: 0}
-  craftingSound: {fileID: 0}
+  clickSound: {fileID: 8300000, guid: 31104d02b6a506a479beb47b4f43ee47, type: 3}
+  craftingSound: {fileID: 8300000, guid: fb1f358ea92409e4381ee00d5317d52b, type: 3}
+  eatMushroomSound: {fileID: 8300000, guid: e124a43210b905548add7f47205c3123, type: 3}
 --- !u!4 &1972406759
 Transform:
   m_ObjectHideFlags: 0
