@@ -58,6 +58,12 @@ public class MenuManager : MonoBehaviour
         whiteFade.DOFade(1, 1).OnComplete(() => SceneManager.LoadScene("Home"));
     }
 
+    public void NewGame()
+    {
+        PlayerPrefs.DeleteAll();
+        ContinueGame();
+    }
+
     public void QuitGame()
     {
         Application.Quit();

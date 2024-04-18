@@ -22,6 +22,7 @@ public class PlanetSelector : MonoBehaviour
     bool planetSelected;
     bool camFollowPlanets;
     bool goingToPlanet = false;
+    bool isUnknownPlanet;
 
     [SerializeField] GameObject unlockParSys;
 
@@ -76,6 +77,8 @@ public class PlanetSelector : MonoBehaviour
 
             goBtn.SetActive(true);
             closeBtn.SetActive(false);
+
+            isUnknownPlanet = false;
         }
         else
         {
@@ -84,6 +87,8 @@ public class PlanetSelector : MonoBehaviour
 
             goBtn.SetActive(false);
             closeBtn.SetActive(true);
+
+            isUnknownPlanet = true;
         }
 
         powerLevelText.text = "Power level " + planetSO.powerLevel;
@@ -115,7 +120,7 @@ public class PlanetSelector : MonoBehaviour
             m_camera.position = Vector3.Lerp(m_camera.position, targetPosition, transitionSpeed * Time.deltaTime);
         } 
 
-        if (planetSelected && Input.GetKeyDown(KeyCode.Return)) 
+        if (planetSelected && Input.GetKeyDown(KeyCode.Return) && !isUnknownPlanet) 
         {
             GoToPlanet();
         }

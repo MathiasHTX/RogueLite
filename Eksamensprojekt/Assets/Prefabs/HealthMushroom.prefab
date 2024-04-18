@@ -129,7 +129,7 @@ MonoBehaviour:
     m_Bits: 1024
   rayOrigin: {fileID: 0}
   forwardOffset: 0.75
-  hitParticles: {fileID: 5403154854008942850, guid: 6008dd9b49b424f4f9f0c377f99af681, type: 3}
+  hitParticles: {fileID: 6658923636286810460, guid: 5d5b083564a7f1f4fb663bd73da6f443, type: 3}
   gatherParticles: {fileID: 1715944312650657683, guid: 27489be1a68adbf4eba09f8508d40908, type: 3}
   audioSrc: {fileID: 8314966734639747811}
   hitSounds:

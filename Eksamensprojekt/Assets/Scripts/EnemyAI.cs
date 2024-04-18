@@ -86,7 +86,7 @@ public class EnemyAI : MonoBehaviour
 
         //Shoot projectile
         float shootWaitTime = Random.Range(5, 10);
-        InvokeRepeating("ShootProjectile", shootWaitTime, shootInterval);
+        //InvokeRepeating("ShootProjectile", shootWaitTime, shootInterval);
     }
 
     // Update is called once per frame
@@ -188,7 +188,8 @@ public class EnemyAI : MonoBehaviour
             EnemyHit();
         }
     }
-    */
+    
+
 
     void ShootProjectile()
     {
@@ -209,13 +210,16 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Arrow"))
         {
-            EnemyHit(15);
+            EnemyHit(10);
+            Debug.Log("HitByArrow");
         }
     }
+    */
 
     public void EnemyHit(int damage)
     {

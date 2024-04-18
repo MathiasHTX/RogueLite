@@ -82,6 +82,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] RectTransform inventoryRect;
     bool inventoryOpen;
 
+    [Header("Tutorial")]
+    [SerializeField] RectTransform tutorialRect;
+
 
     bool sceneIsHome;
 
@@ -134,6 +137,17 @@ public class UIManager : MonoBehaviour
         if(!sceneIsHome)
         {
             LoadGameUI();
+        }
+        else
+        {
+            if(PlayerPrefs.GetInt("Tutorial") == 0)
+            {
+                OpenTutorialUI();
+            }
+            else
+            {
+                tutorialRect.gameObject.SetActive(false);
+            }
         }
 
         pressE.gameObject.SetActive(false);
@@ -412,5 +426,32 @@ public class UIManager : MonoBehaviour
             inventoryRect.gameObject.SetActive(false);
             inventoryOpen = false;
         });
+    }
+
+    public void OpenTutorialUI()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        isPaused?.Invoke(true);
+        Time.timeScale = 0f;
+        tutorialRect.localScale = new Vector2(1, 0);
+        tutorialRect.gameObject.SetActive(true);
+        tutorialRect.DOScaleY(1, 0.2f).SetUpdate(true);
+        uIAudioScript.PlayOpenSound();
+    }
+
+    public void CloseTutorialUI()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1f;
+        uIAudioScript.PlayCloseSound();
+        tutorialRect.DOScaleY(0, 0.2f).OnComplete(() => {
+            tutorialRect.gameObject.SetActive(false);
+        });
+
+        PlayerPrefs.SetInt("Tutorial", 1);
+
+        isPaused?.Invoke(false);
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bowl
   m_EditorClassIdentifier: 
   itemName: Bowl
-  description: Use this to create lubricant.
+  description: With this you can create lubricant.
   itemIcon: {fileID: 21300000, guid: 2f165a9ad12d5fb49a39881e349b8410, type: 3}
   requiredItemAmounts: 14000000
   requiredItems:

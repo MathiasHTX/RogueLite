@@ -348,7 +348,7 @@ MonoBehaviour:
   hitForce: 4
   hitYForce: 0
   walkingRange: 10
-  sightRange: 100
+  sightRange: 200
   attackRange: 1
   baseHealth: 150
   healthBar: {fileID: 5099428602230442291}

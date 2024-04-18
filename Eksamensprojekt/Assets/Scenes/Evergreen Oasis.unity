@@ -144,6 +144,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2114293756}
     - target: {fileID: 3588316773077986592, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+      propertyPath: arrowSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 54aeebf5f5622494a82e55b9f04d0a0c, type: 2}
+    - target: {fileID: 3588316773077986592, guid: 949f4d70839942441b4da82724cdacda, type: 3}
       propertyPath: uIManager
       value: 
       objectReference: {fileID: 2114293756}

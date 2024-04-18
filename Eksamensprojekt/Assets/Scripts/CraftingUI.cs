@@ -7,6 +7,8 @@ using DG.Tweening;
 
 public class CraftingUI : MonoBehaviour
 {
+    [SerializeField] InsideCraftingTable insideCraftingTableScript;
+
     [SerializeField] WeaponSO[] weaponSOs;
     [SerializeField] ItemSO[] itemSOs;
     [SerializeField] CraftItem craftItemScript;
@@ -33,7 +35,7 @@ public class CraftingUI : MonoBehaviour
     private void Start()
     {
         firstTabsToggle.isOn = true;
-        InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
+        insideCraftingTableScript.onCraftingTable += InsideCraftingTable_onCraftingTable;
         UpdateCheckmarks();
         OpenGrid(0);
         OpenWeapon(firstWeapon);
@@ -43,7 +45,7 @@ public class CraftingUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        InsideCraftingTable.onCraftingTable -= InsideCraftingTable_onCraftingTable;
+        insideCraftingTableScript.onCraftingTable -= InsideCraftingTable_onCraftingTable;
     }
 
     private void InsideCraftingTable_onCraftingTable(bool obj)

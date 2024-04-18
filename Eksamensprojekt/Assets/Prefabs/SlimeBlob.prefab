@@ -350,6 +350,7 @@ MonoBehaviour:
   walkingRange: 10
   sightRange: 100
   attackRange: 1
+  baseHealth: 30
   healthBar: {fileID: 5099428602230442291}
   colorGradient:
     serializedVersion: 2

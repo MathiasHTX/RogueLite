@@ -66,5 +66,7 @@ public class CraftItem : MonoBehaviour
         PlayerPrefs.SetInt(itemSO.itemName + "Amount", craftedItemCount + 1);  // Add 1 crafted item to inventory
         PlayerPrefs.Save();
         PlayerPrefsKeysManager.RegisterKey(itemSO.itemName + "Amount");
+
+        weaponController.UpdateArrowAmount();
     }
 }

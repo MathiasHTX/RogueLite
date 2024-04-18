@@ -30,6 +30,7 @@ public class Inventory : MonoBehaviour
 
     void UpdateInventory()
     {
+        //Empty every slot
         for(int i = 0; i < itemImages.Length; i++)
         {
             itemImages[i].color = emptySlotColor;
@@ -43,6 +44,7 @@ public class Inventory : MonoBehaviour
             weaponIcons[i].gameObject.SetActive(false);
         }
 
+        // Add owned items to list
         for (int i = 0; i < itemSOs.Length; i++)
         {
             int amount = PlayerPrefs.GetInt(itemSOs[i].itemName + "Amount");
@@ -56,6 +58,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
+        // Add owned weapons to list
         for (int i = 0; i < weaponSOs.Length; i++)
         {
             int amount = PlayerPrefs.GetInt(weaponSOs[i].weaponName + "Amount");
@@ -69,6 +72,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
+        // Add owned items to inventory
         if (ownedItems.Count > 0)
         {
             for (int i = 0; i < ownedItems.Count; i++)
@@ -82,6 +86,7 @@ public class Inventory : MonoBehaviour
             }
         }
 
+        // Add owned weapons to inventory
         if (ownedWeapons.Count > 0)
         {
             for (int i = 0; i < ownedWeapons.Count; i++)

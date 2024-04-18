@@ -6,6 +6,7 @@ using UnityEngine;
 public class WeaponSway : MonoBehaviour
 {
     [SerializeField] PlayerMovementAdvanced playerMovementAdvanced;
+    [SerializeField] InsideCraftingTable insideCraftingTableScript;
 
     public float intensity;
     public float smoothReturnSpeed;
@@ -33,7 +34,8 @@ public class WeaponSway : MonoBehaviour
     private void Start()
     {
         playerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
-        InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
+        if (insideCraftingTableScript != null)
+            insideCraftingTableScript.onCraftingTable += InsideCraftingTable_onCraftingTable;
 
         origin_rotation = transform.localRotation;
         defaultPosY = transform.localPosition.y;

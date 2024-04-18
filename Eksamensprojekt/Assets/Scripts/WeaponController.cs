@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] UIManager uIManager;
     [SerializeField] PlayerMovementAdvanced playerMovementAdvanced;
+    [SerializeField] InsideCraftingTable insideCraftingTableScript;
 
     bool isDead;
 
@@ -22,14 +25,15 @@ public class WeaponController : MonoBehaviour
     [SerializeField] LayerMask enemyLayerMask;
     private Vector3 boxSize;
 
-    [Header("")]
+    [Header("Weapons")]
     [SerializeField] WeaponSO[] weaponSOs;
     [SerializeField] GameObject[] allWeapons;
     public List<GameObject> availableWeapons = new List<GameObject>();
+    public List<WeaponSO> availableWeaponsSO = new List<WeaponSO>();
     int usingWeapon = 0;
     bool canChangeWeapon = true;
     bool hasNoWeapons;
-    bool isUsingBow = true;
+    bool isUsingBow;
 
     AudioSource audioSrc;
 
@@ -42,6 +46,9 @@ public class WeaponController : MonoBehaviour
     public float arrowSpeed;
     public GameObject crossbow;
     [SerializeField] AudioClip crossbowSound;
+    [SerializeField] GameObject visualArrow;
+    int arrowAmount;
+    [SerializeField] ItemSO arrowSO;
 
     bool isPaused;
 
@@ -49,12 +56,20 @@ public class WeaponController : MonoBehaviour
 
     float changeWeaponTimer;
 
+    bool sceneIsHome;
+
     private void Start()
     {
         audioSrc = GetComponent<AudioSource>();
+
         playerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
         uIManager.isPaused += UIManager_isPaused;
-        InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
+
+        if (insideCraftingTableScript != null)
+            insideCraftingTableScript.onCraftingTable += InsideCraftingTable_onCraftingTable;
+
+        UpdateArrowAmount();
+
         FindAvailableWeapons();
     }
 
@@ -67,6 +82,11 @@ public class WeaponController : MonoBehaviour
                 if (!availableWeapons.Contains(allWeapons[i]))
                 {
                     availableWeapons.Add(allWeapons[i]);
+                }
+
+                if (!availableWeaponsSO.Contains(weaponSOs[i]))
+                {
+                    availableWeaponsSO.Add(weaponSOs[i]);
                 }
             }
         }
@@ -100,9 +120,10 @@ public class WeaponController : MonoBehaviour
         {
             if (canAttack && !isDead && !insideCraftingTable && !hasNoWeapons)
             {
+                Debug.Log(isUsingBow);
                 if (isUsingBow)
                 {
-                    Crossbow();
+                    CrossBowAttack();
                 }
                 else
                 {
@@ -148,8 +169,6 @@ public class WeaponController : MonoBehaviour
 
     void ChangeWeapon(int number)
     {
-        Debug.Log(canChangeWeapon);
-
         if(!hasNoWeapons && number < availableWeapons.Count)
         {
             if (canChangeWeapon && !isPaused)
@@ -169,11 +188,11 @@ public class WeaponController : MonoBehaviour
                 anim = availableWeapons[usingWeapon].GetComponent<Animator>();
                 ac = anim.runtimeAnimatorController;
                 Debug.Log(weaponSOs[usingWeapon]);
-                animationLength = weaponSOs[usingWeapon].animationLength / 0.6f;
-                boxSize = weaponSOs[usingWeapon].boxSize;
-                swingCooldown = weaponSOs[usingWeapon].swingCooldown;
+                animationLength = availableWeaponsSO[usingWeapon].animationLength / 0.6f;
+                boxSize = availableWeaponsSO[usingWeapon].boxSize;
+                swingCooldown = availableWeaponsSO[usingWeapon].swingCooldown;
 
-                if (weaponSOs[usingWeapon].isBow)
+                if (availableWeaponsSO[usingWeapon].isBow)
                 {
                     isUsingBow = true;
                 }
@@ -183,21 +202,6 @@ public class WeaponController : MonoBehaviour
         }
 
     }
-
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            trigger.enabled = false;
-            //other.GetComponent<EnemyAI>().EnemyHit();
-            if(other.TryGetComponent<EnemyAI>(out EnemyAI enemyAIscript))
-            {
-                enemyAIscript.EnemyHit();
-            }
-        }
-    }
-    */
 
     public void WeaponAttack()
     {
@@ -244,6 +248,7 @@ public class WeaponController : MonoBehaviour
         canChangeWeapon = false;
     }
 
+    /*
     public void Crossbow()
     {
         Vector3 startPosition = arrowInstantiatePoint.transform.position;
@@ -260,6 +265,41 @@ public class WeaponController : MonoBehaviour
 
         Destroy(spawnedArrow, 5.0f);
     }
+    */
+
+    public void CrossBowAttack()
+    {
+        if(arrowAmount > 0)
+        {
+            arrowAmount--;
+            PlayerPrefs.SetInt(arrowSO.itemName + "Amount", arrowAmount);
+
+            canAttack = false;
+
+            anim.Play("CrossbowShoot");
+
+            // Shoot arrow
+            GameObject arrow = Instantiate(arrowPrefab, arrowInstantiatePoint.position, arrowInstantiatePoint.rotation);
+            Rigidbody arrowRb = arrow.GetComponent<Rigidbody>();
+            Vector3 shootDirection = arrowInstantiatePoint.forward;
+            arrowRb.AddForce(shootDirection * arrowSpeed, ForceMode.Impulse);
+
+            // Hide and show fake arrow
+            visualArrow.transform.DOKill();
+            visualArrow.transform.DOScale(0, 0);
+
+            if(arrowAmount > 0)
+            {
+                visualArrow.transform.DOScale(2.2f, 0.2f).SetDelay(0.3f);
+            }
+
+            audioSrc.PlayOneShot(crossbowSound);
+
+            StartCoroutine(SwingCooldown());
+
+            Destroy(arrow, 5);
+        }
+    }
 
     private void OnDrawGizmosSelected()
     {
@@ -274,4 +314,16 @@ public class WeaponController : MonoBehaviour
         canAttack = true;
     }
 
+    public void UpdateArrowAmount()
+    {
+        arrowAmount = PlayerPrefs.GetInt(arrowSO.itemName + "Amount");
+        if (arrowAmount > 0)
+        {
+            visualArrow.SetActive(true);
+        }
+        else
+        {
+            visualArrow.SetActive(false);
+        }
+    }
 }

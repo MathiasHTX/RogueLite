@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 3SlimeSword
   m_EditorClassIdentifier: 
   weaponName: Slime Sword
-  description: A refined sword perfect for eliminating blue slimes.
+  description: A powerful sword perfect for eliminating blue slimes.
   damage: 50
-  requiredItemAmounts: 1400000014000000
+  requiredItemAmounts: 140000000a000000
   requiredItems:
   - {fileID: 11400000, guid: 7a3c04a221f723d499cd59f5c970ae05, type: 2}
   - {fileID: 11400000, guid: 7aabf8bbdff19da4fa0aa0b57a0e2fa2, type: 2}
@@ -24,3 +24,4 @@ MonoBehaviour:
   animationLength: 0.5
   weaponIcon: {fileID: 21300000, guid: 6394d774faa60d942a8f06385470f3fb, type: 3}
   swingCooldown: 0.3
+  isBow: 0

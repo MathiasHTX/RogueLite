@@ -6,6 +6,7 @@ public class PlayerCam : MonoBehaviour
 {
     [SerializeField] UIManager uiManager;
     [SerializeField] PlayerMovementAdvanced playerMovementAdvanced;
+    [SerializeField] InsideCraftingTable insideCraftingTableScript;
 
     [SerializeField] private float sensX;
     [SerializeField] private float sensY;
@@ -30,13 +31,21 @@ public class PlayerCam : MonoBehaviour
     {
         cam = camObj.GetComponent<Camera>();
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if(PlayerPrefs.GetInt("Tutorial") != 0)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            camEnabled = false;
+        }
 
         uiManager.isPaused += UIManager_isPaused;
-
         playerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
-        InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
+
+        if(insideCraftingTableScript != null)
+            insideCraftingTableScript.onCraftingTable += InsideCraftingTable_onCraftingTable;
     }
 
     private void InsideCraftingTable_onCraftingTable(bool openClose)

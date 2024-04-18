@@ -8,7 +8,7 @@ public class InsideCraftingTable : MonoBehaviour
     [SerializeField] UIManager uIManager;
 
     bool playerInsideTrigger;
-    public static event Action<bool> onCraftingTable;
+    public event Action<bool> onCraftingTable;
     bool isPaused;
     bool insideCraftingTable;
 

@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMovementAdvanced : MonoBehaviour
 {
     [SerializeField] UIAudio uIAudioScript;
+    [SerializeField] InsideCraftingTable insideCraftingTableScript;
 
     [Header("Health")]
     [SerializeField] int startHealth = 200;
@@ -106,7 +107,10 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void Start()
     {
-        InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
+        sceneIsHome = SceneManager.GetActiveScene().buildIndex == 2 ? true : false;
+
+        if (insideCraftingTableScript != null)
+            insideCraftingTableScript.onCraftingTable += InsideCraftingTable_onCraftingTable;
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -118,8 +122,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
         health = startHealth;
 
         PlayerPrefsKeysManager.Initialize();
-
-        sceneIsHome = SceneManager.GetActiveScene().buildIndex == 2 ? true : false;
     }
 
     private void Update()
@@ -506,7 +508,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
         {
             health -= healthDamage;
             isHit = true;
-            onPlayerHit?.Invoke(health);
+            onPlayerHit?.Invoke(Mathf.Max(0, health));
             StartCoroutine(HitCooldown());
 
             if (health <= 0)
