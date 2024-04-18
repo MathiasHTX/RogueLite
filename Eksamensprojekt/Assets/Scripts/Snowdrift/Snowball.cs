@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class Snowball : MonoBehaviour
 {
-    [SerializeField] PlayerMovementAdvanced playerMovementAdvanced;
+    PlayerMovementAdvanced playerMovementAdvanced;
 
     [Header("Snowball Properties")]
     public Rigidbody snowballRb;
@@ -30,6 +30,7 @@ public class Snowball : MonoBehaviour
 
     void Start()
     {
+        playerMovementAdvanced = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementAdvanced>();
         animator = GetComponent<Animator>();
         animator.Play("SpawnAnimation");
         snowballRb = GetComponent<Rigidbody>();
