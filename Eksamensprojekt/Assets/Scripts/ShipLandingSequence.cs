@@ -34,6 +34,7 @@ public class ShipLandingSequence : MonoBehaviour
     public Transform cameraShipPosition;
 
     public AudioSource loopingSoundtrack;
+    public AudioSource exitSound;
 
     public float waitTime;
     public float waitTimeSound;
@@ -181,6 +182,7 @@ public class ShipLandingSequence : MonoBehaviour
     void ExitShip()
     {
         player.SetActive(true);
+        exitSound.Play();
         OnExitShip?.Invoke();
         hasExitedSpaceShip = true;
         thisCam.SetActive(false);

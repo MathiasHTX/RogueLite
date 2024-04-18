@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!82 &507890 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4837920660275373679, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}
+  m_PrefabInstance: {fileID: 1693523047}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3380330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1296,8 +1301,9 @@ MonoBehaviour:
   ship: {fileID: 1693523057}
   cameraShipPosition: {fileID: 647323224}
   loopingSoundtrack: {fileID: 1980834513}
+  exitSound: {fileID: 507890}
   waitTime: 12
-  waitTimeSound: 10.05
+  waitTimeSound: 11.1
   canLookAround: 0
   btFireL: {fileID: 1693523056}
   btSmokeL: {fileID: 1693523055}
@@ -6285,10 +6291,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpaceshipModel
       objectReference: {fileID: 0}
-    - target: {fileID: 6843622273132792375, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 06d753813be94d84280c7390a390e4bb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7265,6 +7267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1980834514}
   - component: {fileID: 1980834513}
+  - component: {fileID: 1980834515}
   m_Layer: 0
   m_Name: LoopMusic
   m_TagString: Untagged
@@ -7383,6 +7386,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1980834515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980834511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc79e94be46759e468af0e59165250b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1983587006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7949831823179751012, guid: 72c9ff5d3fdec234dad8b79325a6b402, type: 3}

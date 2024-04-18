@@ -3646,8 +3646,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1075873174}
   - component: {fileID: 1075873173}
+  - component: {fileID: 1075873175}
   m_Layer: 0
-  m_Name: Music
+  m_Name: SnowdriftMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3764,6 +3765,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1075873175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075873172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc79e94be46759e468af0e59165250b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1096596881 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6908656363998969129, guid: c5a6b794b35974f44815a83c713eafc6, type: 3}
@@ -3992,6 +4005,7 @@ MonoBehaviour:
   ship: {fileID: 1405222251}
   cameraShipPosition: {fileID: 241072693}
   loopingSoundtrack: {fileID: 0}
+  exitSound: {fileID: 2003521317}
   waitTime: 12
   waitTimeSound: 0
   canLookAround: 0
@@ -6214,6 +6228,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}
+--- !u!82 &2003521317 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4837920660275373679, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}
+  m_PrefabInstance: {fileID: 2003521316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!198 &2003521318 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7920907760423988249, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}

@@ -1713,6 +1713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 898204553}
   - component: {fileID: 898204552}
+  - component: {fileID: 898204554}
   m_Layer: 0
   m_Name: Ambience
   m_TagString: Untagged
@@ -1831,6 +1832,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &898204554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898204551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc79e94be46759e468af0e59165250b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &933838731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6538728236061527777, guid: 6b6e3e06e0e7aa946b221b3334c122d6, type: 3}
@@ -3930,6 +3943,7 @@ GameObject:
   - component: {fileID: 1626764437}
   - component: {fileID: 1626764436}
   - component: {fileID: 1626764438}
+  - component: {fileID: 1626764439}
   m_Layer: 0
   m_Name: PlanetSelector
   m_TagString: Untagged
@@ -4092,6 +4106,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1626764439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626764435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc79e94be46759e468af0e59165250b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1627387372
 GameObject:
   m_ObjectHideFlags: 0

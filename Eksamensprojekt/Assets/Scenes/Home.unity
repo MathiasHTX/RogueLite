@@ -8898,6 +8898,7 @@ MonoBehaviour:
   ship: {fileID: 776842913}
   cameraShipPosition: {fileID: 1163477210}
   loopingSoundtrack: {fileID: 0}
+  exitSound: {fileID: 2096222385}
   waitTime: 12
   waitTimeSound: 0
   canLookAround: 0
@@ -10374,6 +10375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1443480858}
   - component: {fileID: 1443480857}
+  - component: {fileID: 1443480859}
   m_Layer: 0
   m_Name: HomeAmbience
   m_TagString: Untagged
@@ -10492,6 +10494,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1443480859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443480856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc79e94be46759e468af0e59165250b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1468424749
 GameObject:
   m_ObjectHideFlags: 0
@@ -14055,6 +14069,22 @@ PrefabInstance:
       propertyPath: rayOrigin
       value: 
       objectReference: {fileID: 1818117720}
+    - target: {fileID: 4024183933186054119, guid: e85c75e074245cf489f489f78c67b81a, type: 3}
+      propertyPath: m_Size.x
+      value: 1.771574
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024183933186054119, guid: e85c75e074245cf489f489f78c67b81a, type: 3}
+      propertyPath: m_Size.z
+      value: 1.8192396
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024183933186054119, guid: e85c75e074245cf489f489f78c67b81a, type: 3}
+      propertyPath: m_Center.x
+      value: -0.4005003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024183933186054119, guid: e85c75e074245cf489f489f78c67b81a, type: 3}
+      propertyPath: m_Center.z
+      value: 0.44613695
+      objectReference: {fileID: 0}
     - target: {fileID: 4607478962923879000, guid: e85c75e074245cf489f489f78c67b81a, type: 3}
       propertyPath: m_Name
       value: GatherStone
@@ -15749,6 +15779,11 @@ PrefabInstance:
 --- !u!95 &2096222384 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 850872186680074977, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}
+  m_PrefabInstance: {fileID: 2096222383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2096222385 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4837920660275373679, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}
   m_PrefabInstance: {fileID: 2096222383}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2098916751
