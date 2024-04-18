@@ -209,6 +209,13 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Arrow"))
+        {
+            EnemyHit(15);
+        }
+    }
 
     public void EnemyHit(int damage)
     {
@@ -250,7 +257,6 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForFixedUpdate();
         //yield return new WaitUntil(() => rb.velocity.magnitude < 0.05f);
         yield return new WaitForSeconds(1f);
-
 
         rb.useGravity = false;
         rb.isKinematic = true;

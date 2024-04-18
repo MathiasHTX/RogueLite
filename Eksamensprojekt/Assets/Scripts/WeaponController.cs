@@ -246,17 +246,19 @@ public class WeaponController : MonoBehaviour
 
     public void Crossbow()
     {
-        GameObject spawnedArrow = Instantiate(arrowPrefab);
+        Vector3 startPosition = arrowInstantiatePoint.transform.position;
+        Quaternion startRotation = arrowInstantiatePoint.transform.rotation;
+        GameObject spawnedArrow = Instantiate(arrowPrefab, arrowInstantiatePoint.transform.position, arrowInstantiatePoint.transform.rotation);
         Animator crossbowAnim = crossbow.GetComponent<Animator>();
         crossbowAnim.Play("CrossbowShoot");
         Debug.Log("Played animation!");
-        spawnedArrow.transform.position = arrowInstantiatePoint.transform.position;
-        spawnedArrow.transform.rotation = arrowInstantiatePoint.transform.rotation;
         Rigidbody arrowRb = spawnedArrow.GetComponent<Rigidbody>();
 
         Vector3 direction = new Vector3(arrowInstantiatePoint.transform.up.x, arrowInstantiatePoint.transform.up.y, arrowInstantiatePoint.up.z);
         arrowRb.AddForce(direction * arrowSpeed, ForceMode.Impulse);
         audioSrc.PlayOneShot(crossbowSound);
+
+        Destroy(spawnedArrow, 5.0f);
     }
 
     private void OnDrawGizmosSelected()
