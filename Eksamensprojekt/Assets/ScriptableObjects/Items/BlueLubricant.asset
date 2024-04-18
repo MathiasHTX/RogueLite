@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Blue Lubricant
   description: Lubricant for weapons like a crossbow.
   itemIcon: {fileID: 21300000, guid: a1075872561e99a4ebf4adf9541254e3, type: 3}
-  requiredItemAmounts: 0100000005000000
+  requiredItemAmounts: 0100000003000000
   requiredItems:
   - {fileID: 11400000, guid: 4a935cc84400951439e664b41df146a3, type: 2}
   - {fileID: 11400000, guid: c86e71678e053d14b8bc33086ae8f0c7, type: 2}

@@ -278,17 +278,21 @@ public class EnemyAI : MonoBehaviour
         int waveCount = waveManager.GetWaveCount();
         int slimePickUpChance;
 
-        if (waveCount <= 2)
+        if (waveCount > 0)
         {
-            slimePickUpChance = 10; // 10% chance
+            slimePickUpChance = 5; // 5% chance
+        }
+        else if (waveCount <= 2)
+        {
+            slimePickUpChance = 15; // 15% chance
         }
         else if (waveCount <= 5)
         {
-            slimePickUpChance = 20; // 20% chance
+            slimePickUpChance = 25; // 25% chance
         }
         else if(waveCount <= 10)
         {
-            slimePickUpChance = 30; // 30% chance
+            slimePickUpChance = 35; // 35% chance
         }
         else
             slimePickUpChance = 40; // 40% chance
