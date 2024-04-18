@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 41d17254904a22844a5e6b1b98d244d6, type: 2}
   GatherChance: 0.5
-  rayLength: 30
+  rayLength: 3
   hitLayers:
     serializedVersion: 2
     m_Bits: 8

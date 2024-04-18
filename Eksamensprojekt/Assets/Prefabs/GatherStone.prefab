@@ -105,8 +105,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.3788807, y: 4.4038787, z: 2.3689127}
-  m_Center: {x: -0.105240464, y: 0.4946286, z: 0.045310497}
+  m_Size: {x: 38.620235, y: 11.237851, z: 50.94086}
+  m_Center: {x: -6.1055026, y: 0.991405, z: -4.016798}
 --- !u!114 &1005574618553036209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 7a3c04a221f723d499cd59f5c970ae05, type: 2}
   GatherChance: 0.5
-  rayLength: 30
+  rayLength: 3
   hitLayers:
     serializedVersion: 2
     m_Bits: 8

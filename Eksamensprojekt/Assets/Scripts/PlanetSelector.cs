@@ -56,6 +56,8 @@ public class PlanetSelector : MonoBehaviour
         whiteBottom.rectTransform.DOScaleY(0, 0.2f);
 
         backBtn.SetActive(false);
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void ZoomToPlanet(Transform planetTransform, PlanetSO planetSO)

@@ -78,6 +78,28 @@ public class ItemGatherer : MonoBehaviour
                     audioSrc.pitch = randomPitch;
                     audioSrc.PlayOneShot(hitSounds[randomSound]);
                 }
+                else if (hit.collider.tag == "Stone")
+                {
+                    if (Random.value <= GatherChance)
+                    {
+                        // Increment item count in PlayerPrefs
+                        PlayerPrefs.SetInt(item.itemName + "Amount", PlayerPrefs.GetInt(item.itemName + "Amount") + 1);
+                        PlayerPrefs.Save();
+                        PlayerPrefsKeysManager.RegisterKey(item.itemName + "Amount");
+
+                        // Play the particle system at the adjusted hit position
+                        Destroy(Instantiate(hitParticles, adjustedHitPosition, Quaternion.identity), 1);
+                        Destroy(Instantiate(gatherParticles, adjustedHitPosition, Quaternion.identity), 1);
+                        audioSrc.PlayOneShot(gatherSound);
+                    }
+                    else
+                    // Play the particle system at the adjusted hit position
+                    Destroy(Instantiate(hitParticles, adjustedHitPosition, Quaternion.identity), 1);
+                    int randomSound = Random.Range(0, hitSounds.Length);
+                    float randomPitch = Random.Range(0.9f, 1.5f);
+                    audioSrc.pitch = randomPitch;
+                    audioSrc.PlayOneShot(hitSounds[randomSound]);
+                }
             } 
         }
     }
