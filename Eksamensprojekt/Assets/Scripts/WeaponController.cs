@@ -16,19 +16,31 @@ public class WeaponController : MonoBehaviour
     RuntimeAnimatorController ac;
     float animationLength;
 
+    [Header("General Settings")]
     [SerializeField] Transform cameraHolder;
     [SerializeField] LayerMask enemyLayerMask;
-    [SerializeField] Vector3 boxSize;
+    private Vector3 boxSize;
 
+    [Header("")]
     [SerializeField] WeaponSO[] weaponSOs;
     [SerializeField] GameObject[] allWeapons;
     public List<GameObject> availableWeapons = new List<GameObject>();
     int usingWeapon = 0;
     bool canChangeWeapon = true;
     bool hasNoWeapons;
+    bool isUsingBow = true;
 
     AudioSource audioSrc;
+
+    [Header("Sword Settings")]
     [SerializeField] AudioClip[] swordSounds;
+
+    [Header("Crossbow Settings")]
+    public Transform arrowInstantiatePoint;
+    public GameObject arrowPrefab;
+    public float arrowSpeed;
+    public GameObject crossbow;
+    [SerializeField] AudioClip crossbowSound;
 
     bool isPaused;
 
@@ -87,7 +99,14 @@ public class WeaponController : MonoBehaviour
         {
             if (canAttack && !isDead && !insideCraftingTable && !hasNoWeapons)
             {
-                WeaponAttack();
+                if (isUsingBow)
+                {
+                    Crossbow();
+                }
+                else
+                {
+                    WeaponAttack();
+                }
             }
         }
 
@@ -150,6 +169,13 @@ public class WeaponController : MonoBehaviour
                 ac = anim.runtimeAnimatorController;
                 Debug.Log(weaponSOs[usingWeapon]);
                 animationLength = weaponSOs[usingWeapon].animationLength / 0.6f;
+
+                if (weaponSOs[usingWeapon].isBow)
+                {
+                    isUsingBow = true;
+                }
+                else
+                    isUsingBow = false;
             }
         }
 
@@ -213,6 +239,21 @@ public class WeaponController : MonoBehaviour
 
         changeWeaponTimer = 0;
         canChangeWeapon = false;
+    }
+
+    public void Crossbow()
+    {
+        GameObject spawnedArrow = Instantiate(arrowPrefab);
+        Animator crossbowAnim = crossbow.GetComponent<Animator>();
+        crossbowAnim.Play("CrossbowShoot");
+        Debug.Log("Played animation!");
+        spawnedArrow.transform.position = arrowInstantiatePoint.transform.position;
+        spawnedArrow.transform.rotation = arrowInstantiatePoint.transform.rotation;
+        Rigidbody arrowRb = spawnedArrow.GetComponent<Rigidbody>();
+
+        Vector3 direction = new Vector3(arrowInstantiatePoint.transform.up.x, arrowInstantiatePoint.transform.up.y, arrowInstantiatePoint.up.z);
+        arrowRb.AddForce(direction * arrowSpeed, ForceMode.Impulse);
+        audioSrc.PlayOneShot(crossbowSound);
     }
 
     private void OnDrawGizmosSelected()
