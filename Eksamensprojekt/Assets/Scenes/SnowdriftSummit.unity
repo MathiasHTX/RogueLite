@@ -1956,6 +1956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe867f7fc7be1245a407a0eca36be95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uIManager: {fileID: 978342930}
   spaceshipAnim: {fileID: 354014191}
   sensX: 200
   sensY: 200
@@ -2615,6 +2616,10 @@ PrefabInstance:
       propertyPath: whatIsSlippery.m_Bits
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1686955170514935045, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 978342930}
     - target: {fileID: 2985079072346969419, guid: 949f4d70839942441b4da82724cdacda, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.747
@@ -2631,6 +2636,14 @@ PrefabInstance:
       propertyPath: m_RenderPostProcessing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3523870288940725826, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+      propertyPath: playerMovementAdvanced
+      value: 
+      objectReference: {fileID: 729357418}
+    - target: {fileID: 3588316773077986592, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 978342930}
     - target: {fileID: 5193626161539037940, guid: 949f4d70839942441b4da82724cdacda, type: 3}
       propertyPath: m_Name
       value: ThePlayer
@@ -2716,6 +2729,17 @@ PrefabInstance:
       insertIndex: 6
       addedObject: {fileID: 2056403287}
   m_SourcePrefab: {fileID: 100100000, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+--- !u!114 &729357418 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 337769282749060813, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+  m_PrefabInstance: {fileID: 729357417}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056403278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1526d72f1fd502c45abd825e76bd8aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &733741337
 GameObject:
   m_ObjectHideFlags: 0
@@ -3476,6 +3500,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6235409801154746877, guid: ec0a408dd6ff45c45a02d7a61a084717, type: 3}
   m_PrefabInstance: {fileID: 1826623180}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &897038077 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6221733063956749902, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
+  m_PrefabInstance: {fileID: 516792672}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &903123459
 GameObject:
   m_ObjectHideFlags: 0
@@ -3524,7 +3553,7 @@ GameObject:
   - component: {fileID: 978342930}
   m_Layer: 0
   m_Name: UIManager
-  m_TagString: Untagged
+  m_TagString: UIManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3541,6 +3570,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42ce83e1f3c6fc48afd963057c923e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveManager: {fileID: 1831024955}
+  spaceShipScript: {fileID: 1383114321}
+  playerMovementAdvanced: {fileID: 729357418}
+  shipLandingSequence: {fileID: 563764397}
   damageVignette: {fileID: 516792688}
   gameUI: {fileID: 516792687}
   crossHair: {fileID: 1405201534}
@@ -3603,7 +3636,7 @@ MonoBehaviour:
   holdMenuMessage: {fileID: 1473755955}
   holdMenuRing: {fileID: 530236836}
   craftingTableRect: {fileID: 0}
-  inventoryRect: {fileID: 0}
+  inventoryRect: {fileID: 897038077}
 --- !u!4 &978342931
 Transform:
   m_ObjectHideFlags: 0
@@ -4821,6 +4854,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4563372550702056529, guid: c16a8e45d85115a44a6be5c9a0cb2ad4, type: 3}
   m_PrefabInstance: {fileID: 1571299233}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1383114321 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3530356125536007505, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}
+  m_PrefabInstance: {fileID: 2003521316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6344f351f90c24386200e42512076b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1385514578 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6908656363998969129, guid: c5a6b794b35974f44815a83c713eafc6, type: 3}
@@ -5155,7 +5199,7 @@ MonoBehaviour:
   - {fileID: 733741338}
   - {fileID: 744823377}
   - {fileID: 473067091}
-  timeUntilStart: 2
+  timeUntilStart: 15
   repeatEvery: 2
   launchForce: 10
 --- !u!4 &1714470571 stripped
@@ -5647,7 +5691,7 @@ GameObject:
   - component: {fileID: 1831024954}
   m_Layer: 0
   m_Name: WaveManager
-  m_TagString: Untagged
+  m_TagString: WaveManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5760,6 +5804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5264d1bd45d55fc45a2cd23051e9d2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uIManager: {fileID: 978342930}
+  shipLandingSequence: {fileID: 563764397}
   timeBetweenWaves: 20
   enemyPrefab: {fileID: 8721703592266613574, guid: 9bc5bd652b97b9d429b77ff92fccfc07, type: 3}
   spawnPoints:
@@ -6175,6 +6221,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3530356125536007505, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}
+      propertyPath: uIManager
+      value: 
+      objectReference: {fileID: 978342930}
+    - target: {fileID: 3530356125536007505, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}
+      propertyPath: waveManager
+      value: 
+      objectReference: {fileID: 1831024955}
+    - target: {fileID: 3530356125536007505, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}
+      propertyPath: shipLandingSequence
+      value: 
+      objectReference: {fileID: 563764397}
     - target: {fileID: 4771675295758265374, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.38

@@ -1320,6 +1320,7 @@ MonoBehaviour:
   ship: {fileID: 1693523057}
   cameraShipPosition: {fileID: 647323224}
   loopingSoundtrack: {fileID: 1980834513}
+  exitSound: {fileID: 1137790598}
   waitTime: 12
   waitTimeSound: 10.05
   canLookAround: 0
@@ -4081,6 +4082,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72c9ff5d3fdec234dad8b79325a6b402, type: 3}
+--- !u!82 &1137790598 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4837920660275373679, guid: 24e096c75e127924e984d5a99a32a6c1, type: 3}
+  m_PrefabInstance: {fileID: 1693523047}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1142612341 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 325220475917270897, guid: 4df02f11aa9090140beddb182f52ff27, type: 3}
