@@ -16,4 +16,5 @@ public class WeaponSO : ScriptableObject
     public float animationLength;
     public Sprite weaponIcon;
     public float swingCooldown;
+    public bool isBow;
 }

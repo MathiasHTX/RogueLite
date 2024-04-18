@@ -6,6 +6,7 @@ using System;
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] UIManager uIManager;
+    [SerializeField] PlayerMovementAdvanced playerMovementAdvanced;
 
     bool isDead;
 
@@ -51,7 +52,7 @@ public class WeaponController : MonoBehaviour
     private void Start()
     {
         audioSrc = GetComponent<AudioSource>();
-        PlayerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
+        playerMovementAdvanced.onDeath += PlayerMovementAdvanced_onDeath;
         uIManager.isPaused += UIManager_isPaused;
         InsideCraftingTable.onCraftingTable += InsideCraftingTable_onCraftingTable;
         FindAvailableWeapons();
@@ -169,6 +170,8 @@ public class WeaponController : MonoBehaviour
                 ac = anim.runtimeAnimatorController;
                 Debug.Log(weaponSOs[usingWeapon]);
                 animationLength = weaponSOs[usingWeapon].animationLength / 0.6f;
+                boxSize = weaponSOs[usingWeapon].boxSize;
+                swingCooldown = weaponSOs[usingWeapon].swingCooldown;
 
                 if (weaponSOs[usingWeapon].isBow)
                 {
