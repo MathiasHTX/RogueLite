@@ -112,6 +112,8 @@ public class PlayerMovementAdvanced : MonoBehaviour
         if (insideCraftingTableScript != null)
             insideCraftingTableScript.onCraftingTable += InsideCraftingTable_onCraftingTable;
 
+
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 

@@ -20885,6 +20885,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 337769282749060813, guid: 949f4d70839942441b4da82724cdacda, type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 1506288142}
+    - target: {fileID: 337769282749060813, guid: 949f4d70839942441b4da82724cdacda, type: 3}
       propertyPath: uIAudioScript
       value: 
       objectReference: {fileID: 1741443961}

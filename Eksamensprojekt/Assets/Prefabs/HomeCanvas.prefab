@@ -509,27 +509,26 @@ MonoBehaviour:
   m_text: '- Gather Items
 
     Approach a tree and press E to gather wood. Head down
-    to the cave to gather cave stone.
+    to the cave to gather cave stone. View your inventory by pressing tab.
 
 
-    - Craft Weapons
+    -
+    Craft Weapons
 
-    Return to the cabin
-    and use your gathered items to craft weapons.
+    Return to the cabin and use your gathered items to craft weapons.
 
 
-    - Unlock New Planets
+    -
+    Unlock New Planets
 
-    Utilize
-    your weapons to unlock new planets and fight enemies.
+    Utilize your weapons to unlock new planets and fight
+    enemies.
 
 
     - Heal with Mushrooms
 
-    Keep
-    an eye out for mushrooms. Gather them and they''ll heal you during battles by
-    pressing F.
-
+    Keep an eye out for mushrooms. Gather
+    them and they''ll heal you during battles by pressing F.
 
 '
   m_isRightToLeft: 0
