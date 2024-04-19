@@ -274,8 +274,8 @@ GameObject:
   - component: {fileID: 1292253161605689961}
   - component: {fileID: 66691764960631579}
   - component: {fileID: 7413443647044948919}
-  - component: {fileID: 8036849360271795648}
   - component: {fileID: 7523050306266196213}
+  - component: {fileID: 8036849360271795648}
   - component: {fileID: 3015401053716795392}
   m_Layer: 8
   m_Name: SlimeBlob
@@ -444,27 +444,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 1
---- !u!65 &8036849360271795648
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8721703592266613574}
-  m_Material: {fileID: 13400000, guid: 7bc8614d9a185d74194d320297fe4c05, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.5, y: 1, z: 1.5}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!136 &7523050306266196213
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -487,6 +466,27 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 1
   m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!65 &8036849360271795648
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8721703592266613574}
+  m_Material: {fileID: 13400000, guid: 7bc8614d9a185d74194d320297fe4c05, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5, y: 1, z: 1.5}
   m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!82 &3015401053716795392
 AudioSource:

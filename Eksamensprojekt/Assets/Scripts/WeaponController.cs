@@ -205,7 +205,6 @@ public class WeaponController : MonoBehaviour
 
     public void WeaponAttack()
     {
-        //OnSwordSwing?.Invoke();
         canAttack = false;
 
         int randomIndex = UnityEngine.Random.Range(0, ac.animationClips.Length);
