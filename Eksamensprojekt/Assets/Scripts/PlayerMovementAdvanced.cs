@@ -113,7 +113,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
             insideCraftingTableScript.onCraftingTable += InsideCraftingTable_onCraftingTable;
 
 
-
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -137,7 +136,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
             MyInput();
             SpeedControl();
             StateHandler();
-
         }
 
         // handle drag
@@ -190,7 +188,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        // when to jump
+        // Hvornår spilleren hopper
         if (Input.GetKey(jumpKey) && readyToJump && grounded && jumpCount < 2)
         {
             readyToJump = false;
@@ -207,14 +205,14 @@ public class PlayerMovementAdvanced : MonoBehaviour
             jumpCount = 0;
         }
 
-        // start crouch
+        // Start crouch
         if (Input.GetKeyDown(crouchKey))
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
         }
 
-        // stop crouch
+        // Stop crouch
         if (Input.GetKeyUp(crouchKey))
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
@@ -253,7 +251,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
 
     private void MovePlayer()
     {
-        // Calculate movement direction based on player input
+        // Bevæg spilleren baseret på deres input
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         if (OnSlope() && !exitingSlope)
@@ -273,7 +271,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
         }
         else
         {
-            // Apply standard movement force
+            // Anvend normal movement force
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * (grounded ? 1f : airMultiplier), ForceMode.Force);
         }
 
