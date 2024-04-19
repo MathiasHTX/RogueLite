@@ -111,8 +111,6 @@ public class EnemyAI : MonoBehaviour
         int size = Random.Range(1, 4);
 
         // Health
-
-        // StartHealth can be 4, 8 or 12
         baseHealth += (20 * waveManager.GetWaveCount());
         startHealth = baseHealth * size;
 
@@ -278,11 +276,7 @@ public class EnemyAI : MonoBehaviour
         int waveCount = waveManager.GetWaveCount();
         int slimePickUpChance;
 
-        if (waveCount > 0)
-        {
-            slimePickUpChance = 5; // 5% chance
-        }
-        else if (waveCount <= 2)
+        if (waveCount <= 2)
         {
             slimePickUpChance = 15; // 15% chance
         }
