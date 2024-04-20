@@ -293,17 +293,13 @@ public class UIManager : MonoBehaviour
         {
             PauseGame();
         }
-        else if(Input.GetKeyUp(KeyCode.Escape) && inventoryOpen)
-        {
-            CloseInventoryUI();
-        }
 
-        if(Input.GetKeyUp(KeyCode.Tab) && !craftingTableOpen && !inventoryOpen && hasExitedShip)
+        if(Input.GetKeyDown(KeyCode.Tab) && !craftingTableOpen && !inventoryOpen && hasExitedShip)
         {
             OpenInventoryUI();
         }
 
-        if(Input.GetKeyUp(KeyCode.Tab) && inventoryOpen)
+        if(Input.GetKeyUp(KeyCode.Tab))
         {
             CloseInventoryUI();
         }

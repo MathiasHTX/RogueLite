@@ -52,7 +52,7 @@ public class ItemGatherer : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && PlayerIsInTrigger)
+        if ((Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)) && PlayerIsInTrigger)
         {
             RaycastHit hit;
             // Shoot a ray forward from the rayOrigin

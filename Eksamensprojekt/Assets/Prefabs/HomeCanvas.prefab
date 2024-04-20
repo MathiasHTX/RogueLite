@@ -475,7 +475,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -6}
+  m_AnchoredPosition: {x: 0, y: -2.4}
   m_SizeDelta: {x: 225, y: 215.5808}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7221051568518274656
@@ -509,7 +509,7 @@ MonoBehaviour:
   m_text: '- Gather Items
 
     Approach a tree and press E to gather wood. Head down
-    to the cave to gather cave stone. View your inventory by pressing tab.
+    to the cave to gather cave stone. View your inventory by holding tab.
 
 
     -
@@ -522,13 +522,14 @@ MonoBehaviour:
     Unlock New Planets
 
     Utilize your weapons to unlock new planets and fight
-    enemies.
+    enemies. Access the planets by entering your space ship.
 
 
     - Heal with Mushrooms
 
-    Keep an eye out for mushrooms. Gather
-    them and they''ll heal you during battles by pressing F.
+    Keep
+    an eye out for mushrooms. Gather them and they''ll heal you during battles by
+    pressing F.
 
 '
   m_isRightToLeft: 0
@@ -4918,7 +4919,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -32.9}
+  m_AnchoredPosition: {x: 0, y: -30.2}
   m_SizeDelta: {x: 200, y: 29.1812}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2836700868684925148
@@ -4949,7 +4950,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome Playtester
+  m_text: Welcome
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7077830651d5d2941b952ba208aed00d, type: 2}
   m_sharedMaterial: {fileID: 2255848167201399295, guid: 7077830651d5d2941b952ba208aed00d, type: 2}
@@ -10077,7 +10078,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -116.9}
+  m_AnchoredPosition: {x: 0, y: -123.1}
   m_SizeDelta: {x: 80, y: 21.6102}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5788422413302354874

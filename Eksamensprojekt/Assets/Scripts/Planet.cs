@@ -76,7 +76,7 @@ public class Planet : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!planetSelector.PlanetSelected())
+        if (!planetSelector.PlanetSelected() && !planetSelector.GoingToPlanet())
         {
             switch (planetLockedState)
             {
