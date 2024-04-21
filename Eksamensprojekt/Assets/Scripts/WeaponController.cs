@@ -319,6 +319,7 @@ public class WeaponController : MonoBehaviour
         if (arrowAmount > 0)
         {
             visualArrow.SetActive(true);
+            visualArrow.transform.DOScale(2.2f, 0.2f);
         }
         else
         {
